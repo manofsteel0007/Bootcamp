@@ -1,0 +1,384 @@
+package demo04_collections;
+
+
+import java.util.ArrayList;
+class PGM_ALDemo01{
+    public static void main(String args[]){
+
+        String s1=new String("Hari");
+        String s2=new String("Siva");
+        String s3=new String("Ramu");
+        String s4=new String("John");
+
+        ArrayList al=new ArrayList();
+
+        al.add(s1);
+        al.add(s2);
+        al.add(s3);
+        al.add(s4);
+        //al.add(null);
+
+
+    // float f=10.8F;
+
+        Object ob1 = al.get(3);                    
+
+        System.out.println("   Before Downcasting  --> "+ob1+"\n\n");
+
+        String s5=(String)ob1;
+
+        System.out.println("   After  Downcasting  --> "+s5.toUpperCase());
+    }
+}
+
+######################################################################
+
+
+import java.util.ArrayList;
+
+class A
+{
+
+ 	int x;
+ 	void test1()
+ 	{
+  		System.out.println("Class A  :  "+x);
+ 	}  
+}
+
+class B
+{
+ 	int y;
+ 	void  test2()
+ 	{
+  		System.out.println("Class B  :  "+y);
+ 	}	
+}
+
+class C
+{
+ 	int z;
+ 	void test3()
+ 	{
+  		System.out.println("Class C  :  "+z);
+ 	}
+}
+
+class ALDemo1
+{
+ 	public static void main(String args[])
+ 	{
+  		A ob1=new A();
+  		ob1.x=500;
+ 
+  		B ob2=new B();
+  		ob2.y=700;
+
+                C ob3=new C();
+                ob3.z=900;
+
+
+
+                ArrayList arrayList=new ArrayList();
+
+                arrayList.add(ob1);
+                arrayList.add(ob2);
+                arrayList.add(ob3);
+                
+                //System.out.println("   "+al);
+
+                Object object1=arrayList.get(0);
+`                Object object2=arrayList.get(1);
+                Object object3=arrayList.get(2);
+
+
+ 
+  		A ob4=(A)object1;
+  		ob4.test1();     //downcasting
+
+    		B ob5=(B)object2;
+  		ob5.test2();
+
+                C ob6=(C)object3;
+                ob6.test3();
+
+ 	}
+}	
+
+
+######################################################################
+
+import java.util.ArrayList;
+class ALDemo2
+{
+ 	public static void main(String args[])
+ 	{
+  	String s1=new String("JAVA");
+  	String s2=new String("C");
+        String s3=new String("C++");
+  	String s4=new String("VB");
+        String s5=new String("PHP");
+        String s6=new String("PERL");
+        String s7=new String("PYTHON");
+        String s8=new String("PYTHON");
+
+                Integer i1=new Integer(100);
+
+                int i2=200;
+
+                Float f1=new Float(56.7f);
+
+                ArrayList al=new ArrayList();
+
+                
+  		al.add(s1);
+  		al.add(s2);
+  		al.add(s3);
+  		al.add(s4);
+                al.add(s5);
+                al.add(s6);
+                al.add(s7);
+                al.add(s8);
+                al.add(i1);
+                al.add(i2);
+                al.add(f1);
+
+  		System.out.println("   "+al+"\n");
+
+  		al.remove(8);
+
+  		System.out.println("   "+al+"\n");
+
+  		al.clear();
+
+  		System.out.println("   "+al+"\n");
+	}
+}
+
+######################################################################
+
+import java.util.*;
+import java.util.ArrayList;
+class ALDemo4
+{
+ 	public static void main(String args[])
+ 	{
+            
+  		String s1=new String("JAVA");
+  		String s2=new String("C");
+                String s3=new String("C++");
+  		String s4=new String("VB");
+
+
+  		ArrayList al=new ArrayList();
+
+  		al.add(s1);
+  		al.add(s2);
+  		al.add(s3);
+  		al.add(s4);
+
+  		al.add("JAVA");
+  		al.add("C");
+  		al.add("C++");
+  		al.add("VB");
+
+
+  		System.out.println("   "+al);
+
+  		Iterator ie=al.iterator();
+
+  		while(ie.hasNext())
+  		{
+                                          Object ob=ie.next();
+                                          String ss=(String)ob;
+
+   			System.out.println("   "+ss.toLowerCase());
+  		}
+ 	}
+}	
+######################################################################
+
+import java.util.*;
+import java.util.ArrayList;
+class ALDemo5
+{
+ 	public static void main(String args[])
+ 	{
+  		String s1=new String("JAVA");
+  		String s2=new String("C");
+               	String s3=new String("C++");
+  		String s4=new String("VB");
+
+  		ArrayList<String> al=new ArrayList<String>();
+
+       
+                al.add(s1);
+  		al.add(s2);
+  		al.add(s3);
+  		al.add(s4);
+
+                System.out.println("   "+al);
+
+  		Iterator<String> ie=al.iterator();
+
+  		while(ie.hasNext())
+  		{
+                       	String ss=ie.next();
+   			System.out.println("   "+ss.toUpperCase());
+  		}
+ 	}
+}	
+######################################################################
+
+import java.util.*;
+class HSDemo
+{
+ 	public static void main(String args[])
+ 	{
+  		HashSet hs=new HashSet();
+
+  		hs.add("E");
+  		hs.add("D");
+  		hs.add("A");
+  		hs.add("B");
+  		hs.add("C");
+
+   
+  		System.out.println("    "+hs); 
+ 	}
+}
+######################################################################
+
+
+import java.util.*;
+class TSDemo
+{
+ 	public static void main(String args[])
+ 	{
+		TreeSet ts=new TreeSet();
+
+		ts.add("H");
+		ts.add("G");
+		ts.add("F");
+		ts.add("E");
+		ts.add("D");
+		ts.add("C");
+		ts.add("B");
+		ts.add("A");
+                ts.add("A");
+                ts.add("A");
+                ts.add("A");
+
+              //  ts.add(new Integer(100));
+                
+                
+                
+		 
+		System.out.println("	"+ts); 
+		System.out.println("	"); 
+		System.out.println("	"+ts.headSet("D")); 
+		System.out.println("	"); 
+		System.out.println("	"+ts.tailSet("D")); 
+		System.out.println("	"); 
+		System.out.println("	"+ts.subSet("D","G")); 
+ 	}
+}	
+######################################################################
+
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MapDemo1 {
+
+    public static void main(String args[]){
+        
+        Map map=new HashMap();
+
+        map.put("C10","JAVA");
+        map.put("C20","C");
+        map.put("C30","C++");
+        map.put("C40","PHP");
+
+        Object ob=map.get("C30");
+
+        String s1=(String)ob;
+
+        System.out.println("     "+s1);
+
+    }
+
+}
+
+######################################################################
+
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+public class MapDemo2 {
+
+    public static void main(String args[]){
+
+        Map map=new HashMap();
+
+        map.put("C10","JAVA");
+        map.put("C20","C");
+        map.put("C30","C++");
+        map.put("C40","PHP");
+
+
+        Iterator i1=map.keySet().iterator();
+
+        while (i1.hasNext()) {
+
+            Object keys=i1.next();
+            String values=(String)map.get(keys);
+
+            System.out.println("   "+keys+"    "+values);
+
+        }
+
+        System.out.println("\n\n");
+
+            for (Object keys:map.keySet()) {
+
+                Object values=map.get(keys);
+
+                System.out.println("    Keys    :"+keys);
+                System.out.println("    Values  :"+values+"\n");
+
+
+            }
+
+
+    }
+
+}
+
+######################################################################
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package demo04_collections;
+
+import java.util.*;
+class PGM_MapDemo04{
+    public static void main(String args[]){
+        Map<Integer,String> map=new HashMap<Integer,String>();
+        map.put(100,"Amit");
+        map.put(101,"Vijay");
+        map.put(102,"Rahul");
+        
+        for(Map.Entry m : map.entrySet()){
+            
+            System.out.println(m.getKey()+" "+m.getValue());
+            
+        }
+        
+    }
+}

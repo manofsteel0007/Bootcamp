@@ -1,0 +1,190 @@
+#################################################################################################
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+class Demo1 extends JFrame
+{
+ 	Demo1()
+ 	{
+  		setLayout(new FlowLayout());
+  		Container co=getContentPane();
+  		co.setBackground(Color.red);
+  		setSize(500,500);
+  		setVisible(true);
+ 	} 
+ 	public static void main(String aa[])
+ 	{
+  		new Demo1();
+ 	}
+}
+
+#################################################################################################
+import java.awt.*;
+import javax.swing.*;
+
+class BDemo extends JFrame
+{
+ 	JButton b1,b2;
+ 	BDemo()
+ 	{
+  		setLayout(new FlowLayout());
+  		b1=new JButton("click");
+  		b2=new JButton(new ImageIcon("d:\\images\\01.gif"));
+  		add(b1);
+  		add(b2);  
+  		setSize(500,500);
+  		setVisible(true);
+ 	}
+ 	public static void main(String aa[])
+ 	{
+  		new BDemo();  
+ 	}
+}
+#################################################################################################
+import java.awt.*;
+import javax.swing.*;
+class TabDemo extends JFrame
+{
+ 	JTabbedPane t;
+ 	TabDemo()
+ 	{
+
+  		t=new JTabbedPane(JTabbedPane.LEFT);
+
+  		t.addTab("Desktop",new A());
+  		t.addTab("Screen Saver",new B());
+  		add(t,BorderLayout.CENTER);
+  		setSize(600,600);
+  		setVisible(true);
+ 	}
+ 	public static void main(String args[])
+ 	{
+  		new TabDemo();
+ 	}  
+}
+class A extends JPanel
+{
+ 	A()
+ 	{
+  		add(new JButton("Click"));
+  		add(new JButton("Click"));
+  		add(new JButton("Click"));
+  		add(new JButton("Click"));
+  		setBackground(Color.green);
+ 	}
+}
+class B extends JPanel
+{
+ 	B()
+ 	{
+  		add(new JButton("Submit"));
+  		add(new JButton("Submit"));
+  		add(new JButton("Submit"));
+  		add(new JButton("Submit"));
+  		setBackground(Color.pink);
+ 	}
+}
+#################################################################################################
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.tree.*;
+class TreeDemo extends JFrame
+{
+ 	JTree t;
+ 	TreeDemo()
+ 	{
+  		DefaultMutableTreeNode v=new DefaultMutableTreeNode("Vehicle"); 
+
+  		DefaultMutableTreeNode n1=new DefaultMutableTreeNode("CAR"); 
+ 
+  		DefaultMutableTreeNode s1=new DefaultMutableTreeNode("Maruthi"); 
+  		DefaultMutableTreeNode s2=new DefaultMutableTreeNode("Lancer"); 
+  		DefaultMutableTreeNode s3=new DefaultMutableTreeNode("Benz"); 
+
+  		DefaultMutableTreeNode n2=new DefaultMutableTreeNode("BIKE"); 
+
+  		DefaultMutableTreeNode x1=new DefaultMutableTreeNode("Splendor"); 
+  		DefaultMutableTreeNode x2=new DefaultMutableTreeNode("Pulzur"); 
+  		DefaultMutableTreeNode x3=new DefaultMutableTreeNode("Unicorn"); 
+
+  		n1.add(s1);
+  		n1.add(s2);
+  		n1.add(s3);
+
+  		n2.add(x1);
+  		n2.add(x2);
+  		n2.add(x3);
+
+  		v.add(n1);
+  		v.add(n2);
+
+  		t=new JTree(v);
+ 
+  		add(t,BorderLayout.WEST);
+  		setSize(600,600);
+  		setVisible(true);
+ 	}
+ 	public static void main(String args[])
+ 	{
+  		new TreeDemo();
+ 	}  
+}
+
+#################################################################################################
+import java.awt.*;
+import javax.swing.*;
+class TableDemo extends JFrame
+{
+ 	JTable t;
+ 	JScrollPane sc;
+
+ 	TableDemo()
+ 	{
+
+  		Object c[][]={
+                	{new Integer(11),"John","Chennai"},
+                	{new Integer(12),"John","Chennai"},
+                	{new Integer(13),"John","Chennai"},
+                	{new Integer(14),"John","Chennai"},
+                	{new Integer(15),"John","Chennai"},
+                	{new Integer(16),"John","Chennai"},
+                	{new Integer(17),"John","Chennai"},
+                	{new Integer(18),"John","Chennai"},
+                	{new Integer(15),"John","Chennai"},
+                	{new Integer(16),"John","Chennai"},
+                	{new Integer(17),"John","Chennai"},
+                	{new Integer(18),"John","Chennai"},
+                	{new Integer(19),"John","Chennai"},
+                	{new Integer(20),"John","Chennai"},
+                	{new Integer(21),"John","Chennai"},
+                	{new Integer(22),"John","Chennai"},
+                	{new Integer(23),"John","Chennai"},
+                	{new Integer(24),"John","Chennai"},
+                	{new Integer(25),"John","Chennai"},
+                	{new Integer(26),"John","Chennai"},
+                	{new Integer(27),"John","Chennai"},
+                	{new Integer(28),"John","Chennai"},
+                	{new Integer(29),"John","Chennai"}
+                    };
+
+  		Object r[]={"Rno","Name","City"};
+
+  		t=new JTable(c, r);
+  		sc=new JScrollPane(t);
+  		add(sc,BorderLayout.CENTER);
+  		setSize(600,600);
+  		setVisible(true);
+ 	}
+ 	public static void main(String args[])
+ 	{
+  		new TableDemo();
+ 	}  
+}
+
+
+
+#################################################################################################

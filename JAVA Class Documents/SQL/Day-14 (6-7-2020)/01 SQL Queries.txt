@@ -1,0 +1,126 @@
+Oracle Database 11g Express Edition
+
+  Admin Login
+  ------------
+
+	 conn system/java
+
+	 conn / as sysdba
+
+  Creating and Giving Rights to user
+  -----------------------------------
+
+	 create user skcet identified by java;
+
+	 grant connect,resource to skcet;
+
+
+ Dropping user if Exists
+ ------------------------
+
+	 drop user skcet cascade;
+
+
+
+Entering into Newuser Login
+----------------------------
+
+conn
+skcet
+java
+
+	create table emp1(ename varchar2(15),city varchar2(15));
+
+	insert into emp1 values('senthil','cbe'); 
+
+	insert into emp1 values('&ename','&city');
+
+	select * from emp1;
+
+	delet from emp1;
+
+	commit;
+
+
+
+
+update emp1 set city='salem' where ename='senthil';
+
+
+commit;
+
+
+create table employee(eid number(4),ename varchar2(15),salary number(6),city varchar2(15),state varchar2(15));
+
+insert into employee values(1,'hari',50000,'cbe','tn');
+insert into employee values(2,'ramu',64000,'trichy','tn');
+insert into employee values(3,'siva',70000,'cbe','tn');
+insert into employee values(4,'guru',68000,'salem','tn');
+insert into employee values(5,'ravi',85000,'che','tn');
+
+commit;
+
+delete from employee;
+
+commit;
+
+insert into employee values(&eid,'&ename',&salary,'&city','&state');
+
+/
+
+select * from employee;
+
+select * from employee where eid = 1;
+
+select * from employee where city = 'cbe';
+
+select * from employee where salary > 40000;
+
+update employee set city='banglore' where eid=1;
+
+update employee set city='&city' where eid=&eid;
+
+delete from employee where eid=&eid;
+
+delete from employee where salary > &salary;
+
+delete from employee;
+
+select * from employee where city = 'cbe';
+
+select * from employee where city != 'cbe';
+
+select * from employee where city <> 'cbe';
+
+select * from employee where city in ('cbe');
+
+select * from employee where city in ('cbe','che','salem');
+
+select * from employee where state='kn' and city in ('cbe','che','bang');
+
+select * from employee where city not in ('cbe');
+
+select * from employee where eid between 1 and 5;
+
+select * from employee where eid not between 4 and 7;
+
+select * from employee where eid > 3 and eid al< 7 ;
+
+select * from employee where eid > 2 or eid < 4 ;
+
+select * from employee where eid >= 3 and eid <= 7 ;
+
+select * from employee where eid >= 3 or eid <= 7 ;
+
+select * from employee where ename = 'hari' and (city='cbe' or city='che' or city='salem');
+
+select * from employee where ename = 'hari' and (city='cbe' or city='che');
+
+select * from employee where ename = 'hari' and (city='cbe' and state='tn');
+
+select * from employee where ename = 'hari' and ((city='cbe' and state='tn') or city = 'salem' );
+select count(city) ,city ,state from employee group by city,state;
+
+select count(city) ,city from employee group by city;
+
+================================================================

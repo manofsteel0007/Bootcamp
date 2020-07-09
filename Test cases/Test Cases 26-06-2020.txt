@@ -1,0 +1,235 @@
+Word Pattern
+-----------
+
+abba
+c d d c
+true
+
+abba
+cat dog dog cat
+true
+
+abba
+cat dog cat dog
+false
+
+abc
+dob cat rat
+true
+
+ababbc
+cat rat cat rat rat animal
+true
+
+Valid Number
+--------------
+
+Input:
+3        // No of test cases
+0        // Input values (get as string)
+0.1
+abc
+
+Output:
+true
+true
+false
+
+Input:
+4
+1 a
+2e10
+-90e3
+1e
+
+Output:
+false
+true
+true
+false
+
+1
+e3
+false
+
+2
+6e-1
+99e2.5
+true
+false
+
+4
+53.5e93
+--6
+-+3
+95a54e53
+
+true
+false
+false
+false
+----------------------------------------------------
+InvolutoryMatrix
+------------------
+
+3 3
+1 0 0 0 -1 0 0 0 1
+Involutory Matrix
+
+
+3 3
+1 0 0 0 1 0 0 0 1
+Involutory Matrix
+
+4 4
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1
+Involutory Matrix
+
+3 3
+1 1 0 0 -1 1 0 1 1
+Not Involutory Matrix
+
+3 3
+1 1 -1 0 -1 1 1 1 1
+Not Involutory Matrix
+
+Letter Combinations of a Phone Number
+----------------------------------------
+
+35
+dj dk dl ej ek el fj fk fl
+
+435
+gdj gdk gdl gej gek gel gfj gfk gfl hdj hdk hdl hej hek hel hfj hfk hfl idj idk idl iej iek iel ifj ifk ifl
+
+67
+mp mq mr ms np nq nr ns op oq or os
+
+25
+aj ak al bj bk bl cj ck cl
+
+36
+dm dn do em en eo fm fn fo
+
+Balanced expression with replacement
+--------------------------------------
+
+
+{XX{X][[]X]}
+Balanced
+
+{(X[X])}
+Balanced
+
+{{XXX[X)X}
+Balanced
+
+[{X}(X)]
+Not Balanced
+
+{{{[][]X}X}}
+Not Balanced
+
+
+String slicing to rotate a string
+---------------------------------
+Welcome Welcome
+2
+ome WelcomeWe
+meWelcome Welco
+
+Good morning!
+10
+ng!Good morni
+d morning!Goo
+
+
+Welcome Welcome Welcome Welcome
+15
+Welcome WelcomeWelcome Welcome
+Welcome WelcomeWelcome Welcome
+
+Java Java
+3
+a JavaJav
+avaJava J
+
+Java World!
+7
+rld!Java Wo
+World!Java
+
+Print a given matrix in counter-clock wise spiral form
+
+2
+2
+20 10
+30 50
+
+20 30 50 10
+
+5
+5
+10 10 10 15 10
+20 20 20 20 20
+30 30 35 30 30
+40 40 40 40 41
+50 50 50 50 55
+
+10 20 30 40 50 50 50 50 55 41 30 20 10 15 10 10 20 30 40 40 40 30 20 20 35
+
+3
+3
+1 1 1
+1 1 1
+1 1 1
+
+1 1 1 1 1 1 1 1 1
+
+4
+4
+1 2 3 4
+4 3 2 1
+1 2 3 4
+4 3 2 1
+
+1 4 1 4 3 2 1 4 1 4 3 2 3 2 3 2
+
+3
+3
+1 2 3
+4 5 6
+7 8 9
+
+1 4 7 8 9 6 3 2 5
+
+https://practice.geeksforgeeks.org/problems/stickler-theif/0
+
+2
+6
+5 5 10 100 10 5
+3
+1 2 3
+110
+4
+
+1
+10
+5 8 58 65 58 56 8 5 5 85
+219
+
+1
+10
+8 7 6 54 5 5 5 56 5 6 
+129
+
+1
+20
+1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 5
+19
+
+1
+7
+25 58 5 4 5 5 2
+67
+

@@ -1,0 +1,166 @@
+######################################################################
+
+package demo1;
+
+public class Test1 {
+
+    public     int  v1_public;          //variable declaration
+    private    int  v2_private;
+    protected  int  v3_protected;            
+               int  v4_default;
+
+    public void display(){
+        
+        System.out.println("  Public     : "+v1_public);
+        System.out.println("  Private    : "+v2_private);
+        System.out.println("  Protected  : "+v3_protected);
+        System.out.println("  Default    : "+v4_default);
+    }
+
+    public static void main(String args[]){
+
+        Test1 ob1=new Test1();
+
+        ob1.v1_public=100;
+        ob1.v2_private=200;
+        ob1.v3_protected=300;
+        ob1.v4_default=400;
+
+        ob1.display();
+
+    }
+}
+-------------------------------------------------------------------------------
+
+
+package demo1;
+
+public class Test2 {
+
+    void display1(){
+        
+        Test1 ob1=new Test1();
+
+        ob1.v1_public=100;
+        ob1.v3_protected=200;
+        ob1.v4_default=300;
+
+        ob1.display();
+    }
+
+    public static void main(String args[]){
+
+        new Test2().display1();
+
+    }
+}
+
+-------------------------------------------------------------------------------
+package demo1;
+public class Test3 extends Test1 {
+    void show(){
+
+        v1_public=100;
+        v3_protected=200;
+        v4_default=300;
+
+        display();
+    }
+    public static void main(String args[]){
+
+        new Test3().show();
+    }
+
+
+}
+
+######################################################################
+
+package demo2;
+
+import demo1.Test1;
+
+public class Sample1 {
+
+    void display1(){
+
+        Test1 ob1=new Test1();
+
+        ob1.v1_public=100;
+        ob1.display();
+    }
+
+    public static void main(String args[]){
+
+        new Sample1().display1();
+
+    }
+}
+----------------------------------------------------------
+
+
+
+package demo2;
+
+import demo1.Test1;
+
+public class Sample2 extends Test1{
+    void show(){
+
+        this.v1_public=400;
+        this.v3_protected=200;
+
+        this.display();
+    }
+    public static void main(String args[]){
+
+        new Sample2().show();
+
+    }
+
+}
+
+
+######################################################################
+
+
+
+import demo1.Test1;
+
+public class TestingApp1{
+    
+    public void add(){
+        
+        Test1 ob1=new Test1();
+        ob1.v1_public=100;
+        ob1.display();
+    }
+
+    public static void main(String args[]){       
+
+        TestingApp1 s1=new TestingApp1();
+        s1.add();
+    }
+}
+--------------------------------------------------------
+
+
+import demo1.Test1;
+
+
+public class TestingApp2 extends Test1 {
+    void show(){
+
+        this.v1_public=100;
+        this.v3_protected=200;
+        this.display();
+    }
+    public static void main(String args[]){
+
+        new TestingApp2().show();
+
+    }
+}
+
+
+######################################################################

@@ -1,0 +1,333 @@
+######################################################################
+
+class SDemo1
+{
+ 	public static void main(String args[])
+ 	{
+  		int a[]; 
+  		a=new int[3];
+
+  		a[0]=100;
+  		a[1]=200;
+  		a[2]=300;
+
+  		int v;
+  		for(int i=0;i<a.length;i++)
+  		{
+   			v=a[i];
+   			System.out.println("   "+v);      
+  		}
+ 	}
+}
+
+######################################################################
+
+class SDemo2
+{
+ 	public static void main(String args[])
+ 	{
+  		int a[]=new int[3];
+
+  		a[0]=100;
+  		a[1]=200;
+  		a[2]=300;
+
+  		int v;
+
+  		for(int i=0;i<a.length;i++)
+  		{
+   			v=a[i];
+   			System.out.println("   "+v);      
+  		}
+ 	}
+}
+
+######################################################################
+
+class SDemo3
+{
+ 	public static void main(String args[])
+ 	{
+  		int a[]=new int[10];
+
+ 		int value=100;
+
+  		for(int i=0;i<a.length;i++)
+  		{
+    			a[i]=value;
+    			value+=50;
+  		}
+  
+  		int v;
+  		for(int j=0;j<a.length;j++)
+  		{
+   			v=a[j];
+   			System.out.println("   "+v);      
+  		}
+ 	}
+}
+
+######################################################################
+
+class SDemo4
+{
+ 	public static void main(String args[])
+ 	{
+  		int a[]={10,20,30,40,50,60,70,80};
+
+  		int v;
+  		for(int i=0;i<a.length;i++)
+  		{
+   			v=a[i];
+   			System.out.println("   "+v);      
+  		}
+ 	}
+}
+
+######################################################################
+
+class A
+{
+ 	int x;
+ 	void add()
+ 	{
+  		System.out.println(" X  : "+x);
+ 	}
+}
+class B extends A
+{
+ 	int y;
+ 	void sum()
+ 	{
+ 		System.out.println(" Y  : "+y);
+ 	}
+}
+class SDemo5
+{
+ 	public static void main(String args[])
+ 	{
+   		A s1=new A();
+  		s1.x=100;
+
+   		B s2=new B();
+   		s2.x=200;
+   		s2.y=300;
+
+
+   		A ob[]=new A[2];
+
+   		ob[0] = s1;
+   		ob[1] = s2;
+
+   		ob[0].add();
+   		ob[1].add();
+
+   		System.out.println("--------------------------------------");
+
+   		B s3=(B)ob[1];
+
+   		s3.add();
+   		s3.sum();		
+   		System.out.println("--------------------------------------");
+ 	}
+}
+
+######################################################################
+
+class A
+{
+ 	int x;
+ 	void add()
+ 	{
+  		System.out.println(" X  : "+x);
+ 	}
+}
+class B
+{
+ 	int y;
+ 	void sum()
+ 	{
+ 		System.out.println(" Y  : "+y);
+ 	}
+}
+class C
+{
+ 	int z;
+ 	void test()
+ 	{
+  		System.out.println(" Class C  : "+z);
+	}
+}
+
+class SDemo6
+{
+ 	public static void main(String args[])
+ 	{
+   		A s1=new A();
+   		s1.x=100;
+
+   		B s2=new B();
+   		s2.y=200;
+
+   		C s3=new C();
+   		s3.z=300;
+
+		Object ob[]=new Object[3];
+
+   		ob[0]=s1;
+   		ob[1]=s2;
+   		ob[2]=s3;
+
+   		System.out.println("--------------------------------------");
+
+   		A ss1=(A)ob[0];
+   		ss1.add();
+
+   		System.out.println("--------------------------------------");
+
+   		B ss2=(B)ob[1];
+   		ss2.sum();
+
+   		System.out.println("--------------------------------------");
+
+   		C ss3=(C)ob[2];
+   		ss3.test();
+
+   		System.out.println("--------------------------------------");
+ 	}
+}
+
+######################################################################
+
+class SDemo7
+{
+ 	public static void main(String args[])
+ 	{
+  		int a[][];
+  		a=new int[2][2];
+
+
+  		a[0][0]=100;
+  		a[0][1]=200;
+  		a[1][0]=300;
+  		a[1][1]=400;
+
+  		int v; 
+
+  		for(int i=0;i<2;i++)
+  		{
+    			for(int j=0;j<2;j++)
+    			{
+     				v=a[i][j];
+     				System.out.print("   "+v);      
+    			}
+   			System.out.println(); 
+  		}
+ 	}
+}
+
+
+######################################################################
+
+class SDemo8
+{
+ 	public static void main(String args[])
+ 	{
+  		int a[][];
+  		a=new int[4][6];
+
+  		int value=10;
+
+  		for(int i=0;i<4;i++)
+  		{
+    			for(int j=0;j<6;j++)
+    			{
+     				a[i][j]=value;
+     				value+=3;
+    			}
+  		}
+
+  		int v; 
+
+  		for(int i=0;i<2;i++)
+  		{
+    			for(int j=0;j<2;j++)
+    			{
+     				v=a[i][j];
+     				System.out.print("   "+v);      
+    			}
+   			System.out.println(); 
+  		}
+ 	}
+}
+
+######################################################################
+
+class SDemo9
+{
+ 	public static void main(String args[])
+ 	{
+ 		 int a[][]=
+            			{
+				{10,20,30,40,50,60,70},
+				{15,25,35,45,55,65,75},
+				{5,10,15,20,25,30,35},
+            			};
+
+
+  		int v; 
+
+  		for(int i=0;i<2;i++)
+  		{
+    			for(int j=0;j<2;j++)
+    			{
+     				v=a[i][j];
+     				System.out.print("   "+v);      
+    			}
+   			System.out.println(); 
+  		}
+ 	}
+}
+
+######################################################################
+
+class SDemo10
+{
+ 	public static void main(String args[])
+ 	{
+  		int a[][]=new int[4][];
+
+  		a[0]=new int[1];
+  		a[1]=new int[2];
+  		a[2]=new int[3];
+  		a[3]=new int[4];
+  
+
+
+  		int value=10;
+
+  		for(int i=0;i<4;i++)
+  		{
+    			for(int j=0;j<a[i].length;j++)
+    			{
+     				a[i][j]=value;
+     				value+=3;
+   			 }
+  		}
+
+  		int v; 
+
+  		for(int i=0;i<4;i++)
+  		{
+    			for(int j=0;j<a[i].length;j++)
+    			{
+     				v=a[i][j];
+     				System.out.print("   "+v);      
+    			}
+   			System.out.println(); 
+ 		}
+ 	}
+}
+
+######################################################################
+

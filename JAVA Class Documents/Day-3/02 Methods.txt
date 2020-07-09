@@ -1,0 +1,342 @@
+######################################################################
+
+class A
+{
+	void add()
+	{
+		System.out.println("Hello");
+	} 
+}
+class Demo1
+{
+	public static void main(String aa[])
+	{
+		A s1=new A();
+		s1.add();
+	}
+}
+
+######################################################################
+
+//Methods with arguments
+
+class A                                      //creating class       
+{
+	int x;                         // variable declaration
+	void add(int x)          // methods with arguments
+	{
+		this.x=x;
+		System.out.println(" X  : "+x);
+	}
+}
+
+class Demo2
+{
+	public static void main(String aa[])
+	{
+		new A().add(100);
+	}
+}
+
+
+######################################################################
+
+// Methods Overloading - If a class has multiple methods having same name but different in parameters,
+it is known as Method Overloading.
+
+class A
+{
+	int x;
+
+	void add()
+	{
+		System.out.println(" Class A ");
+	}
+ 	void add(int x)
+ 	{
+		this.x=x;
+		System.out.println(" Class A "+this.x);
+ 	}
+ 	void add(int x,int y)
+ 	{
+		System.out.println(" Class A "+x+"    "+y);
+ 	}
+ 	void add(char c)
+ 	{
+		System.out.println(" Class A "+c);
+ 	}
+}
+
+class Demo10
+{
+ 	public static void main(String aa[])
+ 	{
+  		A ob=new A();
+  		ob.add();
+  		ob.add(70);
+  		ob.add(10,10);
+  		ob.add('S');
+ 	}
+}
+
+
+
+######################################################################
+
+// Method Overriding - If subclass has the same method as declared in the parent
+class, it is known as method overriding in java.
+
+class A
+{
+ 	void add()
+ 	{
+  		System.out.println(" Hai ");
+ 	}
+		
+}
+
+class B extends A
+{
+
+}
+
+class Demo4
+{
+ 	public static void main(String aa[])
+ 	{
+  		A s1=new A();
+  		A s2=new B();
+  		B s3=new B();
+
+  		s1.add();
+  		s2.add();
+  		s3.add();
+ 	}
+}
+######################################################################
+
+// Method Overriding
+class A
+{
+ 	void add()
+ 	{
+  		System.out.println(" Hai ");
+ 	}
+		
+}
+
+class B extends A
+{
+ 	void add() 
+ 	{
+  		System.out.println(" Welcome ");
+ 	}
+}
+
+class Demo4
+{
+ 	public static void main(String aa[])
+ 	{
+  		A s1=new A();
+  		A s2=new B();
+  		B s3=new B();
+
+  		s1.add();
+  		s2.add();
+  		s3.add();
+ 	}
+}
+
+###############################################################33
+
+class A
+{
+ 	void add()
+ 	{
+  		System.out.println(" Hai ");
+ 	}
+		
+}
+
+class B extends A
+{
+ 	void add() 
+ 	{
+  		System.out.println(" Welcome ");
+ 	}
+}
+
+class SS
+{
+	void sum()
+	{
+
+		new A().add();
+		new B().add();
+		new A(){}.add();
+
+		new A()
+		{
+			void add()
+			{
+		  		System.out.println(" Anonymous Class ");				
+			}
+		}.add();
+
+
+		A s1=new A()
+		{
+			void add()
+			{
+		  		System.out.println(" Anonymous Class ");				
+			}
+		};
+
+		s1.add();
+
+	}
+}
+
+
+class Demo5
+{
+ 	public static void main(String aa[])
+ 	{
+
+		new SS().sum();
+
+ 	}
+}
+============================================================================================
+
+class A
+{
+ 	void add()
+ 	{
+  		System.out.println(" Hai ");
+ 	}
+		
+}
+
+class B extends A
+{
+ 	void add()
+ 	{
+  		System.out.println(" Welcome ");
+ 	}
+}
+
+class Demo4
+{
+ 	public static void main(String aa[])
+ 	{
+  		A s1=new A();
+  		A s2=new B();
+  		B s3=new B();
+
+  		s1.add();
+  		s2.add();
+  		s3.add();
+		System.out.println("------------------");
+
+		new A().add();
+		new B().add();
+		new A(){}.add();
+		
+		new A()
+		{
+			void add()
+			{
+				System.out.println(" Anonymous Class ");
+			}
+		}.add();
+	
+		A ss1 = new A()
+		{
+			void add()
+			{
+				System.out.println(" Anonymous Class ");
+			}
+		};
+
+		ss1.add();
+
+		A ss2 = new B();
+		ss2.add();
+ 	}
+}
+====================================================================================
+
+class A
+{
+ 	void add()
+ 	{
+  		System.out.println(" Class A  ---> Hai ");
+ 	}
+		
+}
+
+class B extends A
+{
+
+}
+class C extends A
+{
+ 	void add()
+ 	{
+  		System.out.println(" Class C  ---> Welcome ");
+ 	}
+}
+
+class Demo4
+{
+ 	public static void main(String aa[])
+ 	{
+		new A().add();
+
+		new B().add();
+
+		new B(); // Anonymous Object of class B.
+
+		new A(); // Anonymous Object of class A.
+
+		new A() { }; //class A is extended into Anonymous Class.
+
+		new A(){}; // Anonymous Object of Anonymous Class.
+
+		new A(){}.add();
+
+
+		new A()
+		{
+			void add()
+			{
+				System.out.println("  Anonymous Class Overriding  ");
+			}
+		}.add();
+
+		new A(){}.add();
+
+		new C().add();
+
+		new A()
+		{
+			void add()
+			{
+		  		System.out.println(" Anonymous Class ---> Good noon! ");
+			}
+		}.add();
+
+		A s1 = new A()
+		{
+			void add()
+			{
+		  		System.out.println(" Anonymous Class ---> Good evening! ");
+			}
+		};
+
+		s1.add();
+		
+
+ 	}
+}

@@ -1,0 +1,180 @@
+######################################################
+import java.awt.*;
+
+class Demo1 extends Frame
+{
+ Button b1,b2;
+ Demo1()
+ {
+  setLayout(new FlowLayout());
+
+  b1=new Button("submit");
+  b2=new Button("click");
+
+  add(b1);
+  add(b2);
+  add(new Button("Click"));
+  add(new Button("Click"));
+  add(new Button("Click"));
+  add(new Button("Click"));
+  
+  setSize(600,300);
+  setVisible(true);
+ }
+ public static void main(String aa[])
+ {
+  new Demo1();
+ }
+}
+
+######################################################
+import java.awt.*;
+
+class Demo2 extends Frame
+{
+ Button b1,b2;
+ Demo2()
+ {
+  setLayout(new FlowLayout());
+
+  b1=new Button("submit");
+  b2=new Button("click");
+
+  add(b1);
+  add(b2);
+  setSize(500,500);
+  setVisible(true);
+ }
+ public static void main(String aa[])
+ {
+  new Demo2();
+ }
+}
+
+######################################################
+import java.awt.*;
+class Demo3 extends Frame
+{
+ Button b1,b2;
+
+ Demo3()
+ {
+  setLayout(new BorderLayout());
+
+  b1=new Button("North");
+  b2=new Button("South");
+
+  add(b1,BorderLayout.NORTH);
+  add(b2,BorderLayout.SOUTH);
+
+  setSize(500,500);
+  setVisible(true);
+  setBackground(Color.pink);
+ }
+ public static void main(String aa[])
+ {
+  new Demo3();
+ }
+}
+
+######################################################
+import java.awt.*;
+class Demo4 extends Frame
+{
+ Demo4()
+ {
+  setLayout(new BorderLayout());
+
+  add(new C(),BorderLayout.WEST);
+  add(new D(),BorderLayout.EAST);
+
+  setSize(500,300);
+  setVisible(true);
+  setBackground(Color.blue);
+ }
+ public static void main(String aa[])
+ {
+  new Demo4();
+ }
+}
+
+class C extends Panel
+{
+ C()
+ {
+  add(new Button("submit"));
+  add(new Button("submit"));
+  add(new Button("submit"));
+  add(new Button("submit"));
+  setBackground(Color.yellow);
+ }
+}
+
+class D extends Panel
+{
+ D()
+ {
+  add(new Button("submit"));
+  add(new Button("submit"));
+  add(new Button("submit"));
+  add(new Button("submit"));
+  setBackground(Color.green);
+ }
+}
+
+######################################################
+import java.awt.*;
+class Sample extends Frame
+{
+   Sample()
+   {
+       setLayout(new GridLayout(3,3));
+
+       add(new A());
+       add(new Button("submit"));
+       add(new Button("submit"));
+       add(new Button("submit"));
+       add(new Button("submit"));
+       add(new Button("submit"));
+       add(new Button("submit"));
+       add(new Button("submit"));
+       add(new B());
+
+       setSize(500,500);
+       setVisible(true);
+   }
+}
+class  Demo5
+{
+  public static void main(String as[])
+  {
+    new Sample();
+  }
+}
+
+class A extends Panel
+{
+ A()
+ {
+  add(new Button("submit"));
+  add(new Button("submit"));
+  add(new Button("submit"));
+  setBackground(Color.yellow);
+ }
+}
+class B extends Panel
+{
+ B()
+ {
+  add(new Button("click"));
+  add(new Button("click"));
+  add(new Button("click"));
+  setBackground(Color.green);
+ }
+}
+
+######################################################
+
+######################################################
+
+######################################################

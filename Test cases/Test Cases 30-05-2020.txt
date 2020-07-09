@@ -1,0 +1,295 @@
+https://practice.geeksforgeeks.org/problems/chinky-and-diamonds/0
+
+1
+5 3
+2 1 7 4 2
+14           // output
+
+1
+10 7
+5 6 9 5 5 58 54 5 5 6
+204
+
+1
+8 3
+5 8 6 5 8 9 69 6
+120
+
+2
+20 6
+5 4 5 5 66 44 4 44 1744 96 96 5 4 7 1 5 47 4 4 7
+14 4
+5 6 8 5 54 4 5 54 5 5 5 52 5 2
+3475
+187
+
+1
+10 3
+5 6 58 5 45 58 45 5 54 5
+170
+---------------------------------------------------------------
+
+Find all strings that match specific pattern in a dictionary
+
+
+abb abc xyz xyy
+foo
+
+abb xyy
+
+
+abb abc xyz xyy
+mno
+
+abc xyz
+
+
+abb abc xyz xyy
+aba
+
+NULL
+
+abab aba xyz xyx
+aba
+
+aba xyx
+
+---------------------------------------------------------------
+
+Partition array to K subsets
+
+1
+6
+2 6 8 3 1 7
+2
+
+0 //output
+
+------------------------
+2
+5
+2 1 4 5 6
+3
+5
+2 1 5 5 6
+3
+
+1
+0
+
+------------------------
+
+1
+8
+1 2 3 4 5 6 7 8
+3
+
+
+1
+
+------------------------
+
+1
+4
+8 7 4 5
+2
+
+
+1
+------------------------
+
+3
+3
+5 6 9
+2
+4
+9 6 7 8
+2
+7
+3 6 9 2 5 8 7
+3
+
+0
+1
+0
+
+------------------------
+
+Beautiful game
+
+Given an array A of size N. The elements of the array consists of positive integers. You have to find the largest element with minimum frequency.
+
+Input Format: First line of input contains number of testcases T. For each testcase there will be two lines. First line contains N, next line contains N elements separated by spaces.
+
+Output Format: For each testcase, print the largest element with minimum frequency.
+
+User Task:
+Your task is to write a function LargButMinFreq(A, n) which accepts array Aand n. Hence you have to return the largest element with minimum frequency. If there are more than one elements with same frequency, you will have to return the largest element.
+
+Constraints:
+1 <= T <= 100
+1 <= N <= 105
+1 <= A[i] <= 106
+
+Example:
+Input 1: 
+1
+5
+2 2 5 50 1
+
+Output 1:
+50
+
+
+
+Input 2: 
+
+1
+
+4
+
+2 2 4 4
+
+Output 2:
+
+4
+
+Explanation :
+Testcase 1: All elements are having frequency 1 except 2. 50 is the maximum element with minimum frequency.
+
+Testcase 2: Both 2 and 4 occur twice i.e., same frequency. Therefore 4 is returned since it is the largest inspite of equal frequencies. 
+
+1
+5
+2 2 5 50 1
+
+
+50  // output
+
+
+1
+3
+5 5 5
+
+
+5
+
+
+1
+4
+10 20 31 31
+
+
+20
+
+
+1
+2
+6 10
+
+10
+
+
+2
+8
+10 6 7 5 2 0 10 9
+6
+1 1 1 2 2 2
+
+9
+2
+
+1
+1
+1
+
+1 //output
+
+-----------------------
+
+0 //input
+
+0 //output
+
+------------------------
+
+1
+2
+0 0
+
+0
+------------------------
+
+
+3
+2
+100 1000
+3
+20 20 3
+1
+-1
+
+100
+3
+-1
+
+
+1
+2
+6 10
+
+10
+
+------------------------
+
+Longest Palindrome Substring
+
+1
+aaaabbaa
+
+
+aabbaa
+------------------------
+
+1
+aabbaajjaabb
+
+bbaajjaabb
+------------------------
+
+1
+llooppioidshsdfghsdfsfd
+
+dshsd
+
+------------------------
+
+
+2
+shjgsfsdjhadfjhasdfhsdfnmsdfjsfd
+sadjhadjfhsadfhssfhgsf
+
+sfs
+ss
+
+------------------------
+
+
+3
+erteerwertyuert
+jdsjhdsfgdgf
+dsfjhdfghjdfg
+
+
+ee
+fgdgf
+d
+
+------------------------
+
+------------------------
+
+------------------------
+
+------------------------
+

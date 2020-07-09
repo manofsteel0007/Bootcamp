@@ -1,0 +1,37 @@
+Welcome Welcome
+2
+
+lcome WelcomeWe
+meWelcome Welco
+
+---------------------------------
+
+Good morning!
+10
+
+ng!Good morni
+d morning!Goo
+---------------------------------
+
+Welcome Welcome Welcome Welcome
+15
+
+Welcome WelcomeWelcome Welcome
+Welcome WelcomeWelcome Welcome
+
+---------------------------------
+
+Java Java
+3
+
+a JavaJav
+avaJava J
+
+---------------------------------
+
+Java World!
+7
+
+rld!Java Wo
+World!Java
+---------------------------------

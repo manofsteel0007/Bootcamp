@@ -1,0 +1,192 @@
+######################################################################
+package comparatordemos1;
+
+class Student{
+    int rno;
+    String name;
+    int age;
+
+    public Student(int rno, String name, int age) {
+        this.rno = rno;
+        this.name = name;
+        this.age = age;
+    }
+
+
+}
+######################################################################
+package comparatordemos1;
+
+class Students implements Comparable{
+    int rno;
+    String name;
+    int age;
+
+    public Students(int rno, String name, int age) {
+        this.rno = rno;
+        this.name = name;
+        this.age = age;
+    }
+
+    public int compareTo(Object obj){
+
+        Students st=(Students)obj;
+        if(age==st.age)
+            return 0;
+        else if(age>st.age)
+            return 1;
+        else
+            return -1;
+        
+    }
+}
+######################################################################
+package comparatordemos1;
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+
+class AgeComparator implements Comparator{
+
+    public int compare(Object o1, Object o2) {
+    
+        Student s1=(Student)o1;
+        Student s2=(Student)o2;
+
+        if(s1.age==s2.age)
+            return 0;
+        else if(s1.age>s2.age)
+            return 1;
+        else
+            return -1;
+        
+
+    }
+
+    
+}
+class Demo1{
+    public static void main(String agrs[]){
+
+
+        Student s1=new Student(10,"hari",21);
+        Student s2=new Student(20,"siva",24);
+        Student s3=new Student(30,"ramu",20);
+        Student s4=new Student(40,"guna",28);
+        Student s5=new Student(50,"john",22);
+
+        ArrayList arrayList1=new ArrayList();
+
+       arrayList1.add(s1);
+       arrayList1.add(s2);
+       arrayList1.add(s3);
+       arrayList1.add(s4);
+       arrayList1.add(s5);
+
+       
+
+       Collections.sort(arrayList1,new AgeComparator());
+
+       Iterator iterator=arrayList1.iterator();
+       
+        while (iterator.hasNext()) {
+
+            Student student=(Student)iterator.next();
+
+            System.out.println(student.rno+"   "+student.name+"  "+student.age+"\n\n");
+
+
+        }
+
+      // System.out.println("---------> "+arrayList1);
+
+        
+    }
+}
+######################################################################
+package comparatordemos1;
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+
+
+class NameComparator implements Comparator{
+
+    public int compare(Object o1, Object o2) {
+
+        Student s1=(Student)o1;
+        Student s2=(Student)o2;
+            return s1.name.compareTo(s2.name);
+    }
+    
+}
+class Demo2{
+    public static void main(String agrs[]){
+
+
+        Student s1=new Student(10,"hari",21);
+        Student s2=new Student(20,"siva",24);
+        Student s3=new Student(30,"ramu",20);
+        Student s4=new Student(40,"guna",28);
+        Student s5=new Student(50,"john",22);
+
+        ArrayList arrayList1=new ArrayList();
+
+       arrayList1.add(s1);
+       arrayList1.add(s2);
+       arrayList1.add(s3);
+       arrayList1.add(s4);
+       arrayList1.add(s5);
+
+
+
+       Collections.sort(arrayList1,new NameComparator());
+
+       Iterator iterator=arrayList1.iterator();
+
+        while (iterator.hasNext()) {
+
+            Student student=(Student)iterator.next();
+
+            System.out.println(student.rno+"   "+student.name+"  "+student.age+"\n\n");
+
+
+        }
+
+      // System.out.println("---------> "+arrayList1);
+
+
+    }
+}
+######################################################################
+//package comparatordemos1;
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+
+class Demo3{
+    public static void main(String agrs[]){
+
+	ArrayList al=new ArrayList();
+	al.add(new Students(101,"Vijay",23));
+	al.add(new Students(106,"Ajay",27));
+	al.add(new Students(105,"Jai",21));
+
+	Collections.sort(al);
+	Iterator itr=al.iterator();
+	while(itr.hasNext()){
+
+		Students st=(Students)itr.next();
+		System.out.println(st.rno+"   "+st.name+"   "+st.age);
+	} 
+    }
+}
+

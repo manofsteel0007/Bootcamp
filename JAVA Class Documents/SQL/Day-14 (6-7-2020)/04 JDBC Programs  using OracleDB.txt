@@ -1,0 +1,354 @@
+/*
+conn
+/ as sysdba
+
+drop user test cascade;
+
+create user test identified by sql;
+
+grant connect,resource to test;
+
+
+conn
+test
+sql
+
+ */
+
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+class Demo01{
+    void tableCreate(){
+        try{
+
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE","test","sql");
+            Statement  st = con.createStatement();
+            String query="create table emp1(ename varchar(15),city varchar(20))";
+            int result=st.executeUpdate(query);
+            con.close();
+            System.out.println("Success!    "+result);
+        }
+        catch(Exception e){
+            System.out.println("---------->  "+e);
+        }
+    }
+    public static void main(String ss[]) throws Exception{
+
+        new Demo01().tableCreate();
+    }
+}
+
+=========================================================================================================
+
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+class Demo02{
+    void insertValues(){
+        try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE","test","sql");
+            Statement  st = con.createStatement();
+            String query="insert into emp1 values('hari','cbe')";
+            st.executeUpdate(query);
+            con.setAutoCommit(true);
+            con.close();
+            System.out.println("Success!");
+        }
+        catch(Exception e){
+            System.out.println("---------->  "+e);
+        }
+    }
+    public static void main(String ss[]) throws Exception{
+        new Demo02().insertValues();
+    }
+}
+=========================================================================================================
+
+
+
+import java.io.DataInputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.sql.Statement;
+import java.util.Scanner;
+
+class Demo03{
+    void insertValues(){
+        try{
+            Scanner s = new Scanner(System.in);
+
+            System.out.print("   Enter the username   :");
+            String s1=s.next();
+
+            System.out.print("   Enter the city       :");
+            String s2=s.next();
+
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE","test","sql");
+            Statement  st = con.createStatement();
+            String query="insert into emp1 values('"+s1+"','"+s2+"')";
+            st.executeUpdate(query);
+            con.close();
+            System.out.println("Success!");
+        }
+        catch(Exception e){
+            System.out.println("---------->  "+e);
+        }
+    }
+    public static void main(String ss[]) throws Exception{
+        new Demo03().insertValues();
+    }
+}
+=========================================================================================================
+
+
+
+import java.util.Scanner;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+class Demo04{
+    void insertValues(){
+        try{
+            Scanner s = new Scanner(System.in);
+
+            System.out.print("   Enter the username   :");
+            String s1=s.next();
+
+            System.out.print("   Enter the city       :");
+            String s2=s.next();
+
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE","test","sql");
+            //String query="insert into emp1 values('"+s1+"','"+s2+"')";
+            String query="insert into emp1 values(?,?)";
+
+            PreparedStatement pstmt = con.prepareStatement(query);
+
+            pstmt.setString(1,s1);
+            pstmt.setString(2,s2);
+
+            pstmt.executeUpdate();
+            con.close();
+            System.out.println("Success!");
+        }
+        catch(Exception e){
+            System.out.println("---------->  "+e);
+        }
+    }
+    public static void main(String ss[]) throws Exception{
+        new Demo04().insertValues();
+    }
+}
+=========================================================================================================
+
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+class Demo05{
+    void fetchTable(){
+        try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE","test","sql");
+            Statement  st=con.createStatement();
+
+            String query="select ename,city from emp1";
+
+            ResultSet rs = st.executeQuery(query);
+
+            while(rs.next()){
+		System.out.print(" Name  : "+rs.getString("ename"));
+		System.out.println("          City  : "+rs.getString("city"));
+            }
+            System.out.println("Success!");
+        }
+        catch(Exception e){
+            System.out.println("---------->  "+e);
+        }
+    }
+    public static void main(String ss[]) throws Exception{
+        new Demo05().fetchTable();
+    }
+}
+=========================================================================================================
+
+
+/*
+
+drop table employee;
+
+create table employee(eid number,ename varchar2(15),city varchar2(15));
+
+
+create or replace procedure setEmployeeDetails(eid number,ename varchar2,city varchar2)
+is
+	begin
+ 		insert into employee values(eid,ename,city);
+                commit;
+	end;
+/
+
+
+*/
+
+import java.io.DataInputStream;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+class Demo06{
+    void callingStoredProcedure(){
+        try{
+            DataInputStream dis=new DataInputStream(System.in);
+
+            System.out.print("   Enter the EID   :");
+            int eid=Integer.parseInt(dis.readLine());
+
+            System.out.print("   Enter the ENAME   :");
+            String ename=dis.readLine();
+
+            System.out.print("   Enter the CITY   :");
+            String city=dis.readLine();
+
+
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","test","sql");
+
+            String query="{call setEmployeeDetails(?,?,?)}";
+
+            CallableStatement cstmt=con.prepareCall(query);
+
+            cstmt.setInt(1,eid);
+            cstmt.setString(2,ename);
+            cstmt.setString(3,city);
+
+            cstmt.executeUpdate();
+            con.setAutoCommit(true);
+            System.out.println(" Success! ");
+            con.close();
+        }
+        catch(Exception e){
+            System.out.println("---------->  "+e);
+        }
+    }
+
+    public static void main(String ss[]) throws Exception{
+        new Demo06().callingStoredProcedure();
+    }
+}
+=========================================================================================================
+
+
+/*
+  drop table details;
+  create table details(uname varchar2(15),pass varchar2(15));
+ */
+
+
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Frame;
+import java.awt.Label;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
+class GUIDemo1 extends Frame{
+    Label l1,l2;
+    TextField t1,t2;
+    Button b1;
+    GUIDemo1(){
+        setLayout(null);
+        l1=new Label("Username");
+  	l2=new Label("Password");
+
+  	t1=new TextField();
+  	t2=new TextField();
+
+  	t2.setEchoChar('*');
+
+  	b1=new Button("SUBMIT");
+
+        b1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                String uname=t1.getText();
+                String pass=t2.getText();
+
+                dbinsert(uname, pass); //Method Calling
+
+                t1.setText("");
+                t2.setText("");
+            }
+        });
+
+  	l1.setBounds(100,100,100,25);
+  	l2.setBounds(100,150,100,25);
+
+  	t1.setBounds(230,100,100,25);
+  	t2.setBounds(230,150,100,25);
+
+  	b1.setBounds(100,200,80,25);
+
+        
+  	add(l1);
+  	add(l2);
+
+  	add(t1);
+  	add(t2);
+
+  	add(b1);
+
+  	setSize(500,300);
+  	setBackground(Color.ORANGE);
+        setResizable(false);
+        setVisible(true);
+
+    }
+    void dbinsert(String uname,String pass){
+        try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection con=DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE","test","sql");
+   	    Statement  st=con.createStatement();
+
+	    String query="insert into details values('"+uname+"','"+pass+"')";
+
+   	    st.executeUpdate(query);
+   	    con.close();
+
+   	    JOptionPane.showMessageDialog(null,"Success!");
+  	}
+  	catch(Exception e){
+   	    JOptionPane.showMessageDialog(null,"  Exception   -->"+e);
+  	}
+    }
+}
+
+
+class Demo07{
+    public static void main(String ss[]) throws Exception{
+        new GUIDemo1();
+    }
+}
+=========================================================================================================
+=========================================================================================================
+=========================================================================================================
+=========================================================================================================
+=========================================================================================================
+=========================================================================================================
+=========================================================================================================

@@ -1,0 +1,98 @@
+import java.awt.*;
+import java.applet.*;
+public class Demo1 extends Applet
+{
+ 	String s1="";
+
+ 	public void init()
+ 	{
+  		s1+="  Init  ";
+ 	}
+
+ 	public void start()
+ 	{
+  		s1+="  Start  ";
+ 	}
+ 	public void stop()
+ 	{
+  		s1+="  Stop  ";
+ 	}
+ 	public void destroy()
+ 	{
+  		System.out.println("  Destroy ");
+ 	}
+
+ 	public void paint(Graphics g)
+ 	{
+  		g.setFont(new Font("verdana",Font.BOLD,25));
+  		g.drawString(s1,100,100);  
+ 	}
+}
+/*
+ <applet code="Demo1.class" width="400" height="400">
+ </applet>
+*/
+
+###########################################################
+import java.awt.*;
+import java.applet.*;
+public class Demo2 extends Applet
+{
+ 	public void paint(Graphics g)
+ 	{
+  		g.drawOval(100,100,100,30);  
+ 	}
+}
+
+/*
+ <applet code="Demo2.class" width="400" height="400">
+ </applet>
+*/
+
+###########################################################
+import java.awt.*;
+import java.applet.*;
+
+public class Demo3 extends Applet
+{
+ 	Button b1,b2;
+ 	public void init()
+ 	{
+  		b1=new Button("Submit");
+  		b2=new Button("Submit");
+  		add(b1);
+  		add(b2);
+ 	}
+}
+
+/*
+ <applet code="Demo3.class" width="400" height="400">
+ </applet>
+*/
+###########################################################
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+public class Demo4 extends Applet implements ActionListener
+{
+ 	Button b1,b2;
+ 	public void init()
+ 	{
+  		b1=new Button("Submit");
+  		b2=new Button("Submit");
+  		b1.addActionListener(this);
+  		add(b1);
+  		add(b2);
+ 	}
+ 	public void actionPerformed(ActionEvent ae)
+ 	{
+  		setBackground(Color.green);
+ 	}
+}
+
+
+/*
+ <applet code="Demo4.class" width="400" height="400">
+ </applet>
+*/
+###########################################################

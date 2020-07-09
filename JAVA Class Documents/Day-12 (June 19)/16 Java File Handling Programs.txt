@@ -1,0 +1,475 @@
+import java.io.File; 
+class FileClassDemo
+{ 
+	public static void main(String args[])
+	{
+                File f2 = new File("BISDemo1.java");
+		File f1 = new File("d:/Uploads/Sample.txt");
+                
+
+		System.out.println("File Name: " + f1.getName()); 
+		System.out.println("Path: " + f1.getPath()); 
+		System.out.println("Abs Path: " + f1.getAbsolutePath()); 
+		System.out.println("Parent: " + f1.getParent()); 
+		System.out.println(f1.exists() ? "exists" : "does not exist"); 
+		System.out.println(f1.canWrite() ? "is writeable" : "is not writeable"); 
+		System.out.println(f1.canRead() ? "is readable" : "is not readable"); 
+		System.out.println("is " + (f1.isDirectory() ? "" : "not" + " a directory")); 
+		System.out.println(f1.isFile() ? "is normal file" : "might be a named pipe"); 
+		System.out.println(f1.isAbsolute() ? "is absolute" : "is not absolute"); 
+		System.out.println("File last modified: " + f1.lastModified()); 
+		System.out.println("File size: " + f1.length() + " Bytes"); 
+	} 
+}
+######################################################################
+
+
+import java.io.FileInputStream;
+
+class FISDemo1
+{
+ 	public static void main(String aa[])throws Exception
+ 	{
+  		FileInputStream fis=new FileInputStream("D:\\Uploads\\Sample1.txt");
+                
+  		int c;
+  		while((c=fis.read())!=-1)
+  		{
+   			System.out.print(" "+(char)c);
+  		}
+
+                System.out.println("\n------------------------");
+                System.out.println();
+ 	}
+}
+
+######################################################################
+
+
+import java.io.FileInputStream;
+
+
+class FISDemo2
+{
+ 	public static void main(String aa[])throws Exception
+ 	{
+
+  		FileInputStream fis=new FileInputStream("D:\\Uploads\\Sample1.txt");;
+
+  		int size=fis.available();
+
+  		byte b[]=new byte[size];
+
+  		fis.read(b);
+
+  		for(int i=0;i<b.length;i++)	
+  		{
+   			System.out.print((char)b[i]);   
+  		}
+
+                System.out.println();
+                System.out.println();
+ 	}
+}
+
+######################################################################
+
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+class BISDemo1
+{
+ 	public static void main(String aa[])throws Exception
+ 	{
+  		FileInputStream fis=new FileInputStream("D:\\Uploads\\Sample1.txt");
+
+  		BufferedInputStream bis=new BufferedInputStream(fis);
+
+  		int c;
+  		while((c=bis.read())!=-1)
+  		{
+   			System.out.print("   "+(char)c);
+  		}
+                System.out.println();
+ 	}
+}
+
+######################################################################
+
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+class BISDemo2
+{
+ 	public static void main(String aa[])throws Exception
+ 	{
+  		BufferedInputStream bis=new BufferedInputStream(new FileInputStream("D:\\Uploads\\Sample2.txt"));
+
+  		int c;
+  		while((c=bis.read())!=-1)
+  		{
+   			System.out.print("  "+(char)c);
+  		}
+                System.out.println();
+                System.out.println();
+ 	}
+}
+
+######################################################################
+
+import java.io.BufferedInputStream;
+class BISDemo3
+{
+ 	public static void main(String aa[])throws Exception
+ 	{
+  		BufferedInputStream bis=new BufferedInputStream(System.in);
+
+  		int c;
+  		while((c=bis.read())!=-1)
+  		{
+   			System.out.print("   "+(char)c);
+  		}
+                System.out.println();
+                System.out.println();
+ 	}
+}
+
+######################################################################
+
+import java.io.DataInputStream;
+class DISDemo1
+{
+ 	public static void main(String aa[])throws Exception
+ 	{
+		    		DataInputStream dis=new DataInputStream(System.in);
+
+    		System.out.print(" Enter the Value for A    : ");   
+    		String s1=dis.readLine();
+
+    		System.out.print(" Enter the Value for B    : ");   
+    		String s2=dis.readLine();
+
+    		int a=Integer.parseInt(s1);
+    		int b=Integer.parseInt(s2);
+
+    		int c=a+b;
+
+    		System.out.print(" Result  "+c);
+
+                System.out.println();
+                System.out.println();
+ 	}
+}
+######################################################################
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
+public class DISDemo2 {
+
+    public static void main(String ss[])throws Exception{
+
+        double d1=198.56;
+
+        DataOutputStream dos=new DataOutputStream(new FileOutputStream("d:\\Uploads\\Sample1.txt"));
+
+        dos.writeDouble(d1);
+
+        DataInputStream dis=new DataInputStream(new FileInputStream("d:\\Uploads\\Sample1.txt"));
+
+
+        double d2=dis.readDouble();
+
+        System.out.println("    "+d2);
+    }
+}
+
+######################################################################
+
+
+import java.io.FileOutputStream;
+
+class FOSDemo1
+{
+ 	public static void main(String aa[])throws Exception
+ 	{
+  		String s1="Good Evening!";
+
+  		byte b[]=s1.getBytes();
+
+  		FileOutputStream fos=new FileOutputStream("D:\\Uploads\\Sample3.txt");
+  		fos.write(b);
+  		fos.close();
+
+
+ 	}
+}
+
+######################################################################
+
+
+import java.io.DataInputStream;
+import java.io.FileOutputStream;
+
+class FOSDemo2
+{
+ 	public static void main(String aa[])throws Exception
+ 	{
+    		DataInputStream dis=new DataInputStream(System.in);
+
+    		System.out.print(" Enter the value to Write    : ");   
+    		String s1=dis.readLine();
+
+  		byte b[]=s1.getBytes();
+
+  		FileOutputStream fos=new FileOutputStream("D:\\Uploads\\Sample4.txt");
+
+  		fos.write(b);
+  		fos.close();
+ 	}
+}
+
+######################################################################
+
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+class BOSDemo1
+{
+ 	public static void main(String aa[])throws Exception
+ 	{
+  		String s1="Hai Welcome";
+  		byte b[]=s1.getBytes();
+
+  		BufferedOutputStream bos=new BufferedOutputStream(new FileOutputStream("D:\\Uploads\\ss.txt"));
+  		bos.write(b);
+  		bos.close();
+
+                System.out.println();
+                System.out.println();
+ 	}
+}
+
+######################################################################
+
+import java.io.BufferedOutputStream;
+class BOSDemo2
+{
+ 	public static void main(String aa[])throws Exception
+ 	{
+  		String s1="Hai";
+  		byte b[]=s1.getBytes();
+
+  		BufferedOutputStream bos=new BufferedOutputStream(System.out);
+  		bos.write(b);
+  		bos.close();
+
+
+                System.out.println();
+                System.out.println();
+ 	}
+}
+
+######################################################################
+
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
+class Student implements Serializable
+{
+ 	int rno;
+ 	void display()
+ 	{
+            
+  		System.out.println("   Serialization  "+rno);
+ 	}
+}
+class SDemo1
+{
+ 	public static void main(String aa[])throws Exception
+ 	{
+  		Student ob1=new Student();
+  		ob1.rno=200;
+
+  		ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("D:\\Uploads\\Sample3.txt"));
+  		oos.writeObject(ob1);
+
+  		ObjectInputStream ois=new ObjectInputStream(new FileInputStream("D:\\Uploads\\Sample3.txt"));
+  		Object ss=ois.readObject();
+
+  		Student ob2=(Student)ss;
+  		ob2.display();
+ 	}
+}
+
+######################################################################
+
+
+import java.io.FileReader;
+
+class FRDemo1
+{
+ 	public static void main(String aa[])throws Exception
+ 	{
+  		FileReader fr=new FileReader("D:\\Uploads\\Sample1.txt");
+
+  		int c;
+  		while((c=fr.read())!=-1)
+  		{
+   			System.out.print("  "+(char)c);
+  		}
+
+                System.out.println();
+                System.out.println();
+ 	}
+}
+
+######################################################################
+
+
+import java.io.FileWriter;
+
+class FWDemo1
+{
+ 	public static void main(String aa[])throws Exception
+ 	{
+  		String s1="Welcome Good Evening!";
+
+  		FileWriter fw=new FileWriter("D:\\Uploads\\Sample2.txt");
+  		fw.write(s1);
+  		fw.close();
+ 	}
+}
+
+######################################################################
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.io.PipedInputStream;
+class BRDemo1
+{
+ 	public static void main(String aa[])throws Exception
+ 	{
+            
+  		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+
+  		int c;
+  		while((c=br.read())!=-1)
+  		{
+   			System.out.print("    "+(char)c);
+
+  		}
+
+                System.out.println();
+                System.out.println();
+ 	}
+}
+
+######################################################################
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+class BWDemo1
+{
+ 	public static void main(String aa[])throws Exception
+ 	{
+  		String s1="Hai Welcome";
+
+  		BufferedWriter bw=new BufferedWriter(new FileWriter("D:\\Uploads\\Sample2.txt"));
+  		bw.write(s1);
+  		bw.close();
+
+                System.out.println();
+                System.out.println();
+ 	}
+}
+
+######################################################################
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
+public class DISDemo2 {
+
+    public static void main(String ss[])throws Exception{
+
+        double d1=198.56;
+
+        DataOutputStream dos=new DataOutputStream(new FileOutputStream("d:\\Uploads\\Sample1.txt"));
+
+        dos.writeDouble(d1);
+
+        DataInputStream dis=new DataInputStream(new FileInputStream("d:\\Uploads\\Sample1.txt"));
+
+
+        double d2=dis.readDouble();
+
+        System.out.println("    "+d2);
+    }
+}
+
+######################################################################
+
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
+
+
+public class Demo4 {
+
+    public Demo4() {
+        try{
+            final  PipedOutputStream pos=new PipedOutputStream();
+            final  PipedInputStream pis =new PipedInputStream();
+
+            pos.connect(pis);
+
+            Thread t1=new Thread(){
+
+                @Override
+                public void run() {
+                    try{
+                        for (int i = 1; i <= 20; i++) {
+                            pos.write(i);
+                            Thread.sleep(1000);
+                        }
+                    }
+                    catch(Exception ex){
+                        System.out.println("   "+ex);
+                    }
+                }
+            };
+
+            Thread t2=new Thread(){
+
+                @Override
+                public void run() {
+                    try{
+                        for (int i = 1; i < 20; i++) {
+                            System.out.print(" "+pis.read());
+
+                        }
+                        System.out.println(" "+pis.read());
+                    }catch(Exception ex){
+                        System.out.println("  "+ex);
+                    }
+                }
+
+            };
+
+            t1.start();
+            t2.start();
+        }
+        catch(Exception ex){
+            System.out.println("   "+ex);
+        }
+    }
+
+    public static void main(String[] args) {
+        new Demo4();
+    }
+}

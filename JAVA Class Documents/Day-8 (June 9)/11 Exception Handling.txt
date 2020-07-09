@@ -1,0 +1,363 @@
+##############################################################################
+class EDemo1
+{
+ 	public static void main(String args[])
+ 	{
+   			int a=100/0;
+   			System.out.println("  A   : "+a);
+ 	}
+}
+##############################################################################
+class EDemo2
+{
+ 	public static void main(String args[])
+ 	{
+  		try
+  		{
+   			int a=100/0;
+   			System.out.println("  A   : "+a);
+  		}
+  		catch(ArithmeticException ee)
+  		{
+   			System.out.println(" Can't Divide by zero ");
+  		}
+
+
+ 	}
+}
+##############################################################################
+class EDemo3
+{
+ 	public static void main(String args[])
+ 	{
+  		try
+  		{
+   			System.out.println("  Connection Opened ");
+   			int a=100/2;
+   			System.out.println("  A   : "+a);
+
+			System.out.println(" ============================================ ");
+
+   			int b[]={10,20,30,40};
+   			System.out.println("  B   : "+b[2]);
+   			System.out.println("  Connection Closed ");
+  		}
+  		catch(ArithmeticException ee)
+  		{
+   			System.out.println(" Can't Divide by zero");
+  		}
+ 		catch(ArrayIndexOutOfBoundsException ee)
+  		{
+   			System.out.println(" Array Index Out Of Range");
+  		}
+ 	}
+}
+##############################################################################
+class EDemo4
+{
+ 	public static void main(String args[])
+ 	{
+  		try
+  		{
+   			System.out.println("  Connection Opened ");
+   			int a=100/2;
+   			System.out.println("  A   : "+a);
+
+			System.out.println(" ============================================ ");
+
+   			int b[]={10,20,30,40};
+   			System.out.println("  B   : "+b[1]);
+
+  		}
+  		catch(ArithmeticException ee)
+  		{
+   			System.out.println(" Can't Divide by zero");
+  		}
+ 		catch(ArrayIndexOutOfBoundsException ee)
+  		{
+   			System.out.println(" Array Index Out Of Range");
+  		}
+  		finally
+  		{
+   			System.out.println("  Connection Closed ");
+   			System.out.println("Finally Block");
+  		}
+ 	}
+}
+##############################################################################
+
+
+class EDemo04{
+    public static void main(String args[]){
+        try{
+            System.out.println("  Connection Opened \n\n");
+            int a=100/2;
+            System.out.println("  A   : "+a);
+
+            System.out.println(" ============================================ ");
+
+            int b[]={10,20,30,40};
+            System.out.println("  B   : "+b[11]);
+            System.out.println(" \n\n Connection Closed ");
+        }
+        catch(Exception ex){
+
+            if(ex instanceof ArithmeticException){
+                System.out.println(" Can't Divide by zero");
+            }
+
+            if(ex instanceof ArrayIndexOutOfBoundsException){
+                System.out.println(" Array Index Out Of Range");
+            }
+        }
+    }
+}
+
+
+##############################################################################
+class AgeException extends Exception      //user defined Exception
+{
+ 	String getException()
+ 	{
+  		return "Age Should not > 25";
+ 	}
+}
+
+class Registration
+{
+ 	void validation(int x)throws AgeException
+ 	{
+
+  		if(x>25)
+  		{
+    			throw new AgeException();
+  		}
+  		else
+  		{
+    			System.out.println(" Validation Success!");
+  		}
+ 	}
+}
+class EDemo5
+{
+ 	public static void main(String args[])
+ 	{
+
+		Registration s1=new Registration();
+		//s1.validation(21);
+
+  		try
+  		{
+    			s1.validation(14);
+  		}
+  		catch(AgeException ee)
+  		{
+                        String msg=ee.getException();
+
+   			System.out.println("------------------>  "+msg);
+  		}
+ 	}
+}
+package exceptionhandling;
+
+import java.util.Scanner;
+
+
+class AgeException extends Exception
+{
+ 	String getException()
+ 	{
+  		return "Age Should not > 25";
+ 	}
+}
+
+class Registration
+{
+ 	void validation(int x) throws AgeException
+ 	{
+
+  		if(x>25)
+  		{
+                    throw new AgeException();
+  		}
+  		else
+  		{
+    			System.out.println(" Validation Success!");
+  		}
+ 	}
+}
+##############################################################################
+class EDemo6
+{
+ 	public static void main(String args[])
+ 	{
+
+		Registration s1 = new Registration();
+
+               //s1.validation(10);
+                
+
+ 		try
+  		{
+                    Scanner s=new Scanner(System.in);
+                    System.out.print(" Enter the Value    ");
+                    int x = s.nextInt();
+
+    			s1.validation(x);
+  		}
+  		catch(Exception ee)
+  		{
+                    if(ee instanceof AgeException){
+                        AgeException age=(AgeException)ee;
+                        String msg=age.getException();
+                        System.out.println("------------------>  "+msg);
+                    }
+                        
+
+   			
+  		}
+ 	}
+}
+
+
+
+##############################################################################
+import java.io.*;
+class Sample
+{
+ 	Sample(int x)throws FileNotFoundException
+ 	{
+  		if(x<20)
+  		{
+    			
+    			throw new FileNotFoundException();
+  		}
+  		else
+  		{
+    			System.out.println(" Validation Success!");
+  		}
+ 	}
+}
+class EDemo6
+{
+ 	public static void main(String args[])
+ 	{	
+		//new Sample(31);
+
+  		try
+  		{
+    			new Sample(22);
+  		}
+  		catch(FileNotFoundException ee)
+  		{
+   			System.out.println("Value should not < 20");
+  		}
+ 	}
+}
+
+##############################################################################
+import java.io.*;
+class EDemo7
+{
+ 	public static void main(String args[])
+ 	{
+  
+			FileReader fr=new FileReader("EDemo19.java");
+ 	}
+}
+##############################################################################
+import java.io.*;
+class EDemo8
+{
+ 	public static void main(String args[])
+ 	{
+  		try
+  		{
+			FileReader fr=new FileReader("EDemo19.java");
+                        System.out.println("Success!");
+  		}
+  		catch(FileNotFoundException ee)
+  		{
+   			System.out.println("File is not available");
+  		}
+ 	}
+}
+##############################################################################
+class Sample1
+{
+ 	void test(int x)throws ArithmeticException
+ 	{
+  		if(x<20)
+  		{
+    			ArithmeticException ob=new ArithmeticException();
+    			throw ob;
+  		}
+  		else
+  		{
+    			System.out.println(" Validation Success!");
+  		}
+ 	}
+}
+class EDemo9
+{
+ 	public static void main(String args[])
+ 	{
+    		Sample1 s1=new Sample1();
+    		s1.test(10);
+ 	}
+}
+##############################################################################
+class Sample2
+{
+ 	void test(int x)throws ArithmeticException
+ 	{
+  		if(x<20)
+  		{
+    			ArithmeticException ob=new ArithmeticException();
+    			throw ob;
+  		}
+  		else
+  		{
+    			System.out.println(" Validation Success!");
+  		}
+ 	}
+}
+class EDemo10
+{
+ 	public static void main(String args[])
+ 	{
+  		try
+  		{
+                        Sample2 s1=new Sample2();
+                        s1.test(10);
+  		}
+  		catch(ArithmeticException ee)
+  		{
+   			System.out.println("Value should not < 20");
+  		}
+
+ 	}
+}
+##############################################################################
+import java.util.Scanner;
+
+class AssertionExample
+{
+    public static void main( String args[] )
+    {
+
+        Scanner input= new Scanner(System.in);
+        System.out.print("Enter ur age ");
+
+        int value = input.nextInt();
+
+        assert value>=18:" Not valid";
+
+        System.out.println("value is "+value);
+    }
+}
+
+
+// javac AssertionExample.java
+
+// java -ea AssertionExample

@@ -1,0 +1,125 @@
+######################################################################
+
+// Constructor Basics
+class A
+{
+ 	A()
+ 	{ 
+  		System.out.println(" Welcome ");
+  	}
+}
+
+class Demo1
+{
+ 	public static void main(String aa[])
+ 	{
+		
+		new A();
+		new A();
+		new A();
+ 	}
+}
+
+######################################################################
+
+// Constructor Overloading
+class B
+{
+ 	int x;
+
+ 	B()
+ 	{ 
+  		System.out.println(" X : "+x);    
+ 	}
+
+ 	B(int y)
+ 	{
+  		this.x=y; 
+  		System.out.println(" X : "+x);    
+ 	}
+}
+
+class Demo2
+{
+ 	public static void main(String aa[])
+ 	{
+  		new B();
+
+  		new B(50);
+	}
+}
+
+######################################################################
+
+// Constructor
+
+class C
+{
+ 	C()
+ 	{ 
+  		System.out.println(" Hai ");
+ 	}
+ 	C(int x)
+ 	{ 
+  		System.out.println("   X  : "+x);
+ 	}
+}
+class D extends C
+{
+ 	D()
+ 	{ 
+  		System.out.println(" Welcome ");
+ 	}
+}
+
+class Demo3
+{
+ 	public static void main(String aa[])
+ 	{
+  		new D();
+	}
+}
+
+######################################################################
+
+ // Calling super class constructor
+
+class E
+{
+ 	int x;
+ 	E()
+ 	{
+  		System.out.println(" Hai ");
+ 	}
+ 	E(int y)
+ 	{
+		this.x=y;
+		System.out.println(" X : "+x);
+ 	}
+ 	E(int x,int y)
+ 	{
+  		System.out.println("  "+x+"    "+y);
+ 	}
+}
+class F extends E
+{
+ 	F()
+ 	{
+		super(10,10);
+		System.out.println(" Class F ");
+ 	}
+}
+
+class Demo4
+{
+ 	public static void main(String aa[])
+ 	{
+  		new F();
+ 	}
+}
+
+
+
+######################################################################
+
+ 

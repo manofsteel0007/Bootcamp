@@ -1,0 +1,271 @@
+===========================================================
+
+set serveroutput on;
+
+===========================================================
+
+begin
+	dbms_output.put_line('----------> Welcome To Procedures');
+end;
+/
+
+===========================================================
+
+	create or replace procedure demo1 as
+	begin
+		dbms_output.put_line('----------> Welcome To Procedures');
+	end;
+	/
+
+	exec demo1;
+
+===========================================================
+
+declare
+	a number;
+begin
+	a:='100';
+	dbms_output.put_line('---------->   A   '||a);
+end;
+/
+
+===========================================================
+
+declare
+	a number;
+begin
+	a:='100ggg';
+	dbms_output.put_line('---------->   A   '||a);
+end;
+
+===========================================================
+
+declare
+	a number;
+begin
+	a:='100ff';
+	dbms_output.put_line('---------->   A   '||a);
+
+	exception
+		when value_error then
+	dbms_output.put_line('--------------------------------->  Only Numbers');
+end;
+/
+===========================================================
+
+create or replace procedure demo1 as
+	a number;
+begin
+	a:='100';
+	dbms_output.put_line('---------->   A   '||a);
+end;
+/
+
+exec demo1;
+
+===========================================================
+
+drop table emp1;
+
+create table emp1(ename varchar2(15),city varchar2(15));
+
+
+create or replace procedure demo1(s1 varchar2,s2 varchar2) as
+begin
+	insert into emp1 values(s1,s2);
+	commit;
+
+	dbms_output.put_line('---------->  Success!  ');
+end;
+/
+
+exec demo1('&ename','&city');
+
+
+
+===========================================================
+
+
+create or replace function demo_function1 
+return varchar2 
+is
+begin
+	return 'Welcome';
+end;
+/
+
+
+create or replace function demo_function2 
+return number 
+is
+	a number;
+begin
+	a:=50;	
+	return a;
+end;
+/
+---------------------------------------------------
+
+declare
+	a number;
+	b varchar2(15);
+begin
+	a := demo_function2();
+	b := demo_function1();
+	dbms_output.put_line('---------->   Result  '||a||'     '||b);
+end;
+/
+=================================================================
+
+create or replace package ss1 is
+
+	procedure test1;	
+	procedure test2(a number);	
+
+end;
+/
+
+
+create or replace package body ss1 is
+
+	procedure test1 as
+		begin
+			dbms_output.put_line('-------------------------->  Welcome');
+		end test1;
+
+	procedure test2(a number) as
+		begin
+			dbms_output.put_line('   A    :'||a);
+		end test2;
+end;
+/
+
+
+exec ss1.test1;
+
+exec ss1.test2(67);
+
+
+==============================================================
+declare
+	i number;
+begin
+   	
+	for i in 1..10 loop
+           	dbms_output.put_line('  --------------------> '||i);
+   	end loop;
+end;
+/
+==============================================================
+declare 
+	i number;
+
+	begin
+		i:=1;
+		while (i<=10) loop
+			dbms_output.put_line(' ------------------> '||i);
+			i:=i+1;
+		end loop;
+	end;
+/
+
+==============================================================
+
+create or replace procedure demo1(name varchar2) as
+	s1 	emp1.ename%type;
+	s2 	emp1.city%type;
+begin
+	
+	select ename,city into s1,s2 from emp1 where ename=name;
+
+	dbms_output.put_line('---------->  '||s1||'     '||s2);
+end;
+/
+
+==============================================================
+create or replace procedure demo1(name varchar2) as
+	s1 	varchar2(15);
+	s2 	varchar2(15);
+begin
+	
+	select ename,city into s1,s2 from emp1 where ename=name;
+
+	dbms_output.put_line('---------->  '||s1||'     '||s2);
+end;
+/
+
+==============================================================
+create or replace procedure demo1(ss1 varchar2) as
+	s1 	varchar2(15);
+	s2 	varchar2(15);
+begin
+	
+	select ename,city into s1,s2 from emp1 where ename=ss1;
+
+	dbms_output.put_line('---------->  '||s1||'     '||s2);
+end;
+/
+====================================================================
+
+create or replace procedure demo5 as
+
+	a emp1%rowtype;
+
+	cursor c1 is	
+		select * from emp1;
+
+	begin
+		open c1;
+			loop	
+				fetch c1 into a;
+					exit when c1%notfound;
+				dbms_output.put_line('------>  '||a.ename||'------'||a.city);
+			end loop;
+
+		close c1;
+	end;
+/
+
+
+================================================================================
+create or replace procedure demo4 as
+
+	cursor c1 is	
+		select * from emp1;
+
+	v1 emp1%rowtype;
+
+begin
+	open c1;
+		loop	
+			fetch c1 into v1;
+				exit when c1%notfound;
+			dbms_output.put_line('------>  '||v1.ename||'------'||v1.city);
+		end loop;
+
+	close c1;
+
+
+end;
+/
+
+==================================================================================================
+create or replace procedure demo5 as
+
+	a emp1%rowtype;
+
+
+	cursor c1 is	
+		select * from emp1;
+
+
+	begin
+		for a in c1 loop
+				dbms_output.put_line('------>  '||a.ename||'------'||a.city);
+
+		end loop;
+	end;
+/
+
+
+

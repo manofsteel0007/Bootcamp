@@ -1,0 +1,704 @@
+######################################################################
+
+class A implements Runnable
+{
+ 	public void run()
+ 	{
+  		try
+  		{
+   			for(int i=0;i<6;i++)
+   			{
+    				System.out.println("First Thread");
+    				Thread.sleep(1000);
+   			}
+  		}
+  		catch(Exception e)
+  		{
+  		}
+ 	}
+}
+class B implements Runnable
+{
+ 	public void run()
+ 	{
+  		try
+  		{
+   			for(int i=0;i<6;i++)
+   			{
+    				System.out.println("Second Thread");
+    				Thread.sleep(2000);
+   			}
+  		}
+  		catch(Exception e)
+  		{
+  		}
+ 	}
+}
+class RDemo1
+{
+ 	public static void main(String args[])
+ 	{
+  		A x1=new A();              //new Thread(new A()).start();
+  		B x2=new B();  
+						
+  		Thread t1=new Thread(x1);  // new thread(this).start();
+  		Thread t2=new Thread(x2);  // new A().test();
+
+                t1.start();
+  		t2.start();
+ 	}
+}
+
+######################################################################
+
+class C implements Runnable
+{
+ 	public void run()
+ 	{
+  		try
+  		{
+   			for(int i=0;i<6;i++)
+   			{
+    				System.out.println("First Thread");
+    				Thread.sleep(1000);
+   			}
+  		}
+  		catch(Exception e)
+  		{
+  		}
+ 	}
+}
+class D implements Runnable
+{
+ 	public void run()
+ 	{
+  		try
+  		{
+   			for(int i=0;i<6;i++)
+   			{
+    				System.out.println("		Second Thread");
+    				Thread.sleep(2000);
+   			}
+  		}
+  		catch(Exception e)
+  		{
+  		}
+ 	}
+}
+class RDemo2
+{
+ 	public static void main(String args[])
+ 	{
+            new Thread(new C()).start();
+
+            new Thread(new D()).start();
+ 	}
+}
+
+######################################################################
+
+class E implements Runnable
+{
+ 	public void run()
+ 	{
+  		try
+  		{
+   			for(int i=0;i<6;i++)
+   			{
+    				System.out.println("First Thread");
+    				Thread.sleep(1000);
+   			}
+  		}
+  		catch(Exception e)
+  		{
+  		}
+ 	}
+  	void test1()
+ 	{
+            new Thread(this).start();
+ 	}
+}
+class F implements Runnable
+{
+ 	public void run()
+ 	{
+  		try
+  		{
+   			for(int i=0;i<6;i++)
+   			{
+    				System.out.println("		Second Thread");
+    				Thread.sleep(2000);
+   			}
+  		}
+  		catch(Exception e)
+  		{
+  		}
+ 	}
+	void test2()
+ 	{
+  		new Thread(this).start();
+ 	}
+}
+class RDemo3
+{
+ 	public static void main(String args[])
+	{
+  		new E().test1();
+  		new F().test2();
+
+
+               
+ 	}
+}
+
+######################################################################
+
+class RDemo4
+{
+ 	public static void main(String args[])throws Exception
+ 	{
+            new Thread(new Runnable()
+            {
+                   public void run()
+                   {
+                        try
+                        {
+                            for(int i=0;i<6;i++)
+                            {
+    				System.out.println("First Thread");
+    				Thread.sleep(1000);
+                            }
+                        }
+                        catch(Exception e)
+                        {
+                        }
+                   }
+            }).start();
+
+            new Thread(new Runnable()
+            {
+                   public void run()
+                   {
+                        try
+                        {
+                            for(int i=0;i<6;i++)
+                            {
+    				System.out.println("             Second Thread");
+    				Thread.sleep(2000);
+                            }
+                        }
+                        catch(Exception e)
+                        {
+                        }
+                   }
+            }).start();
+        }
+}
+
+
+######################################################################
+
+class G extends Thread
+{
+ 	public void run()
+ 	{
+  		try
+  		{
+   			for(int i=0;i<6;i++)
+   			{
+    				System.out.println("First Thread");
+    				Thread.sleep(1000);
+   			}
+  		}
+  		catch(Exception e)
+  		{
+  		}
+ 	}
+}
+class H extends Thread
+{
+ 	public void run()
+ 	{
+  		try
+  		{
+   			for(int i=0;i<6;i++)
+   			{
+    				System.out.println("		Second Thread");
+    				Thread.sleep(1000);
+   			}
+  		}
+  		catch(Exception e)
+  		{
+  		}
+ 	}
+}
+class TDemo
+{
+ 	public static void main(String args[])
+ 	{
+		new G().start();
+		new H().start();
+ 	}
+}
+
+
+######################################################################
+
+class I extends Thread
+{
+ 	public void run()
+ 	{
+  		try
+  		{
+   			for(int i=0;i<6;i++)
+   			{
+    				System.out.println("First Thread");
+    				Thread.sleep(1000);
+   			}
+  		}
+  		catch(Exception e)
+  		{
+  		}
+ 	}
+}
+class J extends Thread
+{
+ 	public void run()
+ 	{
+  		try
+  		{
+   			for(int i=0;i<6;i++)
+   			{
+    				System.out.println("		Second Thread");
+    				Thread.sleep(2000);
+   			}
+  		}
+  		catch(Exception e)
+  		{
+  		}
+ 	}
+}
+class JDemo
+{
+ 	public static void main(String args[])throws Exception
+ 	{
+  		I x1=new I();
+  		x1.start();
+  		x1.join();
+
+  		System.out.println("End of Half main thread ");
+
+  		J x2=new J();
+  		x2.start();
+  		x2.join();
+
+  		System.out.println("End of Full main thread ");
+ 	}
+}
+
+######################################################################
+
+
+
+class Table
+{
+    synchronized void printTable(int n,String tname)
+    {
+        for(int i=1;i<=5;i++)
+        {
+            System.out.println(tname+"------------------>   "+n*i);
+            try
+            {
+                Thread.sleep(500);
+            }
+            catch(Exception e)
+            {
+                System.out.println(e);
+            }
+        }
+        System.out.println("\n");
+    }
+}
+
+
+
+
+
+class MyThread1 extends Thread
+{
+    Table t;
+    MyThread1(Table t)
+    {
+        this.t=t;
+    }
+    public void run()
+    {
+        t.printTable(5,this.getName());
+    }
+
+}
+class MyThread2 extends Thread
+{
+    Table t;
+    MyThread2(Table t)
+    {
+        this.t=t;
+    }
+    public void run()
+    {
+        t.printTable(100,this.getName());
+    }
+}
+
+class Use1
+{
+    public static void main(String args[])
+    {
+        Table obj = new Table();//only one object
+
+        MyThread1 t1=new MyThread1(obj);
+        MyThread2 t2=new MyThread2(obj);
+
+        t1.start();
+        t2.start();
+
+        
+    }
+}
+
+######################################################################
+
+
+class Tables
+{
+    void printTable(int n,String tname)
+    {
+        System.out.println("  Non - Synchronized ^^^^^^");
+        System.out.println("  Non - Synchronized &&&&&&");
+
+        synchronized(this) // synchronized block
+        {
+            for(int i=1;i<=5;i++)
+            {
+                System.out.println(tname+"------------------>   "+n*i);
+                try
+                {
+                     Thread.sleep(400);
+                }
+                catch(Exception e)
+                {
+                    System.out.println(e);
+                }
+            }
+            System.out.println("\n");
+        }
+
+    }
+}
+
+
+
+
+
+
+class SampleThread1 extends Thread
+{
+    Tables t;
+    SampleThread1(Tables t)
+    {
+        this.t=t;
+    }
+    public void run()
+    {
+        t.printTable(5,this.getName());
+    }
+
+}
+class SampleThread2 extends Thread
+{
+    Tables t;
+    SampleThread2(Tables t)
+    {
+        this.t=t;
+    }
+    public void run()
+    {
+        t.printTable(100,this.getName());
+    }
+}
+
+class Use2
+{
+    public static void main(String args[])
+    {
+        Tables obj = new Tables();//only one object
+
+        SampleThread1 t1=new SampleThread1(obj);
+        SampleThread2 t2=new SampleThread2(obj);
+
+        t1.start();
+        t2.start();
+
+
+    }
+}
+
+
+######################################################################
+
+class SharingProcess
+{
+ 	int          n;
+ 	boolean      valueSet=false;
+
+ 	synchronized void get()
+ 	{
+ 		if(!valueSet)
+		{
+  			try
+  			{
+   				wait();
+  			}
+  			catch(Exception e)
+  			{
+   				System.out.println(e);
+  			}
+		}
+
+   		System.out.println("         Got :" +n);
+   		valueSet=false;
+   		notify();  
+  	}
+
+ 	synchronized void put(int x)
+ 	{
+  		if(valueSet)
+		{
+  			try
+  			{
+   				wait();
+  			}
+  			catch(Exception e)
+  			{
+   				System.out.println(e);
+  			}
+		}
+
+   		this.n=x;
+   		valueSet=true;
+   		System.out.println("Put :  " +n);
+   		notify();  
+  	}
+}
+class Producer implements Runnable
+{
+ 	SharingProcess ss1;
+
+ 	Producer(SharingProcess s1)
+ 	{
+  		this.ss1=s1;
+  		new Thread(this).start();
+ 	}
+
+ 	public void run()
+ 	{
+  		int i=1;
+  		while(i<=20)
+  		{
+   			System.out.println("  ++++++++++++++++++++++++   Producer While  ");
+   			ss1.put(i);
+			i++;
+  		}
+ 	}
+}
+class Consumer implements Runnable
+{
+ 	SharingProcess ss2;
+ 	Consumer(SharingProcess s2)
+ 	{
+  		this.ss2=s2;
+  		new Thread(this).start();
+ 	}
+
+ 	public void run()
+ 	{
+  		int j=1;
+  		while(j<=20)
+  		{
+                        System.out.println("  --------------------------------------   Consumer While  ");
+   			ss2.get();
+   			j++;	
+  		}
+ 	}
+}
+
+class PC
+{
+ 	public static void main(String args[])
+ 	{
+  		SharingProcess ob=new SharingProcess();
+
+  		new Producer(ob);
+  		new Consumer(ob);
+	}
+}
+
+
+######################################################################
+
+
+public class SRDemo1 extends Thread
+{
+     public void run()
+     {
+         try
+         {
+            for( int i = 0; i < 7; i++ )
+            {
+	         Thread.sleep(1000);
+	         System.out.println( this.getName() + ":  " + i );
+            }
+         }
+         catch( InterruptedException e  )
+         {
+            System.out.println(e);
+         }
+     }
+     public static void main( String args[] )
+     {
+            SRDemo1 srd1 = new SRDemo1();
+            srd1.setName("First");
+            srd1.start();
+            try
+            {
+                  Thread.sleep(2000 );
+                  srd1.suspend();
+                  System.out.println("Suspending thread First");
+                  Thread.sleep(1000);
+	          srd1.resume();
+	          System.out.println("Resuming thread First");
+
+            }
+            catch(InterruptedException e)
+            {
+                  e.printStackTrace();
+            }
+     }
+}
+######################################################################
+
+
+public class SRDemo2 extends Thread
+{
+     public void run()
+     {
+         try
+         {
+            for( int i = 0; i < 7; i++ )
+            {
+	         Thread.sleep(500);
+	         System.out.println( this.getName() + ":  " + i );
+            }
+         }
+         catch( InterruptedException e  )
+         {
+            System.out.println(e);
+         }
+     }
+     public static void main( String args[ ] )
+     {
+            SRDemo1 srd1 = new SRDemo1();
+            SRDemo1 srd2 = new SRDemo1();
+            srd1.setName("First");
+            srd2.setName("Second");
+            srd1.start();
+            srd2.start();
+            try
+            {
+                  Thread.sleep(1000 );
+                  srd1.suspend();
+                  System.out.println("Suspending thread First");
+                  Thread.sleep(1000 );
+	          srd1.resume();
+	          System.out.println("Resuming thread First");
+
+                  Thread.sleep(1000);
+                  srd2.suspend();
+	          System.out.println("Suspending thread Second");
+	          Thread.sleep(1000);
+	          srd2.resume();
+	          System.out.println("Resuming thread Second");
+            }
+            catch(InterruptedException e)
+            {
+                  System.out.println(e);
+            }
+     }
+}
+######################################################################
+
+
+public class ThreadYield implements Runnable {
+
+        Thread thread;
+
+        public ThreadYield(String name) {
+                thread = new Thread(this, name);
+                thread.start();
+        }
+
+        public void run() {
+
+                System.out.println(Thread.currentThread().getName()+ " is going to call yield() method...");
+                Thread.yield();
+
+                System.out.println(Thread.currentThread().getName() + " is completed.");
+        }
+
+        public static void main(String[] args) {
+                new ThreadYield("Thread 1");
+                new ThreadYield("Thread 2");
+        }
+}
+######################################################################
+
+package mutithreading;
+
+public class YieldExample
+{
+   public static void main(String[] args)
+   {
+      Thread producer = new Producer();
+      Thread consumer = new Consumer();
+
+ //     producer.setPriority(Thread.MIN_PRIORITY); //Min Priority
+ //     consumer.setPriority(Thread.MAX_PRIORITY); //Max Priority
+
+      producer.start();
+      consumer.start();
+   }
+}
+
+class Producer extends Thread
+{
+   public void run()
+   {
+      for (int i = 0; i < 5; i++)
+      {
+         System.out.println("I am Producer : Produced Item " + i);
+        // Thread.yield();
+      }
+   }
+}
+
+class Consumer extends Thread
+{
+   public void run()
+   {
+      for (int i = 0; i < 5; i++)
+      {
+         System.out.println("I am Consumer : Consumed Item " + i);
+         //Thread.yield();
+      }
+   }
+}

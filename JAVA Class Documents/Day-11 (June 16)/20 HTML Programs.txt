@@ -1,0 +1,646 @@
+=====================================================================================
+Demo1.html
+------------
+
+<html>
+    <body>
+        Welcome To HTML<br/>
+        Welcome To HTML<br/>
+        Welcome To HTML<br/>
+    </body>
+</html>
+
+=====================================================================================
+
+Demo2.html
+------------
+
+<html>
+    <body>
+        Welcome to HTML <br/>
+
+        <b>Welcome to HTML</b> <br/>
+
+        <i>Welcome to HTML</i> <br/>
+
+        <u>Welcome to HTML</u> <br/>
+    </body>
+</html>
+=====================================================================================
+
+Demo3.html
+------------
+
+<html>
+    <head>
+        <title>www.gmail.com</title>
+    </head>
+
+    <body>
+        <h1>This is Title App</h1>
+    </body>
+</html>
+=====================================================================================
+
+Demo4.html
+------------
+
+<html>
+    <body>
+        <h3 align="center">Welcome to HTML</h3>
+        <h2 align="center">Welcome to HTML</h2>
+        <h1 align="center">Welcome to HTML</h1>
+    </body>
+</html>
+=====================================================================================
+
+Demo5.html
+------------
+
+<html>
+    <body>
+        <a href="Demo1.html">Go to Demo1.html</a>
+    </body>
+</html>
+
+
+=====================================================================================
+
+Demo6.html
+------------
+
+<html>
+    <body>
+        <a href="http://www.gmail.com">G-mail</a>
+    </body>
+</html>
+=====================================================================================
+
+Demo7.html
+------------
+
+<html>
+    <body>
+        <form method="post" action="Demo8.html">
+            Username : <input type="text" name="uname"/><br/>
+            Password : <input type="password" name="pass"/><br/>
+            <input type="submit" value="SUBMIT"/>
+        </form>
+    </body>
+</html>
+
+---------------------------------------------------------------------------
+
+Demo8.html
+------------
+
+<html>
+    <body>
+        <a href="Demo7.html">Back</a>
+    </body>
+</html>
+=====================================================================================
+
+Demo9.html
+------------
+
+<html>
+ <body>
+  <form action="">
+
+    Username : <input type="text" name="uname"/><br/>
+
+    Password : <input type="password" name="pass"/><br/>
+
+     Gender  :
+
+    <input type="radio" name="gender" value="male"/>Male
+    <input type="radio" name="gender" value="female"/>Female
+
+    <br/>
+
+    <input type="submit" value="SUBMIT"/>
+
+  </form>
+ </body>
+</html>
+
+=====================================================================================
+
+Demo10.html
+------------
+
+<html>
+ <body>
+  <form action="">
+
+    Username : <input type="text" name="uname"/><br/>
+
+    Password : <input type="password" name="pass"/><br/>
+
+     Gender  :
+
+    <input type="radio" name="gender" value="male"/>Male
+    <input type="radio" name="gender" value="female"/>Female
+
+    <br/>
+
+    City  :
+
+    <select name="city">
+        <option>Select</option>
+        <option value="cbe">Coimbatore</option>
+        <option value="chennai">Chennai</option>
+        <option value="trichy">Trichy</option>
+    </select>
+
+    <input type="submit" value="SUBMIT"/>
+
+  </form>
+ </body>
+</html>
+
+=====================================================================================
+
+Demo11.html
+------------
+
+<html>
+ <body>
+	<table border="2" cellspacing="0">
+		<tr>
+			<th>Name</th>
+			<th>City</th>
+		</tr>
+
+		<tr>
+			<td>Sudarsan</td>
+			<td>Chennai</td>
+		</tr>
+		<tr>
+			<td>Ganesh</td>
+			<td>Coimbatore</td>
+		</tr>
+		<tr>
+			<td>Prem</td>
+			<td>Chennai</td>
+		</tr>
+
+	</table>
+ </body>
+</html>
+=====================================================================================
+
+Demo12.html
+------------
+
+<html>
+ <body>
+	<table bgcolor="yellow" border="2" cellspacing="0" width="30%" align="center">
+		<tr bgcolor="pink">
+			<th>Name</th>
+			<th>City</th>
+		</tr>
+
+		<tr>
+			<td>Sudasan</td>
+			<td>Chennai</td>
+		</tr>
+		<tr>
+			<td>Ganesh</td>
+			<td>Coimbatore</td>
+		</tr>
+		<tr>
+			<td>Prem</td>
+			<td>Chennai</td>
+		</tr>
+
+	</table>
+ </body>
+</html>
+
+=====================================================================================
+
+Demo13.html
+------------
+
+
+<html>
+ <body>
+	<table bgcolor="yellow" border="2" cellspacing="0" width="30%" align="center">
+		<tr bgcolor="pink">
+			<th colspan="2">Details</th>
+		</tr>
+
+		<tr>
+			<td>Sudasan</td>
+			<td>Chennai</td>
+		</tr>
+		<tr>
+			<td>Ganesh</td>
+			<td>Coimbatore</td>
+		</tr>
+		<tr>
+			<td>Prem</td>
+			<td>Chennai</td>
+		</tr>
+
+	</table>
+ </body>
+</html>
+
+=====================================================================================
+
+
+Demo14.html
+------------
+
+<html>
+ <body>
+	<table bgcolor="yellow" border="2" cellspacing="0" width="100%" align="center">
+
+	<tr>
+		<td align="center"><a href="LoginForm.html">Login Form</a></td>
+		<td align="center"><a href="LoginForm.html">About us</a></td>
+		<td align="center"><a href="LoginForm.html">Products</a></td>
+		<td align="center"><a href="LoginForm.html">Contact us</a></td>
+	</tr>
+
+	</table>
+ </body>
+</html>
+=====================================================================================
+
+
+Demo15.html
+------------
+
+<html>
+    <body>
+        <form action="">
+
+            <table width="30%" border="0" align="center" cellspacing="0">
+                <tr bgcolor="yellow">
+                    <th colspan="2">Login Form</th>
+                </tr>
+
+                <tr>
+                    <td>Username</td>
+                    <td><input type="text" name="uname"/></td>
+                </tr>
+
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="pass"/></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                     <input type="submit" value="SUBMIT"/>
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+    </body>
+</html>
+
+=====================================================================================
+
+
+Demo16.html
+------------
+<html>
+    <body>
+        <p>Example of <b>Bold Text</b></p>
+
+        <p>Example of <em>Emphasized Text</em></p>
+
+        <p>Example of <strong>Strong Text</strong></p>
+
+        <p>Example of <i>Italic Text</i></p>
+
+        <p>Example of <sup>superscripted Text</sup></p>
+
+        <p>Example of <sub>subscripted Text</sub></p>
+
+        <p>Example of <del>struckthrough Text</del></p>
+
+        <p>Example of <code>Computer Code Text</code></p>
+    </body>
+</html>
+=====================================================================================
+
+
+Demo17.html
+------------
+
+<html>
+    <body>
+
+        <hr/>
+            Use
+        <hr/><hr/>
+            With
+        <hr/>	
+            Caution
+        <hr/>
+        
+    </body>
+</html>
+=====================================================================================
+
+<html>
+    <head>
+        <script type="text/javascript">
+
+            function test(){
+
+
+                var s1=document.fname.uname.value;
+                var s2=document.fname.pass.value;
+
+                if(s1==""){
+
+                    alert("Enter the Username");
+                    fname.uname.focus();
+                    return false;
+                }
+                if(s2==""){
+
+                    alert("Enter the Password");
+                    fname.pass.focus();
+                    return false;
+                }
+
+                return true;
+            }
+            
+
+        </script>
+    </head>
+    <body>
+        <form name="fname" method="get" action="RDemo1" onsubmit="return test();">
+            Username :<input type="text" name="uname" value=""/><br/>
+            Password :<input type="password" name="pass"/><br/>
+            <input type="submit" value="submit"/><br/>
+        </form>
+    </body>
+</html>
+==================================================================================
+
+Client1.html
+-------------
+
+<html>
+<head>
+ <script type="text/javascript">
+  function test()
+  {
+   if(document.f1.user.value=="")
+   {
+     alert("Enter the Username");
+     f1.user.focus();
+     return false;
+   }
+
+   if(document.f1.pass.value=="")
+   {
+     alert("Enter the Password");
+     f1.pass.focus();
+     return false;
+   }
+
+   return true;
+  }
+ </script>
+</head>
+
+ <body>
+  <form name="f1"  action="Output1.html" onsubmit="return test();">
+    Username :<input type="text" name="user" /><br />
+    Password :<input type="password" name="pass" /><br />
+              <input type="submit" value="submit" />
+  </form>
+ </body>
+
+</html>
+
+
+==================================================================================
+
+Output1.html
+--------------
+
+<html>
+    <body>
+        <a href="Client1.html">Back</a>
+    </body>
+</html>
+
+==================================================================================
+
+Client2.html
+-------------
+
+<html>
+<head>
+ <script type="text/javascript">
+  function test()
+  {
+   if((document.f1.gender[0].checked==false)&&(document.f1.gender[1].checked==false))
+   {
+     alert("Pls choose your Gender");
+     f1.gender[0].focus();
+     return false;
+   }
+
+   return true;
+  }
+ </script>
+</head>
+ <body>
+     <form name="f1"  action="Demo1.html" onsubmit="return test();">
+    Gender: <input type="radio" name="gender" value="male" />Male
+            <input type="radio" name="gender" value="female" />Female<br />
+            <input type="submit" value="submit" />
+  </form>
+ </body>
+</html>
+
+==================================================================================
+
+Output2.html
+--------------
+
+<html>
+    <body>
+        <a href="Client2.html">Back</a>
+    </body>
+</html>
+
+==================================================================================
+
+Client3.html
+-------------
+
+<html>
+<head>
+ <script type="text/javascript">
+  function test()
+  {
+   var exp1="^[a-zA-Z]*$";
+   var exp2="^[0-9]*$";
+   
+   if(document.f1.user.value=="")
+   {
+     alert("Enter the Username");
+     f1.user.focus();
+     return false;
+   }
+   if(document.f1.user.value.search(exp1)==-1)
+   {
+     alert("Only Alphabets");
+     f1.user.focus();
+     return false;
+   }
+   if(document.f1.pass.value=="")
+   {
+     alert("Enter the Password");
+     f1.pass.focus();
+     return false;
+   }
+
+   if(document.f1.pass.value.search(exp2)==-1)
+   {
+     alert("Only Numbers");
+     f1.pass.focus();
+     return false;
+   }
+   return true;
+  }
+ </script>
+</head>
+ <body>
+  <form name="f1"  action="Output3.html" onsubmit="return test();">
+    Username :<input type="text" name="user" /><br />
+    Password :<input type="password" name="pass" /><br />
+              <input type="submit" value="submit" />
+  </form>
+ </body>
+</html>
+
+==================================================================================
+
+Output3.html
+--------------
+
+<html>
+    <body>
+        <a href="Client3.html">Back</a>
+    </body>
+</html>
+==================================================================================
+
+Client4.html
+-------------
+
+<html>
+ <head>
+  <script type="text/javascript">
+
+  function test()
+  {
+
+   if(document.f1.user.value=="")
+   {
+    alert("Enter the Username");
+    f1.user.focus();
+    return false;
+   }
+
+   if(document.f1.pass.value=="")
+   {
+    alert("Enter the Password");
+    f1.pass.focus();
+    return false;
+   }
+
+    if ((document.f1.gender[0].checked == false)&& (document.f1.gender[1].checked == false))
+    {
+        f1.gender[0].focus();
+        alert ( "Please choose your Gender: Male or Female" );
+        return false;
+    }
+
+    if (document.f1.city.selectedIndex == 0 )
+    {
+        alert ( "Please select your City." );
+        f1.city.focus();
+        return false;
+    }
+
+
+   return true;
+  }
+
+
+  </script>
+ </head>
+ <body>
+     <form name="f1" action="Output4.html" onsubmit="return test();">
+
+   Username :<input type="text" name="user" /><br />
+
+   Password :<input type="password" name="pass" /><br />
+
+   Gender   :<input type="radio" name="gender" value="male" />Male
+             <input type="radio" name="gender" value="female" />Female<br />
+             
+   City     :<select name="city">
+              <option>Select</option>
+              <option value="cbe">Coimbatore</option>
+              <option value="chennai">Chennai</option>
+             </select>
+
+             <input type="submit" value="submit" />
+  </form>
+ </body>
+</html>
+
+==================================================================================
+
+Output4.html
+--------------
+
+<html>
+    <body>
+        <a href="Client4.html">Back</a>
+    </body>
+</html>
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================

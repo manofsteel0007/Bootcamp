@@ -1,0 +1,707 @@
+class A
+{
+ 	void add()
+ 	{
+  		System.out.println(" Class A  ---> Hai ");
+ 	}
+		
+}
+
+class B extends A
+{
+
+}
+class C extends A
+{
+ 	void add()
+ 	{
+  		System.out.println(" Class C  ---> Welcome ");
+ 	}
+}
+
+class Demo4
+{
+ 	public static void main(String aa[])
+ 	{
+		new A().add();
+
+		new B().add();
+
+		new A(){}.add();
+
+		new C().add();
+
+		new A()
+		{
+			void add()
+			{
+		  		System.out.println(" Anonymous Class ---> Good noon! ");
+			}
+		}.add();
+
+		A s1 = new A()
+		{
+			void add()
+			{
+		  		System.out.println(" Anonymous Class ---> Good evening! ");
+			}
+		};
+
+		s1.add();
+		
+
+ 	}
+}
+
+=======================================================================
+
+
+interface Mail{
+    void registration();
+}
+
+
+
+class Yahoo implements Mail{
+
+    public void registration() {
+        System.out.println(" Yahoo Class");
+    }
+
+
+}
+
+class Demo7{
+    public static void main(String args[]){
+
+
+        Mail mail = new Yahoo();
+
+        mail.registration();
+
+
+        System.out.println("==================================================");
+
+
+        Mail m = new Mail(){
+
+            public void registration() {
+                System.out.println(" Anonymous Class");
+            }
+
+        };
+
+        m.registration();
+
+        Mail m1 = new Mail() {
+
+            public void registration() {
+                throw new UnsupportedOperationException("Not supported yet.");
+            }
+
+        };
+
+        new Mail() {
+
+            public void registration() {
+                System.out.println("Welcome to Java");
+            }
+        }.registration();
+
+
+    }
+}
+
+
+
+====================================================================================
+
+
+interface Mail
+{
+ 	void register();
+}
+
+class A{
+
+    void test(Mail m){
+
+        m.register();
+
+    }
+}
+
+class Yahoo implements Mail{
+
+    public void register() {
+        System.out.println(" Yahoo Class Registration ");
+    }
+
+}
+
+public class Demo1
+{
+ 	public static void main(String aa[])
+ 	{
+
+new A().test(new Yahoo());
+
+new A().test(new Mail() {
+
+            public void register() {
+                System.out.println(" Welcome to Anonymous class ");
+            }
+        });
+ 	}
+}
+
+
+====================================================================================
+
+
+class Sample
+{
+        class A
+        {
+            void test()
+            {
+                System.out.println("  Inner Class ");
+            }
+        }
+
+}
+class Demo1
+{
+	public static void main(String aa[])
+	{
+
+            Sample s1=new Sample();
+
+            Sample.A a1 = s1.new A();
+
+            Sample.A a2 = new Sample().new A();
+
+            a1.test();
+
+            a2.test();
+
+            s1.new A().test();
+            
+            new Sample().new A().test();
+
+	}
+}
+######################################################################
+
+class OuterClass1{
+
+    class InnerClass{
+        void test(){
+            System.out.println("-----------> Inner class method");
+        }
+    }
+
+}
+class Demo3{
+    public static void main(String args[]){
+
+        OuterClass1 oc1=new OuterClass1();
+
+        OuterClass1.InnerClass ic1=oc1.new InnerClass();
+
+        ic1.test();
+
+        OuterClass1.InnerClass ic2=new OuterClass1().new InnerClass();
+
+        ic2.test();
+
+        System.out.println("==================================================");
+
+        new OuterClass1().new InnerClass().test();
+    }
+}
+
+######################################################################
+
+
+package demo8_innerclasses;
+
+// Instance Variable and Instance Method
+
+class Sample{
+
+        class A{
+            void test(){
+                System.out.println("  Inner Class  A");
+            }
+        }
+        class B extends A{
+            void show(){
+                System.out.println("  Inner Class  B ");
+            }
+        }
+
+}
+class Demo02
+{
+	public static void main(String aa[])
+	{
+            Sample s1 = new Sample();
+
+            Sample.A a1 = s1.new A();
+
+            Sample.A a2 = new Sample().new A();
+
+            Sample.A a3 = s1.new B();
+
+            Sample.A a4 = new Sample().new B();
+
+            Sample.B a5 = (Sample.B)a4;
+
+
+            a1.test();
+
+            a2.test();
+
+            a3.test();
+
+            a4.test();
+
+            a5.show();
+
+            new Sample().new A().test();
+
+
+
+
+	}
+}
+
+
+
+
+
+
+######################################################################
+
+class OuterClass2{
+
+    interface Car{
+        void door();
+        void glass();
+    }
+    
+}
+class Benz implements OuterClass2.Car{
+
+    public void door() {
+        System.out.println("---------------->  Benz door");
+    }
+
+    public void glass() {
+        System.out.println("---------------->  Benz glass");
+    }
+
+}
+
+
+
+public class Demo4{
+    public static void main(String args[]){
+
+
+        OuterClass2.Car c1 = new Benz();
+
+        c1.door();
+        c1.glass();
+
+
+        System.out.println("==================================================");
+
+        OuterClass2.Car c2=new OuterClass2.Car()
+        {
+            public void door() {
+                System.out.println("---------------->  Sample door");
+            }
+
+            public void glass() {
+                System.out.println("---------------->  Sample glass");
+            }
+        };
+
+        c2.door();
+        c2.glass();
+
+
+        new OuterClass2.Car()
+        {
+            public void door() {
+                System.out.println("---------------->  Sample door");
+            }
+
+            public void glass() {
+                System.out.println("---------------->  Sample glass");
+            }
+        }.door();
+
+
+        new Samples().test(new OuterClass2.Car()
+        {
+            public void door() {
+                System.out.println("---------------->  Sample door");
+            }
+
+            public void glass() {
+                System.out.println("---------------->  Sample glass");
+            }
+        });
+
+        new Samples().test(c1);
+
+
+    }
+}
+
+
+class Samples{
+
+    void test(OuterClass2.Car c){
+
+        c.door();
+        c.glass();
+    }
+
+
+
+}
+
+
+
+
+
+######################################################################
+
+class OuterClass3{
+
+    static class InnerClass{
+
+        void test(){
+            System.out.println("-----------> Method Test");
+        }
+
+        static void display(){
+            System.out.println("-----------> Method Display");
+        }
+    }
+
+}
+
+
+class Demo5{
+    public static void main(String args[]){
+
+        OuterClass3.InnerClass ic=new OuterClass3.InnerClass();
+        ic.test();
+
+        System.out.println("==================================================");
+
+        OuterClass3.InnerClass.display();
+
+
+    }
+}
+
+######################################################################
+
+class OuterClass4{
+
+    static interface Mail{
+        void registration();
+        void validation();
+    }
+
+}
+
+
+class Demo6{
+    public static void main(String args[]){
+
+        OuterClass4.Mail mail=new TestClass1();
+
+        mail.registration();
+        mail.validation();
+
+        System.out.println("==================================================");
+
+
+
+
+    }
+}
+
+class TestClass1 implements OuterClass4.Mail{
+
+    public void registration() {
+        System.out.println(" Test registration ");
+    }
+
+    public void validation() {
+        System.out.println(" Test validation ");
+    }
+
+}
+
+######################################################################
+
+interface Calculation{
+    void sum();
+    void product();
+}
+
+class Maths implements Calculation{
+
+    public void sum() {
+        System.out.println(" Behaviour of Method Sum ");
+    }
+
+    public void product() {
+        System.out.println(" Behaviour of Method Product ");
+    }
+
+}
+
+class TestClass3{
+
+    Calculation c1;
+
+    void test1(Calculation c1){
+        this.c1=c1;
+        this.c1.sum();
+        this.c1.product();
+        System.out.println(" ================================================== ");
+    }
+
+}
+class Demo8{
+    public static void main(String args[]){
+
+        Calculation calculation1=new Maths();
+
+        Calculation calculation2=new Calculation() {
+
+            public void sum() {
+                System.out.println(" Anonymous class 1 --> Behaviour of Method Sum ");
+            }
+
+            public void product() {
+                System.out.println(" Anonymous class 1 --> Behaviour of Method Product ");
+            }
+        };
+
+        TestClass3 testClass3=new TestClass3();
+
+        testClass3.test1(calculation1); //Passing Maths class object under Calculation reference
+
+        testClass3.test1(new Maths()); //Passing Maths class object under Calculation reference
+
+        testClass3.test1(calculation2); //Passing Anonymous class object under Calculation reference
+
+        testClass3.test1(new Calculation() {
+
+            public void sum() {
+                System.out.println(" Anonymous class 2 --> Behaviour of Method Sum ");
+            }
+
+            public void product() {
+                System.out.println(" Anonymous class 2 --> Behaviour of Method Product ");
+            }
+        }); //Passing Anonymous class object under Calculation reference
+
+    }
+}
+
+######################################################################
+
+class A{
+	int x;
+	void add(){
+		System.out.println(" X  : "+x);
+	}
+}
+
+class B extends A{
+	int y;
+	 void sum(){
+
+		System.out.println(" Y  : "+y);
+	}
+}
+
+class Demo9{
+	public static void main(String aa[]){
+		B obj1=new B(); // o1 is Reference of B and its also object B
+		obj1.x=100;
+		obj1.y=200;
+		obj1.add();
+		obj1.sum();
+
+		System.out.println("----------------------");
+
+                A ojb2=obj1;  // Implicit upcasting
+                A ojb3=(A)obj1; // Explicit upcasting
+                ((A)obj1).add(); // Explicit upcasting
+                ((A)(Object)obj1).add(); //Upcasting and Donwcasting
+		((B)(A)(Object)obj1)).sum();
+                
+	}
+}
+
+######################################################################
+
+class View
+{
+	static interface OnClickListener
+	{
+		void onClick();
+	}
+}
+
+
+class C
+{
+    static class D
+    {
+                static void test1()
+                {
+                    System.out.println(" Good morning ");
+                }
+    }
+
+    static interface Mail{
+
+        void register();
+        void validation();
+    }
+}
+class Demo10
+{
+	public static void main(String aa[])
+	{
+            C.D.test1();
+
+            C.Mail m=new Demos();
+
+            m.register();
+            m.validation();
+
+            C.Mail m1=new C.Mail()
+            {
+                public void register() {
+                    System.out.println(" --------------->  3 ");
+                }
+
+                public void validation() {
+                    System.out.println(" ---------------> 4 ");
+                 }
+
+            };
+
+
+            m1.register();
+            m1.validation();
+
+
+            View.OnClickListener ob=new View.OnClickListener(){
+
+                public void onClick() {
+                    System.out.println(" Welcome ");
+                }
+
+            };
+
+            ob.onClick();
+
+	}
+}
+class Demos implements C.Mail{
+
+    public void register() {
+        System.out.println(" --------------->  1 ");
+    }
+
+    public void validation() {
+        System.out.println(" ---------------> 2 ");
+    }
+
+}
+
+######################################################################
+class Sample1
+{
+    void add(){
+        class Test{
+            void display(){
+                System.out.println(" This is Method Local Inner Class ");
+            }
+        }
+
+        Test t=new Test();
+        t.display();
+    }
+}
+class Demo11
+{
+	public static void main(String aa[])
+	{
+            new Sample1().add();
+	}
+}
+
+######################################################################
+
+
+package demo8_innerclasses;
+
+class A1{
+    class B{
+        class C{
+            void cmethod(){
+                System.out.println("  Class C  ");
+            }
+        }
+        class D extends C{
+            void dmethod(){
+                System.out.println("  Class D  ");
+            }
+        }
+        class E extends D{
+            void emethod(){
+                System.out.println("  Class E  ");
+            }
+        }
+
+        class Test{
+            C c;
+            void check(C c){
+                this.c=c;
+                this.c.cmethod();
+
+                System.out.println("----------------------------------");
+
+
+                if(c instanceof E){
+                    E e=(E)c;
+                    e.cmethod();
+                    e.dmethod();
+                    e.emethod();
+                }
+            }
+        }
+    }
+}
+class Demo11{
+    public static void main(String[] args) {
+
+        new A1().new B().new Test().check(new A1().new B().new E());
+    }
+}

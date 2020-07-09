@@ -1,0 +1,128 @@
+Leaders in the array 
+
+1
+6
+7 8 9 1 2 3
+9 3
+
+1
+6
+16 17 4 3 5 2
+17 5 2
+
+2
+8
+1 2 3 4 5 6 7 8
+8
+8 7 6 5 4 3 2 1
+8
+8 7 6 5 4 3 2 1
+
+1
+10
+5 8 4 2 8 5 85 6 7 4
+85 7 4
+
+1
+6
+6 6 6 6 6 6
+6
+
+Sub array with given sum
+
+1
+10 10
+1 1 1 1 1 1 1 1 1 0
+-1
+
+2
+6 10
+5 8 5 4 58 74
+6 10
+5 4 78 5 5 1
+-1
+4 5
+
+2
+5 12
+1 2 3 7 5
+10 15
+1 2 3 4 5 6 7 8 9 10
+ 
+2 4
+1 5
+
+1
+7 20
+7 6 5 9 7 10 3
+2 4
+
+1
+10 30
+5 5 5 5 5 6 6 8 7 5 6
+4 8
+
+Equilibrium point
+
+2
+1
+1
+5
+1 3 5 2 2
+1
+3
+
+1
+7
+7 6 5 6 8 7 3
+4
+
+
+1
+7
+7 6 5 6 8 7 4
+
+
+-1
+
+1
+10
+7 5 4 9 8 5 20 6 6 5
+-1
+
+1
+10
+7 5 4 9 8 5 5 5 5 5
+5
+
+Reverse Words
+
+
+1
+welcome.to.cprogramming
+cprogramming.to.welcome
+
+2
+Welcome.welcome.WELCOME
+Hi.Hello.How.Are.You
+
+WELCOME.welcome.Welcome
+You.Are.How.Hello.Hi
+
+1
+java.programming
+programming.java
+
+2
+i.like.this.program.very.much
+pqr.mno
+
+much.very.program.this.like.i
+mno.pqr
+
+1
+sdkfjhsdf.sdjksdf.iudfg.sdfjsdf
+sdfjsdf.iudfg.sdjksdf.sdkfjhsdf
+
+
+

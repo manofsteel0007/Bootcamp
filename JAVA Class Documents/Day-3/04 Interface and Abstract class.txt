@@ -1,0 +1,300 @@
+######################################################################
+
+//Abstract Class
+
+
+abstract class Car
+{
+ 	abstract void door();
+ 	abstract void glass();
+}
+
+class Benz extends Car
+{
+ 	void door() 
+ 	{ 
+  		System.out.println("  Benz door");    
+ 	}
+ 	void glass() 
+ 	{ 
+  		System.out.println("  Benz glass");    
+ 	}
+}
+class Demo1
+{
+ 	public static void main(String aa[])
+ 	{
+  		Car ob1=new Benz();
+  		ob1.door();
+  		ob1.glass();
+ 	}
+}
+
+
+######################################################################
+
+//Abstract Class
+
+abstract class Car
+{
+ 	abstract void door();
+ 	abstract void glass();
+ 	void wheel() 
+ 	{ 
+  		System.out.println("  Wheel");    
+ 	}
+}
+
+class Benz extends Car
+{
+ 	void door() 
+ 	{ 
+  		System.out.println("  Benz door");    
+ 	}
+ 	void glass() 
+ 	{ 
+  		System.out.println("  Benz glass");    
+ 	}
+}
+
+class Lancer extends Car
+{
+ 	void door() 
+ 	{ 
+  		System.out.println("  Lancer door");    
+ 	}
+ 	void glass() 
+ 	{ 
+  		System.out.println("  Lancer glass");    
+ 	}
+}
+class Demo2
+{
+ 	public static void main(String aa[])
+ 	{
+  		Car ob1=new Benz();
+  		ob1.door();
+  		ob1.glass();
+  		ob1.wheel();
+
+  		System.out.println("=================");    
+  		System.out.println("=================");    
+
+  		Car ob2=new Lancer();
+  		ob2.door();
+  		ob2.glass();
+  		ob2.wheel();
+ 	}
+}
+
+
+######################################################################
+
+abstract class Car
+{
+ 	abstract void door();
+ 	abstract void glass();
+}
+
+abstract class Benz extends Car
+{
+
+ 	abstract void test();
+}
+
+class Sample extends Benz
+{
+ 	void door() 
+ 	{ 
+  		System.out.println("  Sample door");    
+ 	}
+ 	void glass() 
+ 	{ 
+  		System.out.println("  Sample glass");    
+ 	}
+ 	void test() 
+ 	{ 
+  		System.out.println("  Sample Test");    
+ 	}
+}
+class Demo3
+{
+ 	public static void main(String aa[])
+ 	{
+  		Benz ob=new Sample();
+  		ob.door();
+  		ob.glass();
+  		ob.test();
+ 	}
+}
+
+######################################################################
+
+interface Mail
+{
+ 	void register();
+ 	void valid();
+}
+
+class Yahoo implements Mail
+{
+ 	public void register() 
+ 	{ 
+  		System.out.println("  Yahoo registration");    
+ 	}
+ 	public void valid() 
+ 	{ 
+ 		System.out.println("  Yahoo validation");    
+ 	}
+}
+class Demo4
+{
+ 	public static void main(String aa[])
+ 	{
+  		Mail ob1=new Yahoo();
+  		ob1.register();
+  		ob1.valid();
+ 	}
+}
+
+######################################################################
+
+interface Mail1
+{
+ 	void register();
+}
+interface Mail2
+{
+ 	void register();
+}
+
+class Yahoo implements Mail1,Mail2
+{
+ 	public void register() 
+ 	{ 
+  		System.out.println("  Yahoo registration");    
+ 	}
+}
+class Demo5
+{
+ 	public static void main(String aa[])
+ 	{
+  		Mail1 ob1=new Yahoo();
+  		Mail2 ob2=new Yahoo();
+
+  		ob1.register();
+ 		ob2.register();
+ 	}
+}
+
+
+######################################################################
+interface Mail
+{
+ 	void register();
+}
+
+class Test
+{
+	void display()
+	{
+		Mail ob = new Mail() 
+		{
+			public void register()
+			{
+				System.out.println(" Anonymous Sub-Class ");
+			}			
+		};
+
+		ob.register();		
+	}
+}
+
+
+
+class Demo6
+{
+ 	public static void main(String aa[])
+ 	{
+		new Test().display();
+ 	}
+}
+
+###################################################
+interface Mail
+{
+ 	void register();
+ 	void valid();
+}
+
+
+class Demo6
+{
+ 	public static void main(String aa[])
+ 	{
+  		Mail ob1=new Mail()
+		{
+		 	public void register() 
+ 			{ 
+		  		System.out.println("  Unknown registration");    
+		 	}
+		 	public void valid() 
+		 	{ 
+		 		System.out.println("  Unknown validation");    
+		 	}
+		};
+
+  		ob1.register();
+  		ob1.valid();
+ 	}
+}
+
+######################################################################
+
+
+
+interface Mail1
+{
+ 	void register();
+}
+
+class Sample 
+{
+	void test()
+	{
+		new Mail1()
+		{
+ 			public void register() 
+ 			{ 
+  				System.out.println("  Anonymous registration  ");    
+ 			}			
+		}.register();
+	}
+}
+
+interface Mail2
+{
+ 	void register();
+}
+
+class Yahoo implements Mail1,Mail2
+{
+ 	public void register() 
+ 	{ 
+  		System.out.println("  Yahoo registration  ");    
+ 	}
+}
+class Demo5
+{
+ 	public static void main(String aa[])
+ 	{
+  		Mail1 ob1=new Yahoo();
+  		Mail2 ob2=new Yahoo();
+
+  		ob1.register();
+ 		ob2.register();
+
+		new Sample().test();
+
+ 	}
+}

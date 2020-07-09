@@ -1,0 +1,812 @@
+ class A
+{
+	int x;
+	void add()
+	{
+		System.out.println(" X  : "+x);
+	}
+}
+class Sample
+{
+	void test(A s1) 
+	{
+		s1.add();
+	}
+}
+class Demo1
+{
+	public static void main(String aa[])
+	{
+		A ss1=new A();
+		ss1.x=5000;
+
+		new Sample().test(ss1);
+	}
+}
+
+
+#####################################################################
+class A
+{
+	int x;
+	void add()
+	{
+		System.out.println(" X  : "+x);
+	}
+}
+class Sample
+{
+	A s1;
+	void test(A s2) 
+	{
+		this.s1=s2;
+		s1.add();
+	}
+}
+class Demo2
+{
+	public static void main(String aa[])
+	{
+		A ss1=new A();
+		ss1.x=5000;
+
+
+		new Sample().test(ss1); 
+
+	}
+}
+
+#################################################
+class A
+{
+	int x;
+	void add()
+	{
+		System.out.println(" X  : "+x);
+	}
+}
+
+class B extends A
+{
+	int y;
+	void sum()
+	{
+		System.out.println(" Y  : "+y);
+	}
+}
+class Sample
+{
+	void test(A s1) 
+	{
+		s1.add();
+
+		System.out.println("---------------------");
+  
+		B s3=(B)s1; 
+		s3.add();
+		s3.sum();  
+	}
+}
+class Demo6
+{
+	public static void main(String aa[])
+	{
+		B ss1=new B();
+		ss1.x=5000;
+		ss1.y=6000;
+  
+		new Sample().test(ss1); 
+	}
+}
+
+#################################################
+class A
+{
+	int x;
+	void add()
+	{
+		System.out.println(" X  : "+x);
+	}
+}
+
+class B extends A
+{
+	int y;
+	void sum()
+	{
+		System.out.println(" Y  : "+y);
+	}
+}
+
+
+class Sample
+{
+	A s1;
+	void test(A s2)
+	{
+		this.s1=s2;
+		s1.add();
+
+		System.out.println("---------------------");
+  
+		B s3=(B)s1; 
+		s3.add();
+		s3.sum();  
+	}
+}
+class Demo7
+{
+	public static void main(String aa[])
+	{
+		B ss1=new B();
+		ss1.x=5000;
+		ss1.y=6000;
+  
+		new Sample().test(ss1);
+	}
+}
+
+#################################################
+class A
+{
+	int x;
+	void add()
+	{
+		System.out.println(" X  : "+x);
+	}
+}
+
+class B 
+{
+	int y;
+	void sum()
+	{
+		System.out.println(" Y  : "+y);
+	}
+}
+
+class Sample
+{
+
+	void test(Object s1)
+	{
+
+		if(s1 instanceof A)
+		{  
+			A ss1=(A)s1; // Downcasting
+			ss1.add();
+		}
+	
+
+		if(s1 instanceof B)
+		{  
+			B ss2=(B)s1; // Downcasting
+			ss2.sum();
+		}
+
+		if(s1 instanceof Demo8)
+		{  
+			Demo8 ss3=(Demo8)s1; // Downcasting
+			ss3.test1();
+		} 
+	}
+}
+class Demo8
+{
+	void test1()
+	{
+		System.out.println("  Class Demo8   ");
+	}
+	public static void main(String aa[])
+	{
+		A x1=new A();
+		x1.x=1000;
+
+		B x2=new B();
+		x2.y=2000;
+  
+		Sample ob=new Sample();
+
+		ob.test(x1); 
+		ob.test(x2); 
+		ob.test(new Demo8());
+	}
+}
+#################################################
+class A
+{
+	int x;
+	void add()
+	{
+		System.out.println(" X  : "+x);
+	}
+}
+
+class B 
+{
+	int y;
+	void sum()
+	{
+		System.out.println(" Y  : "+y);
+	}
+}
+
+class Sample
+{
+	Object s1;
+	void test(Object s2) 
+	{
+  
+		this.s1=s2;
+
+		if(s1 instanceof A)
+		{  
+			A ss1=(A)s1; // Downcasting
+			ss1.add();
+		}
+	
+
+		if(s1 instanceof B)
+		{  
+			B ss2=(B)s1; // Downcasting
+			ss2.sum();
+		}
+
+		if(s1 instanceof Demo9)
+		{  
+			Demo9 ss3=(Demo9)s1; // Downcasting
+			ss3.test1();
+		} 
+	}
+}
+class Demo9
+{
+	void test1()
+	{
+		System.out.println("  Class Demo5   ");
+	}
+	public static void main(String aa[])
+	{
+		A x1=new A();
+		x1.x=1000;
+
+		B x2=new B();
+		x2.y=2000;
+  
+		Sample ob=new Sample();
+
+		ob.test(x1); 
+		ob.test(x2); 
+		ob.test(new Demo9());
+	}
+}
+#################################################
+//Methods with return type
+class A
+{
+	int x=100; 
+
+	int test()
+	{
+		return x;
+	}
+}
+class Demo10
+{
+	public static void main(String aa[])
+	{
+		A s1=new A();
+
+		int h = s1.test();		
+
+		System.out.println("   H   : "+h);
+	}
+}
+#################################################
+class A
+{
+	int x;
+	void add()
+	{
+		System.out.println(" X  : "+x);
+	}
+}
+
+class Sample
+{
+	A test() // Method return the reference of class A
+	{
+
+		A ob=new A();
+		ob.x=100;
+
+		return ob; // Returning Object of class A under the reference of class A
+	} 
+}
+class Demo11
+{
+	public static void main(String aa[])
+	{
+		Sample s1=new Sample();
+
+		A ss1=s1.test();
+
+		ss1.add();
+	}
+}
+#################################################
+class A
+{
+	int x;
+	void add()
+	{
+		System.out.println(" X  : "+x);
+	}
+}
+
+class B extends A
+{
+	int y;
+	void sum()
+	{
+		System.out.println(" Y  : "+y);
+	}
+}
+
+class Sample
+{
+
+	A test() // Method return the reference of class A
+	{
+		B ob=new B();
+		ob.x=100;
+		ob.y=200;
+
+		return ob; // Returning Object of class B under the reference of class A (upcasting)
+	} 
+}
+
+class Dems12
+{
+	public static void main(String aa[])
+	{
+		Sample s1=new Sample();
+
+		A ss1=s1.test();
+		ss1.add();
+
+		System.out.println("------------------------------------------");
+
+		B ss2=(B)ss1;
+		ss2.add();
+		ss2.sum();
+	}
+}
+#################################################
+class A
+{
+ 	void add()
+ 	{
+  		System.out.println(" Class A");
+ 	}
+}
+class B
+{
+ 	void sum()
+ 	{
+  		System.out.println(" Class B");
+ 	}
+}
+class C
+{
+ 	void test()
+ 	{
+  		System.out.println(" Class C");
+	}
+}
+
+class Sample
+{
+
+	Object check() // Method return the reference of class A
+	{
+                A x1=new A();
+                B x2=new B();
+                C x3=new C();
+
+		return x3; // Returning Object of class A under the reference of class A (upcasting)
+	}
+}
+
+class Dems13
+{
+	public static void main(String aa[])
+	{
+		Sample s1=new Sample();
+
+                Object ob1=s1.check();
+
+		if(ob1 instanceof A)
+		{
+			A ss1=(A)ob1; // Downcasting
+			ss1.add();
+		}
+
+		if(ob1 instanceof B)
+		{
+			B ss2=(B)ob1; // Downcasting
+			ss2.sum();
+		}
+
+		if(ob1 instanceof C)
+		{
+			C ss3=(C)ob1; // Downcasting
+			ss3.test();
+		}
+
+                
+	}
+}
+#################################################
+
+class StringDemo1
+{
+ 	public static void main(String args[])
+ 	{
+  
+  		String ob = new String("Welcome");
+
+
+
+  		int    d1=ob.length();
+  		char   d2=ob.charAt(0);
+  		String d3=ob.toUpperCase();
+  		String d4=ob.toLowerCase();
+  		String d5 = ob.concat(" Welcome");
+
+                System.out.println(" String         "+ob);
+  		System.out.println(" Length         "+d1);
+  		System.out.println(" Char At 0      "+d2);
+  		System.out.println(" Uppercase      "+d3);
+  		System.out.println(" Lowercase      "+d4);
+  		System.out.println(" Concatination  "+d5);
+
+  
+ 	}
+}
+
+#################################################
+
+class A
+{
+ 	void add()
+ 	{
+  		System.out.println(" Class A ");
+ 	}
+}
+class Sample1
+{
+ 	A test()
+ 	{
+   		return new A();
+ 	}
+}
+class Demo1
+{
+ 	public static void main(String aa[])
+ 	{
+  		new Sample1().test().add();
+ 	}
+}
+
+#################################################
+
+class B
+{
+ 	String add()
+ 	{
+   		return "Welcome";
+ 	}
+}
+class Sample
+{
+ 	B test()
+ 	{
+   		return new B();
+ 	}
+}
+class Demo2
+{
+ 	public static void main(String aa[])
+ 	{
+  		char    result1=new Sample().test().add().charAt(0);
+                String  result2=new Sample().test().add().toUpperCase();
+
+ 		System.out.println(" Result   : ----->  "+result1);
+                System.out.println(" Result   : ----->  "+result2);
+ 	}
+}
+
+#################################################
+
+class B
+{
+ 	B s1;
+
+ 	void test1()
+ 	{
+  		System.out.println("  Welcome ");
+ 	}
+
+ 	void sample()
+ 	{
+  		this.check(this);
+ 	}
+
+ 	void check(B s2)
+ 	{
+  		this.s1=s2;
+  		s1.test1();
+ 	}
+
+
+}
+
+class Demo2
+{
+ 	public static void main(String aa[])
+ 	{
+            
+  		new B().sample();
+ 	}
+
+}
+
+#################################################
+
+class C
+{
+ 	void test1()
+ 	{
+  		System.out.println("  Welcome ");
+ 	}
+}
+
+class D extends C
+{
+ 	C s1;
+
+ 	void test2()
+ 	{
+  		System.out.println("  Gud Morning ");
+ 	}
+ 	void sample()
+ 	{	
+		this.check(this);
+ 	}
+ 	void check(C s2)
+ 	{
+  		this.s1=s2;
+  		s1.test1();
+
+  		D s3=(D)s1;
+  		s3.test1();
+  		s3.test2();
+ 	}
+
+
+}
+class Demo3
+{
+ 	public static void main(String aa[])
+ 	{
+  		new D().sample();
+ 	}
+}
+
+#################################################
+
+interface E
+{
+ 	void test1();
+}
+
+
+class F implements E
+{
+ 	E s1;
+
+ 	public void test1()
+ 	{
+  		System.out.println("  Gud Morning ");
+ 	}
+ 	void sample()
+ 	{
+  		this.check(this);
+ 	}
+ 	void check(E s2)
+ 	{
+  		this.s1=s2;
+  		s1.test1();
+	 }
+
+}
+class Demo4
+{
+ 	public static void main(String aa[])
+ 	{
+
+  		new F().sample();
+ 	}
+}
+
+#################################################
+
+interface G
+{
+ 	void test1();
+}
+
+class H
+{
+ 	G s1;
+
+ 	void sample()
+ 	{
+  		this.check(new G()
+		{
+	  		public void test1()
+ 	  		{
+  		 		System.out.println(" Gud Morning ");
+	  		}			
+		});
+ 	}
+
+ 	void check(G s2)
+ 	{
+  		this.s1=s2;
+  		s1.test1();
+	 }
+
+}
+class Demo5
+{
+ 	public static void main(String aa[])
+ 	{
+  		new H().sample();
+ 	}
+}
+
+#################################################
+
+interface E
+{
+ 	void test1();
+}
+class F implements E
+{
+ 	E s1;
+
+ 	public void test1()
+ 	{
+  		System.out.println("  Gud Morning ");
+ 	}
+ 	void sample()
+ 	{
+  		this.check(this);
+
+                this.check(new E()
+                {
+                    public void test1(){
+                        System.out.println(" Welcome Welcome ");
+                    }
+                });
+ 	}
+ 	void check(E s2)
+ 	{
+  		this.s1=s2;
+  		s1.test1();
+	}
+
+}
+class Demo4
+{
+ 	public static void main(String aa[])
+ 	{
+  		new F().sample();
+ 	}
+}
+=======================================================================
+
+interface Mail{
+    void registration();
+    void validation();
+}
+
+class Yahoo implements Mail{
+
+ 	public void registration(){
+  		System.out.println("  Yahoo Class registration");
+ 	}
+
+ 	public void validation(){
+ 		System.out.println("  Yahoo Class validation");
+ 	}
+}
+
+class Demo7{
+    public static void main(String args[]){
+
+
+
+        Mail mail=new Yahoo();
+
+        mail.registration();
+        mail.validation();
+
+        System.out.println("==================================================");
+
+        
+        Mail m1=new Mail()
+        {
+
+                public void registration(){
+                    System.out.println("  Anonymous class registration");
+                }
+
+                public void validation(){
+                    System.out.println("  Anonymous class validation");
+                }
+
+        };
+
+        m1.registration();
+        m1.validation();
+
+    }
+}
+
+=========================================================================================
+
+interface Mail
+{
+ 	void register();
+}
+
+class A{
+
+    void test(Mail m){
+
+        m.register();
+
+    }
+}
+
+class Yahoo implements Mail{
+
+    public void register() {
+        System.out.println(" Yahoo Registration ");
+    }
+
+}
+
+class Demo2
+{
+ 	public static void main(String aa[])
+ 	{
+
+            new A().test(new Yahoo());
+
+
+            new A().test(new Mail()
+            {
+                public void register() {
+                    System.out.println(" Anonymous Class Registration ");
+                }
+
+            });
+ 	}
+}
+=======================================================================
+
+
