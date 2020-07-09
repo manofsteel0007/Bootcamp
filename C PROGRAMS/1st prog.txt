@@ -1,0 +1,4 @@
+1. Write a C program to illustrate differences between structure and Union.
+2. Write a C program to add two distances in feet and inches using structure.
+3. Write a C program to extract individual bytes from an unsigned int using union.
+4. Write a C program to read and print an employee's detail using structure.
