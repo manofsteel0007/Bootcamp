@@ -9,7 +9,7 @@ package Day2;
  *
  * @author kumar
  */
-class A1{
+ class A1{
 	int x;
 	void display1(){
 		System.out.println(" X  : "+x);
@@ -22,17 +22,18 @@ class B1 extends A1{
 	}
 }
 
-class Demo1{
+public class Demo1{
  	public static void main(String agrs[]){
-
+                    
+                System.out.println("Demo1");
 		A1 s7=new A1();
                 s7.x=100;
                 s7.display1();
                 
-                /*B1 s1 = new B1(); 
-
+                B1 s1 = (B1)new A1(); 
+                A1 s9 = s1;
 		s1.x=100;
-		s1.display1();
+		s1.display1(); 
 		s1.y=200;
 		s1.display2();
 
@@ -46,6 +47,6 @@ class Demo1{
  
 		s3.display1();
 		s3.y=400;
-		s3.display2();*/
+		s3.display2();
 	}
 }

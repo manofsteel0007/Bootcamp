@@ -24,7 +24,8 @@ class B2 extends A2{
 
 class Demo2{
  	public static void main(String agrs[]){
-
+                Demo1 s7=new Demo1();
+                
 		B2 s1 = new B2(); 
 
 		s1.x=100;

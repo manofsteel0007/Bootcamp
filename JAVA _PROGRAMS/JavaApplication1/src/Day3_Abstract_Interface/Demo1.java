@@ -3,26 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Day3_Abstract;
+package Day3_Abstract_Interface;
 
 /**
  *
  * @author kumar
  */
 
-abstract class Car1
+interface Car1
 {
- 	abstract void door();
- 	abstract void glass();
+ 	abstract void Speed();
+ 	abstract void Mileage();
 }
 
-class Benz1 extends Car1
+interface Bike1
 {
- 	void door() 
+        abstract void Speed();
+ 	abstract void Mileage();
+}
+
+class Benz1 implements Car1,Bike1
+{
+ 	public void Speed() 
  	{ 
   		System.out.println("  Benz door");    
  	}
- 	void glass() 
+ 	public void Mileage() 
  	{ 
   		System.out.println("  Benz glass");    
  	}
@@ -31,8 +37,8 @@ public class Demo1
 {
  	public static void main(String aa[])
  	{
-  		Car1 s1=new Benz1();
-  	        s1.door();
-  		s1.glass();
+  		Benz1 s1=new Benz1();
+  	        s1.Speed();
+  		s1.Mileage();
  	}
 }
