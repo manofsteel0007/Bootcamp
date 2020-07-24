@@ -9,6 +9,7 @@ package Day5;
  *
  * @author kumar
  */
+
 public class Test2 {
 
     void display1(){
@@ -16,10 +17,9 @@ public class Test2 {
         Test1 ob1=new Test1();
 
         ob1.v1_public=100;
-        ob1.v2_private=200;
+        //ob1.v2_private=200;
         ob1.v3_protected=200;
         ob1.v4_default=300;
-
         ob1.display();
     }
 

@@ -47,6 +47,12 @@ public class Demo7 {
             }
             
         }; 
+        S1.Display();
+        S1.InputValue();
+        S2.Display();
+        S2.InputValue();
+//        S3.Display();   
+//        S3.InputValue();
         
     }
 }

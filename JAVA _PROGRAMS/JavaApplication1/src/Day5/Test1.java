@@ -9,15 +9,25 @@ package Day5;
  *
  * @author kumar
  */
+class A1{
+    void Display (){
+            System.out.println("hello");
+    }
+}
 public class Test1 {
 
     public     int  v1_public;          //variable declaration
     private    int  v2_private;
     protected  int  v3_protected;            
                int  v4_default;
-
-    public void display(){
+    
+    protected void Display_protect(){
         
+        System.out.println(v3_protected);
+    }           
+    
+    public void display(){
+        v2_private=-1;
         System.out.println("  Public     : "+v1_public);
         System.out.println("  Private    : "+v2_private);
         System.out.println("  Protected  : "+v3_protected);

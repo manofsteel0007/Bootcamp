@@ -22,12 +22,13 @@ class B2 extends A2{
 	}
 }
 
-class Demo2{
+public class Demo2{
  	public static void main(String agrs[]){
                 Demo1 s7=new Demo1();
                 
 		B2 s1 = new B2(); 
-
+                B1 S4=new B1();
+               
 		s1.x=100;
 		s1.y=200;
 		s1.display2();
@@ -39,5 +40,9 @@ class Demo2{
 		B2 s3 = (B2)s2;
  
 		s3.display2();
+                String s="Welcome";
+                String ss= s.concat(s);
+                System.out.println(ss);
+                System.out.println(s.concat(" Hello"));
 	}
 }
