@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Day11;
+package Day11.AWT;
 
 import com.sun.glass.ui.Cursor;
 import java.awt.Button;

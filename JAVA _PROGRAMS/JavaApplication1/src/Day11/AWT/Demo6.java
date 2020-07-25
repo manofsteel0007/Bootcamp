@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Day11;
+package Day11.AWT;
 
 import java.awt.Button;
 import java.awt.CheckboxGroup;
@@ -11,6 +11,7 @@ import java.awt.Frame;
 import java.awt.Label;
 import java.awt.Checkbox;
 import java.awt.Choice;
+import java.awt.Font;
 //import javafx.scene.control.CheckBox;
 
 /**
@@ -25,6 +26,9 @@ public class Demo6 extends Frame {
     Choice ch1;
     Demo6(){
         setLayout(null);
+        
+        //setFont(new Font("Courier New",Font.BOLD,13));
+        
         CG=new CheckboxGroup();
         c1=new Checkbox("Car");
         c2=new Checkbox("bike");

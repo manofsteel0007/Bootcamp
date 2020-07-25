@@ -9,7 +9,8 @@ import java.util.*;
  *
  * @author kumar
  */
-class AgeException extends Exception
+
+class Age extends Exception
 {
     String Ex(){
         return "Age shouldn't be greater then 25";
@@ -17,9 +18,9 @@ class AgeException extends Exception
 }
 
 class register{
-    void vaild(int x) throws AgeException{
+    void vaild(int x) throws Age{
         if(x>25)
-            throw new AgeException();
+            throw new Age();
         else 
             System.out.println("Validation success!");
     }
@@ -27,6 +28,7 @@ class register{
 
 
 public class EDemo3 {
+        
     public static void main(String[] args) {
         register S1=new register();
         Scanner scan=new Scanner (System.in);
@@ -36,9 +38,9 @@ public class EDemo3 {
         
        catch(Exception e)
        {
-           if(e instanceof AgeException)
+           if(e instanceof Age)
            {
-               AgeException SS=(AgeException)e;
+               Age SS=(Age)e;
                String ex=SS.Ex();
                System.out.println(ex);
            }

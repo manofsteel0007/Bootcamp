@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package assessment;
-
-import javax.swing.JFrame;
+package Day11.Events;
 
 /**
  *
  * @author kumar
  */
-public class frame extends JFrame{
+public class Event2 {
     
 }

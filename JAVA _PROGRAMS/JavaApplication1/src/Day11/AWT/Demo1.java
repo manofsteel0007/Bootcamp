@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Day11;
+package Day11.AWT;
 
 /**
  *
@@ -16,7 +16,7 @@ public class Demo1 {
         //Button b=new Button();
         f.setLayout(null);
         f.setBackground(Color.CYAN);
-        f.setBounds(200, 350,500, 300);
+        f.setBounds(960-500, 540-400,1000, 800);
         f.setVisible(true);
         
     }

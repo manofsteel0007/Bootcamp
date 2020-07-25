@@ -1,3 +1,5 @@
+package Day11.AWT;
+
 import java.awt.*;  
 import java.awt.event.*;  
 public class Demo7 {  
