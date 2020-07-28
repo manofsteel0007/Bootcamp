@@ -14,16 +14,16 @@ import java.sql.Statement;
  * @author kumar
  */
 //class to create table for TEST_DETAILS
-public class TestDetails_create {
+public class StudentResult_Create {
 
-    public TestDetails_create() {
+    public StudentResult_Create() {
         final String Driver="oracle.jdbc.driver.OracleDriver";
         final String connect="jdbc:oracle:thin:@127.0.0.1:1521:XE";
         try {
             Class.forName(Driver);
             Connection con=DriverManager.getConnection(connect,"bootathon","admin");
             Statement st=con.createStatement();
-            String query="create table test_details(sno number(3) primary key,test_link varchar2(100),start_time varchar2(10),end_time varchar2(10),date_test varchar2(10),status number(1))";
+            String query="create table Student_Results( varchar2(100),start_time varchar2(10),end_time varchar2(10),date_test varchar2(10),status number(1))";
             
             st.executeUpdate(query);
             con.close();
@@ -37,7 +37,7 @@ public class TestDetails_create {
     }
     
     public static void main(String[] args) {
-        new TestDetails_create();
+        new StudentResult_Create();
     }
     
 }

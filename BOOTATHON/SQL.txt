@@ -1,0 +1,23 @@
+
+create table test_details
+(
+	sno number(3) primary key,
+	test_link varchar2(100),
+	start_time varchar2(10),
+	end_time varchar2(10),
+	date_test varchar2(10),
+	status number(1)
+);
+
+
+create table students_forum
+(
+	user_name varchar2(10),
+	name varchar2(10),
+	msg_send varchar2(357)
+);
+
+create table admin_forum
+(
+	msg_admin varchar2(357)
+);
