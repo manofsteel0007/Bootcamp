@@ -66,6 +66,12 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
     String msg_user;
     String msg_send;
     
+    Date start_date;
+    Timestamp start_time;
+    Date end_date;
+    Timestamp end_time;
+    String test_link;
+    
     public Assessment_frame(String main_user_name, String main_name) throws HeadlessException {
         this.main_user_name = main_user_name;
         this.main_name = main_name;
@@ -456,6 +462,56 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
     }
     JLabel lx=new JLabel("hello");
     
+    void TestDetails_result(){
+        int sno=1;
+        final String Driver="oracle.jdbc.driver.OracleDriver";
+        final String connect="jdbc:oracle:thin:@127.0.0.1:1521:XE";
+        try {
+            Class.forName(Driver);
+            Connection con=DriverManager.getConnection(connect,"bootathon","admin");
+            Statement st=con.createStatement();
+            String query="Select * from Test_Details";
+            ResultSet rs=st.executeQuery(query);
+            
+//          DefaultTableModel model=new DefaultTableModel();
+//          String s1[]={"Sno","Test Link","Start Time","End Time","Test Date"};
+//          model.setColumnIdentifiers(s1);
+//          t1.setModel(model);
+//          t1.setFillsViewportHeight(true);
+//          t1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+            
+            while(rs.next()){
+                start_date=rs.getDate("start_date");
+                start_time=rs.getTimestamp("start_time");			     
+                end_date=rs.getDate("end_date");
+                end_time=rs.getTimestamp("end_time");
+                test_link=rs.getString("test_link");
+//              model.addRow(new Object[] {sno,test_link,start_time,end_time,date_test});
+                if(end_time.after(new Date())){
+                    System.out.println(sno);
+                    sno++;
+                }
+            }
+            con.close();
+        }
+        catch(Exception e)
+        {
+            System.out.println(e+" Error Displaying Table");
+        }
+    }
+    
+    void TestDocumnets(){
+        System.out.println("dghdfvf");
+    }
+       
+    void QnAForum(){
+        StartThread();
+    }
+        
+    void Results(){
+            
+    }
+        
     public void run(){
         while(true){
             try {
@@ -470,129 +526,41 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
         new Thread(this).start();
     }
     
-       void TestDocumnets(){
-           System.out.println("dghdfvf");
-       }
-       
-       void sendMsg(){
-            final String Driver="oracle.jdbc.driver.OracleDriver";
-            final String connect="jdbc:oracle:thin:@127.0.0.1:1521:XE";
-            try {
-                Class.forName(Driver);
-                Connection con=DriverManager.getConnection(connect,"bootathon","admin");
-                Statement st=con.createStatement();
-                String query="insert into qna_forum values ('"+main_user_name+"','"+main_name+"','"+msg_send+"') ";
-                st.executeUpdate(query);
-                                   
-                con.close();
-            }
-            catch(Exception e)
-            {
-                System.out.println(e+" Error Insering msg");
-            }
-        }
-    
-        void getMsg(){
-            String UserMsg="";
-            final String Driver="oracle.jdbc.driver.OracleDriver";
-            final String connect="jdbc:oracle:thin:@127.0.0.1:1521:XE";
-            try {
-                Class.forName(Driver);
-                Connection con=DriverManager.getConnection(connect,"bootathon","admin");
-                Statement st=con.createStatement();
-                String query="Select * from qna_forum";
-                ResultSet rs=st.executeQuery(query);
-            
-                while(rs.next()){
-                   user_name=rs.getString("user_name");
-                    name=rs.getString("name");
-                    msg_user=rs.getString("msg_send");
-                    UserMsg=UserMsg +" "+ name+" ("+user_name+") : "+msg_user+".\n\n";
-                }
-                tf1.setText(UserMsg);
-                con.close();
-            }
-            catch(Exception e)
-            {
-                System.out.println(e+" Error Displaying Table");
-            }
-        }
-       
-       void QnAForum(){
-           StartThread();
-        }
-        
-        void Results(){
-//            int sno=1;
-//            final String Driver="oracle.jdbc.driver.OracleDriver";
-//            final String connect="jdbc:oracle:thin:@127.0.0.1:1521:XE";
-//            try {
-//                Class.forName(Driver);
-//                Connection con=DriverManager.getConnection(connect,"bootathon","admin");
-//                Statement st=con.createStatement();
-//                String query="Select * from Student_Results";
-//                ResultSet rs=st.executeQuery(query);
-//            
-//                DefaultTableModel model=new DefaultTableModel();
-//                String s2[]={"Sno","Test Link","Start Time","End Time","Test Date"};
-//                model.setColumnIdentifiers(s2);
-//                t1.setModel(model);
-//                t1.setFillsViewportHeight(true);
-//                t1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-//            
-//                while(rs.next()){
-//                    test_link=rs.getString("test_link");
-//                    start_time=rs.getString("start_time");			     
-//                    end_time=rs.getString("end_time");
-//                    date_test=rs.getString("date_test");
-//                    model.addRow(new Object[] {sno,test_link,start_time,end_time,date_test});
-//                    sno++;
-//                }
-//                con.close();
-//            }
-//            catch(Exception e)
-//            {
-//                System.out.println(e+" Error Displaying Table");
-//            }
-        }
-        
-	Date start_date;
-        Timestamp start_time;
-        Date end_date;
-	Timestamp end_time;
-	String test_link;
-	
-    
-    void TestDetails_result(){
-        int sno=1;
+    void sendMsg(){
         final String Driver="oracle.jdbc.driver.OracleDriver";
         final String connect="jdbc:oracle:thin:@127.0.0.1:1521:XE";
         try {
             Class.forName(Driver);
             Connection con=DriverManager.getConnection(connect,"bootathon","admin");
             Statement st=con.createStatement();
-            String query="Select * from Test_Details";
+            String query="insert into qna_forum values ('"+main_user_name+"','"+main_name+"','"+msg_send+"') ";
+            st.executeUpdate(query);
+            con.close();
+        }
+        catch(Exception e)
+        {
+            System.out.println(e+" Error Insering msg");
+        }
+    }
+    
+    void getMsg(){
+        String UserMsg="";
+        final String Driver="oracle.jdbc.driver.OracleDriver";
+        final String connect="jdbc:oracle:thin:@127.0.0.1:1521:XE";
+        try {
+            Class.forName(Driver);
+            Connection con=DriverManager.getConnection(connect,"bootathon","admin");
+            Statement st=con.createStatement();
+            String query="Select * from qna_forum";
             ResultSet rs=st.executeQuery(query);
             
-//            DefaultTableModel model=new DefaultTableModel();
-//            String s1[]={"Sno","Test Link","Start Time","End Time","Test Date"};
-//            model.setColumnIdentifiers(s1);
-//            t1.setModel(model);
-//            t1.setFillsViewportHeight(true);
-//            t1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-            
             while(rs.next()){
-                start_date=rs.getDate("start_date");
-		start_time=rs.getTimestamp("start_time");			     
-		end_date=rs.getDate("end_date");
-                end_time=rs.getTimestamp("end_time");
-                test_link=rs.getString("test_link");
-//                model.addRow(new Object[] {sno,test_link,start_time,end_time,date_test});
-                if(end_time.after(new Date())){
-                    System.out.println(sno);
-                    sno++;
-                }
+                user_name=rs.getString("user_name");
+                name=rs.getString("name");
+                msg_user=rs.getString("msg_send");
+                UserMsg=UserMsg +" "+ name+" ("+user_name+") : "+msg_user+".\n\n";
             }
+            tf1.setText(UserMsg);
             con.close();
         }
         catch(Exception e)
