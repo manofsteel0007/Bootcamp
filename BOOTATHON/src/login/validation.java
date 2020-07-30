@@ -108,7 +108,7 @@ class validation {
     } 
    public static void main(String[] args) {
         validation s1=new validation();
-        System.out.println(s1.isValidUserFirstName("kumaran"));
+        System.out.println(s1.isValidUserFirstName("kumaran "));
         System.out.println(s1.isValidUserLastName("s"));
         System.out.println(s1.isValidRollno("18eumc071"));
         System.out.println(s1.isValidemail("18eumc071@skcet.ac.in"));

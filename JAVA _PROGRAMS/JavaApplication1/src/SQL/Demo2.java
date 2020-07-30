@@ -15,13 +15,13 @@ import java.util.Scanner;
  * @author kumar
  */
 public class Demo2 {
-    void tablecreate(String Ename,String Ecity){
+    void tablecreate(String xyz,String Ecity){
         try {
             
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection con=DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE","test","sql");
             Statement st=con.createStatement();
-            String query="insert into emp1 values('"+Ename+"','"+Ecity+"')";
+            String query="insert into emp1 values('"+xyz+"','"+Ecity+"')";
             st.executeUpdate(query);
             //con.getAutoCommit();
             con.close();
@@ -37,7 +37,8 @@ public class Demo2 {
         String Ename=scan.nextLine();
         System.out.print("Enter City :");
         String Ecity=scan.nextLine();
-        new Demo2().tablecreate(Ename,Ecity);
+        String xyz=Ename+"/"+Ecity;
+        new Demo2().tablecreate(xyz,Ecity);
         
     }
 }

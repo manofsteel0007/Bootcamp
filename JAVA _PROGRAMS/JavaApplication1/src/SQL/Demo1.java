@@ -22,6 +22,7 @@ public class Demo1 {
             int result=st.executeUpdate(query);
             con.close();
             System.out.println("Success  "+result);
+            System.out.println("dfngbdjfvnb");
             
         } catch (Exception e) {
             

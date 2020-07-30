@@ -23,7 +23,9 @@ public class Logins extends JFrame implements ActionListener,MouseListener{
 	JButton b1,b2;
 	Color c=new Color(0,116,217);
 	Color c1=new Color(255,102,0);
-	Logins()
+        String main_user_name;
+        String main_name;
+	public Logins()
 	{
             f=new JFrame();
                         
@@ -168,6 +170,9 @@ public class Logins extends JFrame implements ActionListener,MouseListener{
 		        {
 		        	if(rs1.getString("rollno").equals(s1) && rs1.getString("password").equals(s2) )
 		        	{
+                                        main_user_name=rs1.getString("rollno");
+                                        main_name=rs1.getString("firstname")+" "+rs1.getString("lastname");
+                                        
 		        		flag=1;
 		        		break;
 		        	}
@@ -178,9 +183,11 @@ public class Logins extends JFrame implements ActionListener,MouseListener{
 		        }
 		        else
 		        {
-		        	new assessment.Assessment_frame();
+		        	new assessment.Assessment_frame(main_user_name,main_name);
 		        	l6.setVisible(false);
 		        	f.setVisible(false);
+                                f.dispose();
+                                
 		        }
 		        con1.close();
 		        

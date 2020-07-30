@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forum;
+package query;
 
 import admin.Admin_frame;
 import assessment.Assessment_frame;
-import assessment.sql_creation.TestDetails_Result;
 import dashboard.Dashboard_frame;
+import forum.Forum_frame;
 import java.awt.*;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -29,28 +29,26 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import static javax.swing.ScrollPaneConstants.*;
 import login.*;
-import query.Query_frame;
 /**
  *
  * @author kumar
  */
 
-public class Forum_frame extends JFrame implements ActionListener,MouseListener,Runnable{
+public class Query_frame extends JFrame implements ActionListener,MouseListener,Runnable{
     JFrame f=new JFrame();
     JPanel p1,p2,p3;
-    JLabel l1,l2,l3,l4;
+    JLabel l1,l2,l3;
     JButton b1,b10,b11,b12,b13,b14,b15,b16;
-    JTextArea tf1,tf2;
-    JScrollPane sp1,sp2;
+    JTextArea tf1;
+    JScrollPane sp1;
     JTextField tf3;
     Color c1=new Color(0,116,217);
     Color c2=new Color(225,50,3);
-    Color c3=new Color(255, 255, 255);
+    Color c3=new Color(241, 241, 223);
     
     String main_user_name;  //rollno of the user
     String main_name;   //name of the user 
@@ -58,7 +56,6 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
     String name;
     String user_name;
     String msg_user;
-    String msg_admin;
     String msg_send;
       
     public void actionPerformed(ActionEvent e){
@@ -66,7 +63,6 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
             msg_send=tf3.getText();
             tf3.setText(null);
             sendMsg();
-            
         }
     }
     
@@ -75,7 +71,6 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
             try {
                 getMsg();
                 Thread.sleep(1000);
-                getAdminMsg();
             } catch (Exception e) {
             }
         }
@@ -93,7 +88,7 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
             Class.forName(Driver);
             Connection con=DriverManager.getConnection(connect,"bootathon","admin");
             Statement st=con.createStatement();
-            String query="insert into students_forum values ('"+main_user_name+"','"+main_name+"','"+msg_send+"') ";
+            String query="insert into query_forum values ('"+main_user_name+"','"+main_name+"','"+msg_send+"') ";
             st.executeUpdate(query);
                                    
             con.close();
@@ -112,42 +107,15 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
             Class.forName(Driver);
             Connection con=DriverManager.getConnection(connect,"bootathon","admin");
             Statement st=con.createStatement();
-            String query="Select * from students_forum";
+            String query="Select * from query_forum";
             ResultSet rs=st.executeQuery(query);
             
             while(rs.next()){
                 user_name=rs.getString("user_name");
                 name=rs.getString("name");
                 msg_user=rs.getString("msg_send");
-                UserMsg=UserMsg +" "+ name+" ("+user_name+") : "+msg_user+".\n\n";
-            }
-            tf2.setText(UserMsg);
-            con.close();
-        }
-        catch(Exception e)
-        {
-            System.out.println(e+" Error Displaying Table");
-        }
-    }
-    /*
-        
-    */
-    void getAdminMsg(){
-        int sno=1;
-        String UserMsg="";
-        final String Driver="oracle.jdbc.driver.OracleDriver";
-        final String connect="jdbc:oracle:thin:@127.0.0.1:1521:XE";
-        try {
-            Class.forName(Driver);
-            Connection con=DriverManager.getConnection(connect,"bootathon","admin");
-            Statement st=con.createStatement();
-            String query="Select * from admin_forum";
-            ResultSet rs=st.executeQuery(query);
-            
-            while(rs.next()){
-                msg_admin=rs.getString("msg_admin");
-                UserMsg=UserMsg +" "+sno+". "+msg_admin+".\n\n";
-                sno++;
+                if(user_name.equals(main_user_name))
+                    UserMsg=UserMsg +" "+ name+" ("+user_name+") : "+msg_user+".\n\n";
             }
             tf1.setText(UserMsg);
             con.close();
@@ -159,10 +127,10 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
     }
         
     public static void main(String[] args) {
-        new Forum_frame("18eumc071","Kumaran").StartThread();
+        new Query_frame("18eumc070","Krishnan").StartThread();
     }
     
-    public Forum_frame(String main_user_name,String main_name) throws HeadlessException {
+    public Query_frame(String main_user_name,String main_name) throws HeadlessException {
         this.main_user_name=main_user_name;  //rollno
         this.main_name=main_name;   //name
         
@@ -171,17 +139,14 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
         p3=new JPanel();    //forum
         
         l1=new JLabel("Bootcamp");
-        l2=new JLabel("Forum");
-        l3=new JLabel("Announcement :");
-        l4=new JLabel("Forum :");
+        l2=new JLabel("Query");
+        l3=new JLabel("Query :");
         
         tf1=new JTextArea("");
-        tf2=new JTextArea("");
         tf3=new JTextField("");
         
         sp1=new JScrollPane(tf1);
-        sp2=new JScrollPane(tf2);
-        
+                
         b1=new JButton("Send");
         
         b10=new JButton("Dashboard");
@@ -199,16 +164,13 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
         l1.setBounds(10, 20, 250, 40);
         l2.setBounds( 270, 50, 500, 30);
         l3.setBounds(300, 220, 300, 30);
-        l4.setBounds(300, 340, 300, 30);
        
         b1.setBounds(850, 700, 100, 30);
 
         tf3.setBounds(300, 700, 500, 30);
         
-        sp1.setBounds(300, 260, 600, 70);
-        sp2.setBounds(300, 380, 600, 300);
+        sp1.setBounds(300, 260, 600, 370);
         sp1.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
-        sp2.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
         
         b10.setBounds(5,120,250 , 30);
         b11.setBounds(5,160,250 , 30);
@@ -217,6 +179,7 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
         b14.setBounds(5, 280, 250, 30);
         b15.setBounds(5,650,250,30);
         b16.setBounds(67,725,126,25);
+        
         
         b1.setFocusPainted(false);
         
@@ -244,9 +207,9 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
         b1.setBorder(new RoundedBorder(20));
            
         b10.setBackground(c1);
-        b11.setBackground(c2);
+        b11.setBackground(c1);
         b12.setBackground(c1);
-        b13.setBackground(c1);
+        b13.setBackground(c2);
         b14.setBackground(c1);
         b15.setBackground(c1);
         b16.setBackground(Color.BLACK);
@@ -263,17 +226,13 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
         
         tf1.setLineWrap(true);
         tf1.setWrapStyleWord(true);
-        tf2.setLineWrap(true);
-        tf2.setWrapStyleWord(true);
         
         l1.setFont(new Font("Verdana",Font.PLAIN,30));
         l2.setFont(new Font("Verdana",Font.BOLD,30));
         l3.setFont(new Font("Verdana",Font.BOLD,18));
-        l4.setFont(new Font("Verdana",Font.BOLD,18));
         b1.setFont(new Font("Verdana",Font.PLAIN,16));
         
-        tf1.setFont(new Font("Verdana",Font.BOLD,14));
-        tf2.setFont(new Font("Verdana",Font.PLAIN,14));
+        tf1.setFont(new Font("Verdana",Font.PLAIN,14));
         tf3.setFont(new Font("Verdana",Font.PLAIN,14));
                 
         b10.setFont(new Font("Verdana",Font.PLAIN,20));
@@ -297,9 +256,7 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
         f.add(l2);
         f.add(b1);
         f.add(l3);
-        f.add(l4);
         f.add(sp1);
-        f.add(sp2);
         f.add(tf3);
         f.add(b10);
         f.add(b11);
@@ -361,8 +318,8 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
             b14.setBackground(c1); 
             b15.setBackground(c1);
             b11.setBackground(c2);
-            //f.dispose();
-            //new Forum_frame(main_user_name, main_name).StartThread();
+            f.dispose();
+            new Forum_frame(main_user_name, main_name).StartThread();
         }
         else if(e.getSource()==b12){
             b10.setBackground(c1);
@@ -381,8 +338,8 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
             b14.setBackground(c1);
             b15.setBackground(c1);
             b13.setBackground(c2);
-            f.dispose();
-            new Query_frame(main_user_name, main_name).StartThread();
+//            f.dispose();
+//            new Query_frame(main_user_name, main_name).StartThread();
             
         }
         else if(e.getSource()==b14){
@@ -392,6 +349,7 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
             b13.setBackground(c1);
             b15.setBackground(c1);
             b14.setBackground(c2);
+            
             new Admin_frame(main_user_name, main_name);
             
         }

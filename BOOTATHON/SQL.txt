@@ -17,7 +17,23 @@ create table students_forum
 	msg_send varchar2(357)
 );
 
+create table qna_forum
+(
+	user_name varchar2(10),
+	name varchar2(10),
+	msg_send varchar2(357)
+);
+
+create table query_forum
+(
+	user_name varchar2(10),
+	name varchar2(10),
+	msg_send varchar2(357)
+);
+
 create table admin_forum
 (
 	msg_admin varchar2(357)
 );
+
+update table test_details set date_test 29/7/2020 where start_time='12:00';

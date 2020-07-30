@@ -24,6 +24,8 @@ public class Admin_frame extends JFrame implements ActionListener{
     JPanel p1=new JPanel();
     JPanel p2=new JPanel();
     JLabel l2=new JLabel();
+    String main_user_name;  //rollno of the user
+    String main_name;   //name of the user 
 	JLabel l1=new JLabel("Admin");
 	JButton b1=new JButton("Student details");
 	JButton b2=new JButton("Student results");
@@ -33,8 +35,10 @@ public class Admin_frame extends JFrame implements ActionListener{
 	Color c=new Color(0,0,153);
 	Color c1=new Color(255,255,255);
 	
-        public Admin_frame()
+        public Admin_frame(String main_user_name,String main_name)
 	{
+            this.main_user_name=main_user_name;  //rollno
+            this.main_name=main_name;   //name
             l1.setBounds(7,7,250,30);
             l1.setFont(new Font("Verdana",Font.PLAIN,25));
             l1.setForeground(c1);
@@ -136,6 +140,6 @@ public class Admin_frame extends JFrame implements ActionListener{
 		
 	}
         public static void main(String[] args) {
-        new Admin_frame();
+        new Admin_frame("18eumc071","Kumaran S");
     }
 }
