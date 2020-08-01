@@ -12,7 +12,9 @@ package assessment.sql_creation;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.Statement;
+import java.sql.Types;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,14 +23,11 @@ import javax.swing.table.DefaultTableModel;
  * @author kumar
  */
 public class StudentResults_Result {
-        int sno;
-	String test_link;
-	String start_time;
-	String end_time;
-	String date_test;
-	int status;
-        ResultSet rs;
-        public JTable t1=new JTable();
+        String main_user_name="18eumc071";
+        String name;
+        int column;
+        int test[]=new int[1000];
+       
         
     public StudentResults_Result() {
         final String Driver="oracle.jdbc.driver.OracleDriver";
@@ -37,25 +36,40 @@ public class StudentResults_Result {
             Class.forName(Driver);
             Connection con=DriverManager.getConnection(connect,"bootathon","admin");
             Statement st=con.createStatement();
-            String query="Select * from Test_Details";
-            rs=st.executeQuery(query);
-            DefaultTableModel model=new DefaultTableModel();
-            String s1[]={"Sno","Test Link","Start Time","End Time","Test Date"};
-            model.setColumnIdentifiers(s1);
             
+            String query="Select * from Student_Results";
+            ResultSet rs=st.executeQuery(query);
+            ResultSetMetaData rsmd=rs.getMetaData(); 
+            column =rsmd.getColumnCount()-2;
+            
+            System.out.println(column);
+            name=rsmd.getColumnName(1);
+            System.out.println(name);
+            for (int i = 1; i <=column+2; i++) {
+                System.out.println(rsmd.getColumnName(i));
+            }
             while(rs.next()){
-               test_link=rs.getString("test_link");
-		start_time=rs.getString("start_time");			     
-		end_time=rs.getString("end_time");
-                date_test=rs.getString("date_test");
-                
+              if(rs.getString("user_name").equals(main_user_name)){
+                  for (int i = 1; i <= column; i++) {
+//                      System.out.println(rs.getString("test1"));
+                      test[i]=Integer.parseInt(rs.getString("test"+i));
+                  }
+                  break;
+              }
+////                test_link=rs.getString("test_link");
+////		start_time=rs.getString("start_time");			     
+////		end_time=rs.getString("end_time");
+////                date_test=rs.getString("date_test");
+////                
             }
         }
         catch(Exception e)
         {
             System.out.println(e+"Error Displaying Table");
         }
-        
+        for (int i = 1; i <= column; i++) {
+            System.out.println(test[i]);
+        }
     }
     public static void main(String[] args) {
         new StudentResults_Result();

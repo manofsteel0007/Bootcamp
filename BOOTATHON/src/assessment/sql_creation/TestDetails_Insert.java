@@ -23,10 +23,10 @@ import oracle.sql.DATE;
 public class TestDetails_Insert {
     
 
-	String start_date="2020-07-31";
-        String start_time="01:46";
-        String end_date="2020-08-01";
-	String end_time="01:46";
+	String start_date="2020-08-01";
+        String start_time="1:46";
+        String end_date="2020-8-2";
+	String end_time="21:46";
 	String test_link="www.google.com";
 	int status=0;
         
@@ -37,8 +37,8 @@ public class TestDetails_Insert {
         Scanner scan=new Scanner(System.in);
         //System.out.print("Enter sno:");
         //sno=scan.nextInt();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-        sdf.setTimeZone(TimeZone.getDefault().getTimeZone("UTC"));
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+//        sdf.setTimeZone(TimeZone.getDefault().getTimeZone("UTC"));
         
 //        System.out.print("Enter start_date:");
 //	start_date=scan.nextLine();
@@ -62,9 +62,11 @@ public class TestDetails_Insert {
         final String Driver="oracle.jdbc.driver.OracleDriver";
         final String connect="jdbc:oracle:thin:@127.0.0.1:1521:XE";
         try {
+            System.out.println(start_date1+" "+start_date+" "+start_time);
+                                      System.out.println(start_date1+" "+end_date+" "+end_time);
             Class.forName(Driver);
             Connection con=DriverManager.getConnection(connect,"bootathon","admin");
-            getData_test();
+//            getData_test();
             String query="insert into test_details values (?,?,?,?,?,?) ";
 //            String query="insert into test_details values ('"+start_date+"','"+start_time+"','"+end_date+"','"+end_time+"','"+test_link+"','"+status+"'); ";
             PreparedStatement st=con.prepareStatement(query);

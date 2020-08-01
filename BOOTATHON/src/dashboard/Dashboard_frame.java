@@ -8,6 +8,7 @@ package dashboard;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.nio.file.Path;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -19,6 +20,18 @@ public class Dashboard_frame extends JFrame{
     JFrame f=new JFrame();
     String main_user_name;
     String main_name;
+    
+    void file_handling(){
+        Path dir ="F:\\BOOTCAMP\\Test cases";
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir, filter)) {
+    for (Path entry: stream) {
+        System.out.println(entry.getFileName());
+    }
+} catch (IOException x) {
+    System.err.println(x);
+}
+    }
+    
     public Dashboard_frame(String main_user_name,String main_name) {
         this.main_user_name=main_user_name;
         this.main_name=main_name;

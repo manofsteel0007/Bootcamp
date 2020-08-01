@@ -1,149 +1,138 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package login;
-
-/**
- *
- * @author kumar
- */
-import forum.Forum_frame;
 import java.sql.*;
 import javax.swing.*;
+import javax.swing.border.Border;
+
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.border.Border;
 public class Logins extends JFrame implements ActionListener,MouseListener{
-	JFrame f;
-        JLabel l1,l2,l3,l4,l5,l6;
-	JTextField tf1;
-	JPasswordField p1;
-	JButton b1,b2;
+	JPanel p1=new JPanel();
+	JPanel p2=new JPanel();
+	JLabel l7=new JLabel(new ImageIcon("C:\\Users\\kumar\\Downloads\\label1.jpg"));
+	JLabel l8=new JLabel("Welcome Back :)");
+	JLabel l1=new JLabel("Sign in");
+	JLabel l2=new JLabel("Username");
+	JLabel l3=new JLabel("Password");
+	JLabel l4=new JLabel("Forgot Password?");
+	JLabel l6=new JLabel("Invalid username or password");
+	JTextField t1=new JTextField();
+	JPasswordField password=new JPasswordField();
+	JButton b1=new JButton("Login");
+	JLabel l5=new JLabel("or");
+	JButton b2=new JButton("create an account");
+	Border border=BorderFactory.createLineBorder(Color.black);
 	Color c=new Color(0,116,217);
 	Color c1=new Color(255,102,0);
+        
         String main_user_name;
         String main_name;
+        
 	public Logins()
 	{
-            f=new JFrame();
-                        
-            l1=new JLabel("Login Form");
-            l2=new JLabel("Username");
-            l3=new JLabel("Password");
-            l4=new JLabel("Forgot Password?");
-            l5=new JLabel("or");
-            l6=new JLabel("Invalid username or password");
-            
-            b1=new JButton("Login");
-            b2=new JButton("Sign up");
-            
-            tf1=new JTextField();
-            p1=new JPasswordField();
-        
-		l1.setBounds(400, 50, 300, 40);
-		l2.setBounds(200, 120, 300, 20);
-		l3.setBounds(200, 220, 300, 20);
-		l4.setBounds(200, 300, 300, 20);
-		l5.setBounds(450, 400, 250, 40);
-		l6.setBounds(200, 310, 250, 40);
-                
-		tf1.setBounds(200, 150, 350, 30);
-                
-		p1.setBounds(200, 250, 350, 30);
+		l1.setBounds(30, 80, 450, 50);
+		l2.setBounds(30, 150, 450, 50);
+		l3.setBounds(30, 270, 460, 50);
+		l4.setBounds(300, 425, 460, 50);
+		l6.setBounds(30, 400, 460, 50);
+                l7.setBounds(0, 0, 450, 700);
+		l8.setBounds(30, 30, 450, 40);
 		
-                b1.setBounds(330, 350, 250, 40);
-		b2.setBounds(330, 450, 250, 40);
+                t1.setBounds(30, 220, 400, 30);
+		password.setBounds(30, 345, 400, 30);
+		p1.setBounds(5, 5, 450, 753);
+		p2.setBounds(460, 5, 520, 753);
+		b1.setBounds(140, 480, 200, 30);
+		b2.setBounds(10, 530, 150, 30);
 		
-                l1.setFont(new Font("Verdana",Font.PLAIN,20));
-		l2.setFont(new Font("Verdana",Font.PLAIN,15));
-		l3.setFont(new Font("Verdana",Font.PLAIN,15));
+                l1.setFont(new Font("Verdana",Font.BOLD,25));
+		l2.setFont(new Font("Verdana",Font.PLAIN,20));
+		l3.setFont(new Font("Verdana",Font.PLAIN,20));
 		l4.setFont(new Font("Verdana",Font.PLAIN,15));
-		l5.setFont(new Font("Verdana",Font.PLAIN,20));
+		l6.setFont(new Font("Verdana",Font.PLAIN,15));
+		l8.setFont(new Font("Verdana",Font.PLAIN,20));
+		b1.setFont(new Font("Verdana",Font.PLAIN,15));
+		b2.setFont(new Font("Verdana",Font.PLAIN,13));
 		
-                b1.setBorderPainted(false);
-		b2.setBorderPainted(false);
-		b1.setFocusPainted(false);
-		b2.setFocusPainted(false);
-		
-                l1.setForeground(Color.white);
-		l2.setForeground(Color.white);
-		l3.setForeground(Color.white);
-                l4.setForeground(Color.orange);
+                l1.setBackground(Color.black);
+		l2.setBackground(Color.black);
+		l3.setBackground(Color.black);
+		l4.setForeground(Color.blue);
 		l6.setForeground(Color.red);
+		l8.setBackground(Color.black);
+
+                b1.setForeground(Color.white);
+		t1.setBorder(border);
+		password.setBorder(border);
+		p1.setBackground(Color.white);
+		p2.setBackground(Color.white);
                 
-                b1.setBorder(new RoundedBorder(20));
-                b2.setBorder(new RoundedBorder(20));
+                b1.setBorderPainted(false);
+		b1.setFocusPainted(false);
 		
-		f.add(l1);
-		f.add(l2);
-		f.add(l3);
-		f.add(l4);
-		f.add(l5);
-		f.add(l6);
-		f.add(tf1);
-		f.add(p1);
-		f.add(b1);
-		f.add(b2);
-                
+                b1.setBackground(c);
+		b2.setBackground(c);
+		b2.setForeground(c);
+		
+                b2.setBorderPainted(false);
+		b2.setFocusPainted(false);
+		b2.setMargin(new Insets(0,0,0,0));
+		b2.setContentAreaFilled(false);
+		b2.setOpaque(false);
+		
+                p1.add(l7);
+		p2.add(l1);
+		p2.add(l2);
+		p2.add(l4);
+		p2.add(l6);
+		p2.add(l8);
+		p2.add(t1);
+		p2.add(password);
+		p2.add(l3);
+		p2.add(b1);
+		p2.add(b2);
+		
+                add(p1);
+		add(p2);
+		
+                p1.setLayout(null);
+		p2.setLayout(null);
 		l6.setVisible(false);
 		
                 b1.addActionListener(this);
 		b2.addActionListener(this);
 		l4.addMouseListener(this);
-            
-            f.getContentPane().setBackground(c);
 		
-            f.setSize(1000,800);
-            f.setLayout(null);
-            f.setLocationRelativeTo(null);
-            f.setVisible(true);
-
-            f.addWindowListener(new WindowAdapter() {
-                public void windowClosing(WindowEvent e) {  
-                    int a=JOptionPane.showConfirmDialog(f,"Are you sure?");  
-                        
+                this.getContentPane().setBackground(Color.white);
+		setSize(1000,800);
+		setLayout(null);
+		setLocationRelativeTo(null);
+		setVisible(true);
+                
+                addWindowListener(new WindowAdapter() {
+                    public void windowClosing(WindowEvent e) {  
+                    int a=JOptionPane.showConfirmDialog(new JFrame(),"Are you sure?");  
                     if(a==JOptionPane.YES_OPTION){  
-                        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+                        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
                     } 
                 }
-            });
-            f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);		
+                });
+                setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+	}
+	public static void main(String[] args) {
+		new Logins();
 
-        }
-	
-        
-        private static class RoundedBorder implements Border {
-           private int radius;
-
-           RoundedBorder(int radius) {
-                this.radius = radius;
-            }
-
-            public Insets getBorderInsets(Component c) {
-                return new Insets(this.radius+1, this.radius+1, this.radius+2, this.radius);
-            }
-
-            public boolean isBorderOpaque() {
-                return true;
-            }
-
-            public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-                g.drawRoundRect(x, y, width-1, height-1, radius, radius);
-            }
-        }
-        
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String s1=tf1.getText();
-		String s2=new String(p1.getPassword());
-		int x=0;
+		String s1=t1.getText();
+		String s2=new String(password.getPassword());
+		int f=0;
 		int flag=0;
-                final String Driver="oracle.jdbc.driver.OracleDriver";
-                final String connect="jdbc:oracle:thin:@127.0.0.1:1521:XE";
 		if(e.getSource()==b1)
 		{
+                    final String Driver="oracle.jdbc.driver.OracleDriver";
+                    final String connect="jdbc:oracle:thin:@127.0.0.1:1521:XE";
+                    
 			try
 			{
 				Class.forName(Driver);
@@ -155,39 +144,37 @@ public class Logins extends JFrame implements ActionListener,MouseListener{
 		        {
 		        	if(rs.getString("rollno").equals(s1))
 		        	{
-		        		x=1;
+		        		f=1;
 		        		break;
 		            }
 		        }
 		        con.close();
-                        Class.forName(Driver);
-                        Connection con1=DriverManager.getConnection(connect,"bootathon","admin");
-
-                        Statement st1=con1.createStatement();
+		        Class.forName(Driver);
+                                Connection con1=DriverManager.getConnection(connect,"bootathon","admin");
+				Statement st1=con1.createStatement();
 		        String query1="select * from registers";
 		        ResultSet rs1=st1.executeQuery(query1);
 	            while(rs1.next())
 		        {
 		        	if(rs1.getString("rollno").equals(s1) && rs1.getString("password").equals(s2) )
 		        	{
-                                        main_user_name=rs1.getString("rollno");
-                                        main_name=rs1.getString("firstname")+" "+rs1.getString("lastname");
-                                        
+                                    main_user_name=rs1.getString("rollno");
+                                    main_name=rs1.getString("firstname")+rs1.getString("lastname");
 		        		flag=1;
 		        		break;
 		        	}
 		        }
-                    if(x==0 || flag==0)
+	           if(f==0 || flag==0)
 		        {
 		        	l6.setVisible(true);
 		        }
 		        else
 		        {
-		        	new assessment.Assessment_frame(main_user_name,main_name);
+		        	//new forum(s1);
 		        	l6.setVisible(false);
-		        	f.setVisible(false);
-                                f.dispose();
-                                
+		        	setVisible(false);
+                                dispose();
+                                new assessment.Assessment_frame(main_user_name, main_name);
 		        }
 		        con1.close();
 		        
@@ -201,12 +188,11 @@ public class Logins extends JFrame implements ActionListener,MouseListener{
 		{
 			new registration();
 			l6.setVisible(false);
-			f.setVisible(false);
+			setVisible(false);
 		}
 
 		
 	}
-        
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -215,7 +201,7 @@ public class Logins extends JFrame implements ActionListener,MouseListener{
 			
 			new validpassword();
 			l6.setVisible(false);
-			f.setVisible(false);
+			setVisible(false);
 		}
 		
 	}
@@ -240,8 +226,5 @@ public class Logins extends JFrame implements ActionListener,MouseListener{
 		
 	}
 	
-        public static void main(String[] args) {
-		new Logins();
 
-	}
-}   
+}

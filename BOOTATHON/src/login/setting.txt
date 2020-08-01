@@ -1,19 +1,17 @@
-package login;
+package db;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
 import javax.swing.*;
 import javax.swing.border.Border;
-public class Setting_frame extends JFrame implements MouseListener,ActionListener {
+public class setting extends JFrame implements MouseListener,ActionListener {
 	JPanel p1=new JPanel();
 	JPanel p2=new JPanel();
 	JPanel p3=new JPanel();
@@ -44,21 +42,8 @@ public class Setting_frame extends JFrame implements MouseListener,ActionListene
 	Border border=BorderFactory.createLineBorder(Color.black);
 	Color c1=new Color(0,116,217);
 	Color c2=new Color(255,102,0);
-        
-        String main_user_name;
-        String main_name;
-        
-	public Setting_frame(String main_user_name,String main_name)
+	setting()
 	{
-            this.main_user_name=main_user_name;
-            this.main_name=main_name;
-            
-            t1.setText(main_name);
-            t2.setText(main_user_name);
-            
-            t1.setEditable(false);
-            t2.setEditable(false);
-            
 		p1.setBounds(5, 5, 250, 800);
 		p2.setBounds(258, 5, 727, 205);
 		p3.setBounds(258, 205, 727, 590);
@@ -198,24 +183,14 @@ public class Setting_frame extends JFrame implements MouseListener,ActionListene
 	    setSize(1000,800);
 	    setLocationRelativeTo(null);
 	    setLayout(null);
-            
-	    addWindowListener(new WindowAdapter() {
-                    public void windowClosing(WindowEvent e) {  
-                        int a=JOptionPane.showConfirmDialog(new JFrame(),"Are you sure?");  
-                        if(a==JOptionPane.YES_OPTION){  
-                            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
-                        } 
-                    }
-                });
-                setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-	    
-                setVisible(true);
+	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    setVisible(true);
 	}
 	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		new Setting_frame("18eumc071","Kumaran S");
+		new setting();
 
 	}
 	@Override
@@ -223,8 +198,7 @@ public class Setting_frame extends JFrame implements MouseListener,ActionListene
 		// TODO Auto-generated method stub
 		if(e.getSource()==b1)
 		{
-			t1.setText(main_name);
-                        t2.setText(main_user_name);
+			t1.setText("");
 		}
 		if(e.getSource()==b2)
 		{
@@ -236,44 +210,36 @@ public class Setting_frame extends JFrame implements MouseListener,ActionListene
 			String mobileno=t3.getText();
 			String password=new String(password1.getPassword());
 			String repassword=new String(password2.getPassword());
-			
-			if(validation.isValidPhno(mobileno)==true && validation.isValidPassword(password)==true && password.equals(repassword))
+			if(validation.isValidPhno(mobileno)==false)
 			{
-                            l8.setVisible(false);
+				l8.setVisible(true);
 			    l9.setVisible(false);
 			    l10.setVisible(false);
-                            final String Driver="oracle.jdbc.driver.OracleDriver";
-                            final String connect="jdbc:oracle:thin:@127.0.0.1:1521:XE";
-                            try {
-                                Class.forName(Driver);
-                            Connection con2=DriverManager.getConnection(connect,"bootathon","admin");
-		        Statement st2=con2.createStatement();
-		        String sql="update registers set password='"+password+"' mobileno='"+mobileno+"'where rollno='"+main_user_name+"'";
-		        st2.executeUpdate(sql);
-                            } catch (Exception e1) {
-                            }
 			}
-                        
-                        else{
-                            if(validation.isValidPhno(mobileno)==false)
-                            {
-				l8.setVisible(true);
-//                                l9.setVisible(false);
-//                                l10.setVisible(false);
-                            }
-                            if(validation.isValidPassword(password)==false )
-                            {
-//				l8.setVisible(false);
-                                l9.setVisible(true);
-//                                l10.setVisible(false);
-                            }
-                            else if(!password.equals(repassword))
-                            {
-//				  l8.setVisible(false);
-//                                l9.setVisible(false);
-                                l10.setVisible(true);
-                            }
-                        }
+			else if(validation.isValidPassword(password)==false )
+			{
+				l8.setVisible(false);
+			    l9.setVisible(true);
+			    l10.setVisible(false);
+			}
+			else if(!password.equals(repassword))
+			{
+				l8.setVisible(false);
+			    l9.setVisible(false);
+			    l10.setVisible(true);
+			}
+			else
+			{
+				l8.setVisible(false);
+			    l9.setVisible(false);
+			    l10.setVisible(false);
+				/*Connection con2=DriverManager.getConnection("jdbc:sqlite:C:\\Users\\MAHESH KUMAR B\\Downloads\\SQLiteStudio-3.2.1\\mahi\\studentsdetails.db");
+		        Statement st2=con2.createStatement();
+		        String sql="update registers set password='"+password+"' mobileno='"+mobileno+"'where rollno='"+uname+"'";
+		        st2.executeUpdate(sql);*/
+		        
+		        	
+			}
 			
 		}
 		

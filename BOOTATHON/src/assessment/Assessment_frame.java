@@ -18,13 +18,18 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
+import java.net.FileNameMap;
 import java.sql.Connection;
 //import java.sql.;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -36,6 +41,8 @@ import javax.swing.JTextField;
 import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import login.Logins;
 import login.Setting_frame;
 import query.Query_frame;
 
@@ -53,9 +60,9 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
     JTextArea tf1,tf3;
     JTextField tf2;
     JScrollPane sp1,sp2,sp3;
-    Thread th1;
+    JLabel lx=new JLabel("hello");
     Color c1=new Color(0,116,217);
-    Color c2=new Color(225,50,3);
+    Color c2=new Color(255,102,0);
     Color c3=new Color(255, 255, 255);
     
     String main_user_name;  //rollno of the user
@@ -70,7 +77,9 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
     Timestamp start_time;
     Date end_date;
     Timestamp end_time;
+     
     String test_link;
+    String testdetails;
     
     public Assessment_frame(String main_user_name, String main_name) throws HeadlessException {
         this.main_user_name = main_user_name;
@@ -108,7 +117,7 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
         b16=new JButton("Logout");
         
         t1=new JTable();
-        t1.setFont(new Font("Verdana",Font.PLAIN,15));
+        //t1.setFont(new Font("Verdana",Font.PLAIN,15));
         sp1 =new JScrollPane(t1);
         sp2 =new JScrollPane(tf1);
         sp3 =new JScrollPane(tf3);
@@ -123,14 +132,15 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
         l1.setBounds(10, 20, 250, 40);
         l2.setBounds( 270, 50, 500, 30);
         l3.setBounds(50, 15, 300, 30);
+        lx.setBounds(20, 20, 200, 200);
         
-        sp1.setBounds(0, 4, 750, 640);
+        sp1.setBounds(300, 300, 200, 300);
         
         b1.setBounds(258, 205, 366, 30);
         b2.setBounds(624, 205, 365, 30);
-        b3.setBounds(263, 240, 242, 30);
-        b4.setBounds(508, 240, 242, 30);
-        b5.setBounds(753, 240, 242, 30);
+        b3.setBounds(262, 240, 241, 30);
+        b4.setBounds(505, 240, 241, 30);
+        b5.setBounds(750, 240, 241, 30);
         b6.setBounds(592, 425, 100, 30);
         
         b10.setBounds(5,120,250 , 30);
@@ -144,7 +154,7 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
         sp2.setBounds(50, 60, 627, 345);
         tf2.setBounds(50, 425, 500, 30);
         
-        sp3.setBounds(10, 10, 710, 640);
+        sp3.setBounds(10, 10, 705, 505);
         tf1.setLineWrap(true);
         tf1.setWrapStyleWord(true);
         tf3.setLineWrap(true);
@@ -206,7 +216,7 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
         b16.setBackground(Color.BLACK);
         
         l1.setForeground(c3);
-        l2.setBackground(c3);
+        l2.setForeground(c3);
         b10.setForeground(c3);
         b11.setForeground(c3);
         b12.setForeground(c3);
@@ -221,7 +231,7 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
         
         tf1.setFont(new Font("Verdana",Font.PLAIN,14));
         tf2.setFont(new Font("Verdana",Font.PLAIN,14));
-        tf3.setFont(new Font("Verdana",Font.PLAIN,17));
+        tf3.setFont(new Font("Verdana",Font.BOLD,12));
         
         b1.setFont(new Font("Verdana",Font.PLAIN,17));
         b2.setFont(new Font("Verdana",Font.PLAIN,17));
@@ -280,14 +290,15 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
         TestDetails_result();
         p3.add(sp3);
         
-        p4.add(lx);
+        //p4.add(lx);
         
         p5.add(l3);
         p5.add(sp2);
         p5.add(tf2);
         p5.add(b6);
         
-        p6.add(t1);
+        p6.add(sp1);
+        p6.add(lx);
         
         p3.setVisible(true);
         p4.setVisible(false);
@@ -302,8 +313,11 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
         //p7.setLayout(null);
         
        
-        f.setResizable(false);
-        f.setBounds(460, 140, 1000, 800);
+        //f.setResizable(false);
+        f.setSize(1000, 800);
+        f.setLocationRelativeTo(null);
+        
+        //f.setBounds(460, 140, 1000, 800);
         f.setBackground(Color.WHITE);
         f.setVisible(true);
         
@@ -314,6 +328,7 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
             
             if(a==JOptionPane.YES_OPTION){  
                 f.dispose();
+                new Logins();
             } 
         }
         });
@@ -378,6 +393,7 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
             b13.setBackground(c1);
             b15.setBackground(c1);
             b14.setBackground(c2);
+            f.dispose();
             new Admin_frame(main_user_name, main_name);
             
         }
@@ -388,6 +404,7 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
             b13.setBackground(c1);
             b14.setBackground(c1);
             b15.setBackground(c2);
+            f.dispose();
             new Setting_frame(main_user_name, main_name);
         }
     }
@@ -460,10 +477,11 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
             sendMsg();
         }
     }
-    JLabel lx=new JLabel("hello");
+    
     
     void TestDetails_result(){
         int sno=1;
+        testdetails="";
         final String Driver="oracle.jdbc.driver.OracleDriver";
         final String connect="jdbc:oracle:thin:@127.0.0.1:1521:XE";
         try {
@@ -473,24 +491,23 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
             String query="Select * from Test_Details";
             ResultSet rs=st.executeQuery(query);
             
-//          DefaultTableModel model=new DefaultTableModel();
-//          String s1[]={"Sno","Test Link","Start Time","End Time","Test Date"};
-//          model.setColumnIdentifiers(s1);
-//          t1.setModel(model);
-//          t1.setFillsViewportHeight(true);
-//          t1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+
             
             while(rs.next()){
-                start_date=rs.getDate("start_date");
                 start_time=rs.getTimestamp("start_time");			     
-                end_date=rs.getDate("end_date");
                 end_time=rs.getTimestamp("end_time");
                 test_link=rs.getString("test_link");
-//              model.addRow(new Object[] {sno,test_link,start_time,end_time,date_test});
+
                 if(end_time.after(new Date())){
-                    System.out.println(sno);
+                    start_date=new Date(start_time.getTime());
+                    end_date=new Date(end_time.getTime());
+                    testdetails=testdetails+" "+sno+". Starts at: "+String.valueOf(start_date)+"\n" +
+                                    "    Ends at: "+String.valueOf(end_date)+"\n" +
+                                    "    Test Link: "+test_link+"\n\n";
+                    //System.out.println(sno);
                     sno++;
                 }
+                tf3.setText(testdetails);
             }
             con.close();
         }
@@ -500,16 +517,119 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
         }
     }
     
+    int fileCount=0;
+    ArrayList<String> fileName=new ArrayList<String>();
+    
+    void RecursivePrint(File[] arr,int index,int level)  
+     { 
+         // terminate condition 
+         if(index == arr.length) 
+             return; 
+           
+         // tabs for internal levels 
+         for (int i = 0; i < level; i++) 
+             System.out.print("\t"); 
+           
+         // for files 
+         if(arr[index].isFile()) {
+             System.out.println(arr[index].getName());
+                     fileName.add("[" +arr[index].getName()+ "]"); 
+                     fileCount++;
+         }
+           
+         // for sub-directories 
+         else if(arr[index].isDirectory()) 
+         { 
+             System.out.println("[" + arr[index].getName() + "]"); 
+             
+             fileName.add("[" +arr[index].getName()+ "]");
+             fileCount++;
+             
+             // recursion for sub-directories 
+             RecursivePrint(arr[index].listFiles(), 0, level + 1); 
+         } 
+            
+         // recursion for main directory 
+         RecursivePrint(arr,++index, level); 
+    }
+    
     void TestDocumnets(){
-        System.out.println("dghdfvf");
+        String maindirpath = "F:\\BOOTCAMP\\Test cases"; 
+                  
+        File maindir = new File(maindirpath); 
+           
+        if(maindir.exists() && maindir.isDirectory()) 
+        { 
+            File arr[] = maindir.listFiles(); 
+              
+            RecursivePrint(arr,0,0);  
+       }
+        
+        DefaultMutableTreeNode TestDocuments=new DefaultMutableTreeNode("TestDocuments");
+        Iterator xyz=fileName.iterator();
+        while(xyz.hasNext()){
+            TestDocuments.add(new DefaultMutableTreeNode((String)xyz.next()));
+        }
+//        for (int i = 0; i <fileCount; i++) {
+//            System.out.println(fileName[i]);
+//            TestDocuments.add(new DefaultMutableTreeNode(fileName[i]));
+//        }
+        JTree jt=new JTree(TestDocuments);
+        jt.setBounds(20, 20, 300, 300);
+        JLabel lt=new JLabel();
+        lt.setBounds(20, 20, 300, 300);
+        p4.add(jt);
+        p4.add(lt);
     }
        
     void QnAForum(){
         StartThread();
     }
-        
+    
+    
+    
     void Results(){
+        System.out.println("dghdfvf");
+        int column,average=0,rank=1;
+        int test[]=new int[100];
+        final String Driver="oracle.jdbc.driver.OracleDriver";
+        final String connect="jdbc:oracle:thin:@127.0.0.1:1521:XE";
+        try {
+            Class.forName(Driver);
+            Connection con=DriverManager.getConnection(connect,"bootathon","admin");
+            Statement st=con.createStatement();
             
+            String query="Select * from Student_Results order by average desc";
+            ResultSet rs=st.executeQuery(query);
+            ResultSetMetaData rsmd=rs.getMetaData(); 
+            column =rsmd.getColumnCount()-2;
+
+            DefaultTableModel model=new DefaultTableModel();
+            String s1[]={"Test","Mark"};
+            model.setColumnIdentifiers(s1);
+            t1.setModel(model);
+            t1.setFillsViewportHeight(true);
+            t1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+            
+            while(rs.next()){
+                System.out.println(rs.getString("user_name"));
+              if(rs.getString("user_name").equals(main_user_name)){
+                  for (int i = 1; i <= column; i++) {
+                      System.out.println(i);
+                      test[i]=rs.getInt("test"+i);
+                      model.addRow(new Object[] {"test"+i,test[i]});
+                  }
+                  average=rs.getInt("average");
+                  break;
+              }
+              rank++;
+            }
+            System.out.println(rank+""+average);
+        }
+        catch(Exception e)
+        {
+            System.out.println(e+"Error Displaying Table");
+        }    
     }
         
     public void run(){
