@@ -1,0 +1,104 @@
+====================================================================================================
+package demo02_jdbc;
+
+import java.sql.*;
+class TableCreate
+{
+ public static void main(String aa[])
+ {
+  try
+  {
+    Class.forName("com.mysql.jdbc.Driver");
+
+    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/skasc", "skitcbe","java");
+
+   Statement st=conn.createStatement();
+
+   st.executeUpdate("create table emp1(ename varchar(15),city varchar(20))");
+
+   conn.close();
+   System.out.println("Success!");
+  }
+  catch(Exception e)
+  {
+   System.out.println("     "+e);
+  }
+ }
+}
+
+====================================================================================================
+package demo02_jdbc;
+
+import java.io.*;
+import java.sql.*;
+class InsertValues1
+{
+ public static void main(String aa[])
+ {
+  try
+  {
+
+   DataInputStream dis=new DataInputStream(System.in);
+
+   System.out.print("   Enter the username   :");
+   String s1=dis.readLine();
+
+   System.out.print("   Enter the city       :");
+   String s2=dis.readLine();
+
+
+    Class.forName("com.mysql.jdbc.Driver");
+
+    Connection co = DriverManager.getConnection("jdbc:mysql://localhost/skasc", "skitcbe","java");
+
+   Statement st=co.createStatement();
+
+   st.executeUpdate("insert into emp1 values('"+s1+"','"+s2+"')");
+
+   co.setAutoCommit(true);
+   co.close();
+   System.out.println("Success!");
+  }
+  catch(Exception e)
+  {
+   System.out.println("     "+e);
+  }
+ }
+}
+
+====================================================================================================
+package demo02_jdbc;
+
+import java.io.*;
+import java.sql.*;
+class GetValues
+{
+ public static void main(String aa[])
+ {
+  
+  try
+  {
+    Class.forName("com.mysql.jdbc.Driver");
+
+    Connection co = DriverManager.getConnection("jdbc:mysql://localhost/skasc", "skitcbe","java");
+
+   Statement st=co.createStatement();
+
+
+   ResultSet rs=st.executeQuery("select * from emp1");
+
+   while(rs.next())
+   {
+    System.out.print(" Name  : "+rs.getString("ename"));
+    System.out.println("          City  : "+rs.getString("city"));
+   }
+   co.close();
+  }
+  catch(Exception e)
+  {
+   System.out.println("     "+e);
+  }
+ }
+}
+
+====================================================================================================

@@ -33,9 +33,14 @@ create table admin_forum
 
 create table Student_Results
 ( 
-	user_name varchar2(10),
-	name varchar2(10),
-	test1 number(10)
+	user_name varchar2(100),
+	name varchar2(100),
+	test1 number(10),
+	test2 number(10),
+	test3 number(10),
+	test4 number(10)
 );
+
+
 
 update table test_details set date_test 29/7/2020 where start_time='12:00';

@@ -1,9 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package forum;
+
+
 
 import admin.Admin_frame;
 import assessment.Assessment_frame;
@@ -19,10 +17,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.sql.*;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -35,10 +36,8 @@ import javax.swing.border.Border;
 import static javax.swing.ScrollPaneConstants.*;
 import login.*;
 import query.Query_frame;
-/**
- *
- * @author kumar
- */
+
+
 
 public class Forum_frame extends JFrame implements ActionListener,MouseListener,Runnable{
     JFrame f=new JFrame();
@@ -48,9 +47,27 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
     JTextArea tf1,tf2;
     JScrollPane sp1,sp2;
     JTextField tf3;
-    Color c1=new Color(0,116,217);
+    Color c1=new Color(58,64,82);
     Color c2=new Color(225,50,3);
     Color c3=new Color(255, 255, 255);
+    
+    JLabel Line=new JLabel("____________________________________");
+    
+    JLabel background=new JLabel(new ImageIcon(loadImage("/Image/Forum.jpg")));
+    
+    JLabel dashboard=new JLabel(new ImageIcon("C:\\Users\\MAHESH KUMAR B\\Downloads\\home-run (1).png"));
+    JLabel forum=new JLabel(new ImageIcon("C:\\Users\\MAHESH KUMAR B\\Downloads\\conversation (1).png"));
+    JLabel assessment=new JLabel(new ImageIcon("C:\\Users\\MAHESH KUMAR B\\Downloads\\book (1).png"));
+    JLabel query=new JLabel(new ImageIcon("C:\\Users\\MAHESH KUMAR B\\Downloads\\question (1).png"));
+    JLabel setting=new JLabel(new ImageIcon("C:\\Users\\MAHESH KUMAR B\\Downloads\\gear (1).png"));
+    JLabel logout=new JLabel(new ImageIcon("C:\\Users\\MAHESH KUMAR B\\Downloads\\logout (1).png"));
+
+    JLabel dashboard1=new JLabel(new ImageIcon("C:\\Users\\MAHESH KUMAR B\\Downloads\\home-run.png"));
+    JLabel forum1=new JLabel(new ImageIcon("C:\\Users\\MAHESH KUMAR B\\Downloads\\conversation.png"));
+    JLabel assessment1=new JLabel(new ImageIcon("C:\\Users\\MAHESH KUMAR B\\Downloads\\book.png"));
+    JLabel query1=new JLabel(new ImageIcon("C:\\Users\\MAHESH KUMAR B\\Downloads\\question.png"));
+    JLabel setting1=new JLabel(new ImageIcon("C:\\Users\\MAHESH KUMAR B\\Downloads\\gear.png"));
+    JLabel logout1=new JLabel(new ImageIcon("C:\\Users\\MAHESH KUMAR B\\Downloads\\logout (2).png"));
     
     String main_user_name;  //rollno of the user
     String main_name;   //name of the user 
@@ -162,6 +179,18 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
         new Forum_frame("18eumc071","Kumaran").StartThread();
     }
     
+    public BufferedImage loadImage(String fileName){
+        BufferedImage buff = null;
+        try {
+            buff = ImageIO.read(getClass().getResourceAsStream(fileName));
+        } catch (IOException e) {
+                // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
+        }
+        return buff;
+    }
+    
     public Forum_frame(String main_user_name,String main_name) throws HeadlessException {
         this.main_user_name=main_user_name;  //rollno
         this.main_name=main_name;   //name
@@ -185,38 +214,58 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
         b1=new JButton("Send");
         
         b10=new JButton("Dashboard");
-        b11=new JButton("Forum");
-        b12=new JButton("Assessment");
+        b11=new JButton("Assessment");
+        b12=new JButton("Forum");
         b13=new JButton("Query");
         b14=new JButton("Admin");
         b15=new JButton("Setting");
         b16=new JButton("Logout");
                 
-        p1.setBounds(5,5,250,800);
-        p2.setBounds(258,5,727,200);
-        p3.setBounds(258, 205,  727, 640);
+        p1.setBounds(10, 20, 250, 725);
+//        p2.setBounds(258,5,727,200);
+        p3.setBounds(270, 210, 700, 535);
        
-        l1.setBounds(10, 20, 250, 40);
-        l2.setBounds( 270, 50, 500, 30);
-        l3.setBounds(300, 220, 300, 30);
-        l4.setBounds(300, 340, 300, 30);
-       
-        b1.setBounds(850, 700, 100, 30);
-
-        tf3.setBounds(300, 700, 500, 30);
+        background.setBounds(0, 0, 1000, 210);
         
-        sp1.setBounds(300, 260, 600, 70);
-        sp2.setBounds(300, 380, 600, 300);
+        l1.setBounds(10,10,150,30);
+        l2.setBounds(270,20,150,30);
+        
+        l3.setBounds(30, 10, 300, 30);
+        l4.setBounds(30, 130, 300, 30);
+       
+        b1.setBounds(580, 490, 100, 30);
+
+        tf3.setBounds(30, 490, 500, 30);
+        
+        sp1.setBounds(30, 50, 600, 70);
+        sp2.setBounds(30, 170, 600, 300);
         sp1.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
         sp2.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
         
-        b10.setBounds(5,120,250 , 30);
-        b11.setBounds(5,160,250 , 30);
-        b12.setBounds(5,200,250 , 30);
-        b13.setBounds(5,240,250 , 30);
-        b14.setBounds(5, 280, 250, 30);
-        b15.setBounds(5,650,250,30);
-        b16.setBounds(67,725,126,25);
+        Line.setBounds(8, 430, 230,20);
+        Line.setForeground(Color.white);
+        
+        dashboard.setBounds(5, 80, 30,30);
+        assessment.setBounds(10, 140, 30,30);
+        forum.setBounds(10, 200, 30,30);
+        query.setBounds(10, 260, 30,30);
+        setting.setBounds(10, 520, 30,30);
+        logout.setBounds(10, 600, 30,30);
+        
+        dashboard1.setBounds(5, 80, 30,30);
+        assessment1.setBounds(10, 140, 30,30);
+        forum1.setBounds(10, 200, 30,30);
+        query1.setBounds(10, 260, 30,30);
+        setting1.setBounds(10, 520, 30,30);
+        logout1.setBounds(10, 600, 30,30);
+        
+        b10.setBounds(45, 80, 200,30);
+        b11.setBounds(45, 140, 200,30);
+        b12.setBounds(45, 200, 200,30);
+        b13.setBounds(45, 260, 200,30);
+//        b14.setBounds(45, 520, 200,30);
+        b15.setBounds(45, 520, 200,30);
+        b16.setBounds(45, 600, 200,30);
         
         b1.setFocusPainted(false);
         
@@ -224,7 +273,7 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
         b11.setBorderPainted(false);
         b12.setBorderPainted(false);
         b13.setBorderPainted(false);
-        b14.setBorderPainted(false);
+//        b14.setBorderPainted(false);
         b15.setBorderPainted(false);
         b16.setBorderPainted(false);
         
@@ -232,32 +281,33 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
         b11.setFocusPainted(false);
         b12.setFocusPainted(false);
         b13.setFocusPainted(false);
-        b14.setFocusPainted(false);
+//        b14.setFocusPainted(false);
         b15.setFocusPainted(false);
         b16.setFocusPainted(false);
         
         
         p1.setBackground(c1);
-        p2.setBackground(c2);
+        //p2.setBackground(c2);
         p3.setBackground(c3);
-        
-        b1.setBorder(new RoundedBorder(20));
+
+        b1.setBackground(c1);
+        b1.setForeground(c3);
            
         b10.setBackground(c1);
-        b11.setBackground(c2);
-        b12.setBackground(c1);
+        b11.setBackground(c1);
+        b12.setBackground(c3);
         b13.setBackground(c1);
-        b14.setBackground(c1);
+//        b14.setBackground(c1);
         b15.setBackground(c1);
-        b16.setBackground(Color.BLACK);
+        b16.setBackground(c1);
         
         l1.setForeground(c3);
         l2.setBackground(c3);
         b10.setForeground(c3);
         b11.setForeground(c3);
-        b12.setForeground(c3);
+        b12.setForeground(c1);
         b13.setForeground(c3);
-        b14.setForeground(c3);
+//        b14.setForeground(c3);
         b15.setForeground(c3);
         b16.setForeground(c3);
         
@@ -266,23 +316,23 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
         tf2.setLineWrap(true);
         tf2.setWrapStyleWord(true);
         
-        l1.setFont(new Font("Verdana",Font.PLAIN,30));
-        l2.setFont(new Font("Verdana",Font.BOLD,30));
-        l3.setFont(new Font("Verdana",Font.BOLD,18));
-        l4.setFont(new Font("Verdana",Font.BOLD,18));
-        b1.setFont(new Font("Verdana",Font.PLAIN,16));
+        l1.setFont(new Font("TimesRoman",Font.PLAIN,25));
+        l2.setFont(new Font("TimesRoman",Font.BOLD,25));
+        l3.setFont(new Font("TimesRoman",Font.BOLD,18));
+        l4.setFont(new Font("TimesRoman",Font.BOLD,18));
+        b1.setFont(new Font("TimesRoman",Font.PLAIN,16));
         
-        tf1.setFont(new Font("Verdana",Font.BOLD,14));
-        tf2.setFont(new Font("Verdana",Font.PLAIN,14));
-        tf3.setFont(new Font("Verdana",Font.PLAIN,14));
+        tf1.setFont(new Font("TimesRoman",Font.BOLD,14));
+        tf2.setFont(new Font("TimesRoman",Font.PLAIN,14));
+        tf3.setFont(new Font("TimesRoman",Font.PLAIN,14));
                 
-        b10.setFont(new Font("Verdana",Font.PLAIN,20));
-        b11.setFont(new Font("Verdana",Font.PLAIN,20));
-        b12.setFont(new Font("Verdana",Font.PLAIN,20));
-        b13.setFont(new Font("Verdana",Font.PLAIN,20));
-        b14.setFont(new Font("Verdana",Font.PLAIN,20));
-        b15.setFont(new Font("Verdana",Font.PLAIN,20));
-        b16.setFont(new Font("Verdana",Font.PLAIN,12));
+        b10.setFont(new Font("TimesRoman",Font.PLAIN,20));
+        b11.setFont(new Font("TimesRoman",Font.PLAIN,20));
+        b12.setFont(new Font("TimesRoman",Font.PLAIN,20));
+        b13.setFont(new Font("TimesRoman",Font.PLAIN,20));
+//        b14.setFont(new Font("Verdana",Font.PLAIN,20));
+        b15.setFont(new Font("TimesRoman",Font.PLAIN,20));
+        b16.setFont(new Font("TimesRoman",Font.PLAIN,20));
         
         b1.addActionListener(this);
                 
@@ -290,46 +340,77 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
         b11.addMouseListener(this);
         b12.addMouseListener(this);
         b13.addMouseListener(this);
-        b14.addMouseListener(this);
+//        b14.addMouseListener(this);
         b15.addMouseListener(this);
         
-        f.add(l1);
-        f.add(l2);
-        f.add(b1);
-        f.add(l3);
-        f.add(l4);
-        f.add(sp1);
-        f.add(sp2);
-        f.add(tf3);
-        f.add(b10);
-        f.add(b11);
-        f.add(b12);
-        f.add(b13);
-        f.add(b14);
-        f.add(b15);
-        f.add(b16);
-        f.add(p1);
-        f.add(p2);
-        f.add(p3);
+        p1.add(l1);
+        p1.add(dashboard);
+        p1.add(forum);
+        p1.add(assessment);
+        p1.add(query);
+        p1.add(setting);
+        p1.add(logout);
         
-                
+        p1.add(dashboard1);
+        p1.add(forum1);
+        p1.add(assessment1);
+        p1.add(query1);
+        p1.add(setting1);
+        p1.add(logout1);
+        p1.add(Line);
+        
+        p1.add(b10);
+        p1.add(b11);
+        p1.add(b12);
+        p1.add(b13);
+        p1.add(b15);
+        p1.add(b16);
+        
+        p3.add(l2);
+        p3.add(b1);
+        p3.add(l3);
+        p3.add(l4);
+        p3.add(sp1);
+        p3.add(sp2);
+        p3.add(tf3);
+        
+        p1.setLayout(null);
         p3.setLayout(null);
+        
+        f.add(p1);
+        f.add(p3);
+        f.add(l2);
+        f.add(background);
               
         f.setResizable(false);
-        f.setBounds(460, 140, 1000, 800);
-        f.setBackground(Color.GRAY);
+        f.setSize(1000,800);
+	f.setLocationRelativeTo(null);
+        f.setBackground(Color.white);
         f.setVisible(true);
         
         b16.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            int a=JOptionPane.showConfirmDialog(f,"Are you sure?");  
+                
+                b16.setBackground(Color.white);
+                b12.setBackground(c1);
             
-            if(a==JOptionPane.YES_OPTION){  
-                f.dispose();
-                new Logins();
-            } 
-        }
+                b16.setForeground(Color.black);
+                b12.setForeground(Color.white);
+
+                logout.setVisible(true);
+                forum.setVisible(false);
+
+                logout1.setVisible(false);
+                forum1.setVisible(true);
+
+                int a=JOptionPane.showConfirmDialog(f,"Are you sure?");  
+
+                if(a==JOptionPane.YES_OPTION){  
+                    f.dispose();
+                    new Logins();
+                } 
+            }
         });
         
         f.addWindowListener(new WindowAdapter() {
@@ -345,63 +426,115 @@ public class Forum_frame extends JFrame implements ActionListener,MouseListener,
     
     public void mouseClicked(MouseEvent e){
         if(e.getSource()==b10){
-            b11.setBackground(c1);
+//            b11.setBackground(c1);
+//            b12.setBackground(c1);
+//            b13.setBackground(c1);
+//            b14.setBackground(c1);
+//            b15.setBackground(c1);
+//            b10.setBackground(c2);
+            
+            b10.setBackground(Color.white);
             b12.setBackground(c1);
-            b13.setBackground(c1);
-            b14.setBackground(c1);
-            b15.setBackground(c1);
-            b10.setBackground(c2);
+            
+            b10.setForeground(Color.black);
+            b12.setForeground(Color.white);
+            
+            dashboard.setVisible(true);
+            forum.setVisible(false);
+            
+            dashboard1.setVisible(false);
+            forum1.setVisible(true);
             f.dispose();
             new Dashboard_frame(main_user_name, main_name);
         }
         else if(e.getSource()==b11){
-            b10.setBackground(c1);
+//            b10.setBackground(c1);
+//            b12.setBackground(c1);
+//            b13.setBackground(c1);
+//            b14.setBackground(c1); 
+//            b15.setBackground(c1);
+//            b11.setBackground(c2);
+            
+            b11.setBackground(Color.white);
             b12.setBackground(c1);
-            b13.setBackground(c1);
-            b14.setBackground(c1); 
-            b15.setBackground(c1);
-            b11.setBackground(c2);
-            //f.dispose();
-            //new Forum_frame(main_user_name, main_name).StartThread();
-        }
-        else if(e.getSource()==b12){
-            b10.setBackground(c1);
-            b11.setBackground(c1);
-            b13.setBackground(c1);
-            b14.setBackground(c1);
-            b15.setBackground(c1);
-            b12.setBackground(c2);
+            
+            b11.setForeground(Color.black);
+            b12.setForeground(Color.white);
+            
+            assessment.setVisible(true);
+            forum.setVisible(false);
+            
+            assessment1.setVisible(false);
+            forum1.setVisible(true);
+            
             f.dispose();
             new Assessment_frame(main_user_name, main_name);
         }
+//        else if(e.getSource()==b12){
+//            b10.setBackground(c1);
+//            b11.setBackground(c1);
+//            b13.setBackground(c1);
+//            b14.setBackground(c1);
+//            b15.setBackground(c1);
+//            b12.setBackground(c2);
+//            //f.dispose();
+//            //new Forum_frame(main_user_name, main_name).StartThread();
+//        }
         else if(e.getSource()==b13){
-            b10.setBackground(c1);
-            b11.setBackground(c1);
+//            b10.setBackground(c1);
+//            b11.setBackground(c1);
+//            b12.setBackground(c1);
+//            b14.setBackground(c1);
+//            b15.setBackground(c1);
+//            b13.setBackground(c2);
+//            
+            b13.setBackground(Color.white);
             b12.setBackground(c1);
-            b14.setBackground(c1);
-            b15.setBackground(c1);
-            b13.setBackground(c2);
+            
+            b13.setForeground(Color.black);
+            b12.setForeground(Color.white);
+            
+            query.setVisible(true);
+            forum.setVisible(false);
+            
+            query1.setVisible(false);
+            forum1.setVisible(true);
+            
             f.dispose();
             new Query_frame(main_user_name, main_name).StartThread();
             
         }
-        else if(e.getSource()==b14){
-            b10.setBackground(c1);
-            b11.setBackground(c1);
-            b12.setBackground(c1);
-            b13.setBackground(c1);
-            b15.setBackground(c1);
-            b14.setBackground(c2);
-            new Admin_frame(main_user_name, main_name);
-            
-        }
+//        else if(e.getSource()==b14){
+//            b10.setBackground(c1);
+//            b11.setBackground(c1);
+//            b12.setBackground(c1);
+//            b13.setBackground(c1);
+//            b15.setBackground(c1);
+//            b14.setBackground(c2);
+//            new Admin_frame(main_user_name, main_name);
+//            
+//        }
         else if(e.getSource()==b15){
-            b10.setBackground(c1);
-            b11.setBackground(c1);
+//            b10.setBackground(c1);
+//            b11.setBackground(c1);
+//            b12.setBackground(c1);
+//            b13.setBackground(c1);
+//            b14.setBackground(c1);
+//            b15.setBackground(c2);
+            
+            b15.setBackground(Color.white);
             b12.setBackground(c1);
-            b13.setBackground(c1);
-            b14.setBackground(c1);
-            b15.setBackground(c2);
+            
+            b15.setForeground(Color.black);
+            b12.setForeground(Color.white);
+            
+            setting.setVisible(true);
+            forum.setVisible(false);
+            
+            setting1.setVisible(false);
+            forum1.setVisible(true);
+            
+            f.dispose();
             new Setting_frame(main_user_name, main_name);
         }
     }

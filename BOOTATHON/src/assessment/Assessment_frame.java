@@ -40,8 +40,12 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
 import javax.swing.border.Border;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.plaf.basic.BasicTreeUI;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreeSelectionModel;
 import login.Logins;
 import login.Setting_frame;
 import query.Query_frame;
@@ -65,6 +69,9 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
     Color c2=new Color(255,102,0);
     Color c3=new Color(255, 255, 255);
     
+    DefaultMutableTreeNode TestDocuments=new DefaultMutableTreeNode("TestDocuments");
+    JTree jt=new JTree(TestDocuments);
+    
     String main_user_name;  //rollno of the user
     String main_name;   //name of the user 
     
@@ -80,6 +87,8 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
      
     String test_link;
     String testdetails;
+    
+    ArrayList<String> fileName=new ArrayList<String>();
     
     public Assessment_frame(String main_user_name, String main_name) throws HeadlessException {
         this.main_user_name = main_user_name;
@@ -135,6 +144,9 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
         lx.setBounds(20, 20, 200, 200);
         
         sp1.setBounds(300, 300, 200, 300);
+        
+        jt.setBounds(20, 20, 300, 300);
+        
         
         b1.setBounds(258, 205, 366, 30);
         b2.setBounds(624, 205, 365, 30);
@@ -248,6 +260,8 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
         b15.setFont(new Font("Verdana",Font.PLAIN,20));
         b16.setFont(new Font("Verdana",Font.PLAIN,12));
         
+        jt.setFont(new Font("Verdana",Font.PLAIN,16));
+        
         b1.addActionListener(this);
         b2.addActionListener(this);
         b3.addActionListener(this);
@@ -261,6 +275,20 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
         b13.addMouseListener(this);
         b14.addMouseListener(this);
         b15.addMouseListener(this);
+        
+        jt.addTreeSelectionListener(new TreeSelectionListener() {
+            @Override
+            public void valueChanged(TreeSelectionEvent e) {
+                TreeSelectionModel model=jt.getSelectionModel();
+                int x=model.getSelectionRows()[0];
+                //System.out.println(x);
+                try {
+                    Desktop.getDesktop().open(new java.io.File("F:\\BOOTCAMP\\Test cases\\"+ fileName.get(x)));
+                } catch (Exception e2) {
+                }
+                    
+            }
+        });
         
         f.add(l1);
         f.add(l2);
@@ -286,11 +314,13 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
         b3.setVisible(false);
         b4.setVisible(false);
         b5.setVisible(false);
-        
+                       
         TestDetails_result();
         p3.add(sp3);
         
         //p4.add(lx);
+        
+        p4.add(jt);
         
         p5.add(l3);
         p5.add(sp2);
@@ -440,6 +470,7 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
         }
         else if(e.getSource()==b2)
         {
+            TestDocumnets();
             b3.setVisible(true);
             b4.setVisible(true);
             b5.setVisible(true);
@@ -518,7 +549,7 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
     }
     
     int fileCount=0;
-    ArrayList<String> fileName=new ArrayList<String>();
+    
     
     void RecursivePrint(File[] arr,int index,int level)  
      { 
@@ -532,17 +563,17 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
            
          // for files 
          if(arr[index].isFile()) {
-             System.out.println(arr[index].getName());
-                     fileName.add("[" +arr[index].getName()+ "]"); 
+             //System.out.println(arr[index].getName());
+                     fileName.add(arr[index].getName()); 
                      fileCount++;
          }
            
          // for sub-directories 
          else if(arr[index].isDirectory()) 
          { 
-             System.out.println("[" + arr[index].getName() + "]"); 
+             //System.out.println("[" + arr[index].getName() + "]"); 
              
-             fileName.add("[" +arr[index].getName()+ "]");
+             fileName.add(arr[index].getName());
              fileCount++;
              
              // recursion for sub-directories 
@@ -565,7 +596,7 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
             RecursivePrint(arr,0,0);  
        }
         
-        DefaultMutableTreeNode TestDocuments=new DefaultMutableTreeNode("TestDocuments");
+        
         Iterator xyz=fileName.iterator();
         while(xyz.hasNext()){
             TestDocuments.add(new DefaultMutableTreeNode((String)xyz.next()));
@@ -574,12 +605,12 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
 //            System.out.println(fileName[i]);
 //            TestDocuments.add(new DefaultMutableTreeNode(fileName[i]));
 //        }
-        JTree jt=new JTree(TestDocuments);
-        jt.setBounds(20, 20, 300, 300);
-        JLabel lt=new JLabel();
-        lt.setBounds(20, 20, 300, 300);
-        p4.add(jt);
-        p4.add(lt);
+        
+        
+        //JLabel lt=new JLabel();
+        //lt.setBounds(20, 20, 300, 300);
+        jt.expandRow(0);
+        //p4.add(lt);
     }
        
     void QnAForum(){
@@ -597,6 +628,9 @@ public class Assessment_frame extends JFrame implements ActionListener,MouseList
         try {
             Class.forName(Driver);
             Connection con=DriverManager.getConnection(connect,"bootathon","admin");
+//            Class.forName("com.mysql.jdbc.Driver");
+//            Connection con = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/complainsystem?","aravindha","admin@123");
+            
             Statement st=con.createStatement();
             
             String query="Select * from Student_Results order by average desc";

@@ -23,10 +23,10 @@ public class StudentResults_Insert {
             Connection con=DriverManager.getConnection(connect,"bootathon","admin");
             Statement st=con.createStatement();
             String query="alter table student_results add test3 number(10)";
-            String query2="insert into student_results values ('18eumc071','Kumaran S','45','15','87','26','43.25')";
+            String query2="INSERT INTO student_results VALUES('18eumc071', 'Kumaran S', 45, 15, 87, 26, 43.25)";
 //            String query3-"
 
-            st.executeUpdate(query);
+            //st.executeUpdate(query);
             st.executeUpdate(query2);
             con.close();
             System.out.println("Success");

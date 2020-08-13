@@ -1,0 +1,93 @@
+package database;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DatabaseOperations {
+
+    private static Connection connection;
+
+    public static Connection getConnection() {
+        
+        try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            connection = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE","test","sql");
+          
+        }
+        catch(Exception ex){
+            System.out.println("  "+ex);
+        }
+        return connection;
+    }
+    
+    
+}
+
+
+package jdbcusingoracle;
+
+import database.DatabaseOperations;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+
+class Demo01{
+    void tableCreate(){
+        try{
+
+
+
+            Connection con = DatabaseOperations.getConnection();
+
+            Statement  st = con.createStatement();
+
+            String query="create table emp1(ename varchar(15),city varchar(20))";
+
+            int result = st.executeUpdate(query);
+            
+            con.close();
+            System.out.println("Success!    "+result);
+        }
+        catch(Exception e){
+            System.out.println("---------->  "+e);
+        }
+    }
+    public static void main(String ss[]) throws Exception{
+
+        new Demo01().tableCreate();
+    }
+}
+
+
+
+package jdbcusingoracle;
+
+
+import database.DatabaseOperations;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+class Demo02{
+    void insertValues(){
+        try{
+            Connection con = DatabaseOperations.getConnection();    
+            
+            Statement  st = con.createStatement();
+            
+            String query="insert into emp1 values('hari','cbe')";
+            
+            st.executeUpdate(query);
+            
+            con.setAutoCommit(true);
+            con.close();
+            System.out.println("Success!");
+        }
+        catch(Exception e){
+            System.out.println("---------->  "+e);
+        }
+    }
+    public static void main(String ss[]) throws Exception{
+        new Demo02().insertValues();
+    }
+}

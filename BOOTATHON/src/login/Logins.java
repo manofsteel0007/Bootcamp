@@ -124,44 +124,40 @@ public class Logins extends JFrame implements ActionListener,MouseListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String s1=t1.getText();
-		String s2=new String(password.getPassword());
-		int f=0;
-		int flag=0;
-		if(e.getSource()==b1)
-		{
-                    final String Driver="oracle.jdbc.driver.OracleDriver";
-                    final String connect="jdbc:oracle:thin:@127.0.0.1:1521:XE";
+            String s1=t1.getText();
+            String s2=new String(password.getPassword());
+            int f=0;
+            int flag=0;
+            if(e.getSource()==b1){
+                final String Driver="oracle.jdbc.driver.OracleDriver";
+                final String connect="jdbc:oracle:thin:@127.0.0.1:1521:XE";
                     
-			try
-			{
-				Class.forName(Driver);
-                                Connection con=DriverManager.getConnection(connect,"bootathon","admin");
-				Statement st=con.createStatement();
-				String query="select * from registers";
-		        ResultSet rs=st.executeQuery(query);
-		        while(rs.next())
-		        {
-		        	if(rs.getString("rollno").equals(s1))
-		        	{
-		        		f=1;
-		        		break;
-		            }
-		        }
-		        con.close();
-		        Class.forName(Driver);
-                                Connection con1=DriverManager.getConnection(connect,"bootathon","admin");
-				Statement st1=con1.createStatement();
-		        String query1="select * from registers";
-		        ResultSet rs1=st1.executeQuery(query1);
+		try{
+                    Class.forName(Driver);
+                    Connection con=DriverManager.getConnection(connect,"bootathon","admin");
+                    Statement st=con.createStatement();
+                    String query="select * from registers";
+		    ResultSet rs=st.executeQuery(query);
+		    while(rs.next())
+		    {
+                        if(rs.getString("rollno").equals(s1)){
+                            f=1;
+                            break;
+                        }
+                    }
+		    con.close();
+		    Class.forName(Driver);
+                    Connection con1=DriverManager.getConnection(connect,"bootathon","admin");
+                    Statement st1=con1.createStatement();
+		    String query1="select * from registers";
+		    ResultSet rs1=st1.executeQuery(query1);
 	            while(rs1.next())
-		        {
-		        	if(rs1.getString("rollno").equals(s1) && rs1.getString("password").equals(s2) )
-		        	{
-                                    main_user_name=rs1.getString("rollno");
-                                    main_name=rs1.getString("firstname")+rs1.getString("lastname");
-		        		flag=1;
-		        		break;
+		    {
+                        if(rs1.getString("rollno").equals(s1) && rs1.getString("password").equals(s2) ){
+                            main_user_name=rs1.getString("rollno");
+                            main_name=rs1.getString("firstname")+rs1.getString("lastname");
+                            flag=1;
+                            break;
 		        	}
 		        }
 	           if(f==0 || flag==0)

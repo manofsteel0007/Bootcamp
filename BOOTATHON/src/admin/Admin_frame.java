@@ -120,7 +120,8 @@ public class Admin_frame extends JFrame implements ActionListener,MouseListener,
             this.main_user_name=main_user_name;
             this.main_name=main_name;
 		al=new ArrayList<String>();
-		p1.setBounds(5, 5, 250, 800);
+		
+                p1.setBounds(5, 5, 250, 800);
 		p2.setBounds(258, 5, 727, 205);
 		p3.setBounds(258, 205, 727, 590);
 		p6.setBounds(258, 205, 727, 590);
@@ -222,15 +223,17 @@ public class Admin_frame extends JFrame implements ActionListener,MouseListener,
 		b12.setForeground(Color.white);
 		b13.setForeground(Color.white);
 		b14.setForeground(Color.white);
-        p1.setBackground(c1);
-        ta1.setBorder(border);
+        
+                p1.setBackground(c1);
+                ta1.setBorder(border);
 		p2.setBackground(c2);
 		p3.setBackground(Color.white);
 		p4.setBackground(Color.white);
 		p5.setBackground(Color.white);
 		p6.setBackground(Color.white);
 		p7.setBackground(Color.white);
-		b1.setFocusPainted(false);
+	
+            b1.setFocusPainted(false);
 	    b2.setFocusPainted(false);
 	    b3.setFocusPainted(false);
 	    b4.setFocusPainted(false);
@@ -244,11 +247,13 @@ public class Admin_frame extends JFrame implements ActionListener,MouseListener,
 	    b12.setFocusPainted(false);
 	    b13.setFocusPainted(false);
 	    b14.setFocusPainted(false);
-        textarea.setLineWrap(true);
-        textarea.setWrapStyleWord(true);
-        textarea1.setLineWrap(true);
-        textarea1.setWrapStyleWord(true);
-	    add(l1);
+            
+            textarea.setLineWrap(true);
+            textarea.setWrapStyleWord(true);
+            textarea1.setLineWrap(true);
+            textarea1.setWrapStyleWord(true);
+	
+            add(l1);
 	    add(l2);
 	    add(l9);
 	    add(l10);
@@ -496,248 +501,294 @@ public class Admin_frame extends JFrame implements ActionListener,MouseListener,
 		  { System.out.println(E);
 			  
 		  }
-		}
-		if(e.getSource()==b2)
-		{
-                    sp5.setVisible(false);
-                    p3.setVisible(false);
-                    p6.setVisible(false);
-                    sp1.setVisible(false);
-                    sp2.setVisible(true);
-                    tf1.setVisible(true);
+            }
+            if(e.getSource()==b2)
+            {
+                sp5.setVisible(false);
+                p3.setVisible(false);
+                p6.setVisible(false);
+                sp1.setVisible(false);
+                sp2.setVisible(true);
+                tf1.setVisible(true);
 		    
-                    b6.setVisible(true);
-		    l9.setVisible(false);
-		    l10.setVisible(false);
-		    sp4.setVisible(false);
-		    ta1.setVisible(false);
-		    b14.setVisible(false);
-		    StartThread();
-			
-		}
+                b6.setVisible(true);
+		l9.setVisible(false);
+		l10.setVisible(false);
+		sp4.setVisible(false);
+		ta1.setVisible(false);
+		b14.setVisible(false);
+		StartThread();
+            }
 		
-                if(e.getSource()==b6)
-		{
-                    sp5.setVisible(false);
-                    p3.setVisible(false);
-                    p6.setVisible(false);
-                    p4.setVisible(false);
-                    sp2.setVisible(true);
-                    sp1.setVisible(false);
-                    l9.setVisible(false);
-                    l10.setVisible(false);
-                    sp4.setVisible(false);
-                    ta1.setVisible(false);
-                    b14.setVisible(false);
+            if(e.getSource()==b6){
+                sp5.setVisible(false);
+                p3.setVisible(false);
+                p6.setVisible(false);
+                p4.setVisible(false);
+                sp2.setVisible(true);
+                sp1.setVisible(false);
+                l9.setVisible(false);
+                l10.setVisible(false);
+                sp4.setVisible(false);
+                ta1.setVisible(false);
+                b14.setVisible(false);
 				
-                    msg_send=tf1.getText();
-	            tf1.setText(null);
-	            
-	            
-	            sendMsg();
+                msg_send=tf1.getText();
+	        tf1.setText(null);
+	        
+	        sendMsg();
 				 
 				 //setVisible(false);
 				 //new forum();
+            }
+		
+            if(e.getSource()==b3){
+                
+                tf1.setVisible(false);
+                sp1.setVisible(false);
+                b6.setVisible(false);
+                p3.setVisible(false);
+                sp5.setVisible(false);
+                p6.setVisible(true);
+                p4.setVisible(false);
+                sp2.setVisible(false);
+                l9.setVisible(false);
+                l10.setVisible(false);
+                sp4.setVisible(false);
+                ta1.setVisible(false);
+                b14.setVisible(false);
+            }
+            
+            if(e.getSource()==b13){
+                String combo1=cb1.getItemAt(cb1.getSelectedIndex());
+                String combo2=cb2.getItemAt(cb2.getSelectedIndex());
+                String combo3=cb3.getItemAt(cb3.getSelectedIndex());
+                String combo4=cb4.getItemAt(cb4.getSelectedIndex());
+                
+                Integer spins1=(Integer)spinner1.getValue();
+                spin1=spins1.toString();
+                Integer spins2=(Integer)spinner2.getValue();
+                spin2=spins2.toString();
+                Integer spins3=(Integer)spinner3.getValue();
+                if(combo2=="PM"){
+                       
+                }
+                spin3=spins3.toString();
+                Integer spins4=(Integer)spinner4.getValue();
+                spin4=spins4.toString();
+                Integer spins5=(Integer)spinner5.getValue();
+                spin5=spins5.toString();
+                Integer spins6=(Integer)spinner6.getValue();
+                spin6=spins6.toString();
+                Integer spins7=(Integer)spinner7.getValue();
+                spin7=spins7.toString();
+                Integer spins8=(Integer)spinner8.getValue();
+                spin8=spins8.toString();
+                    
+                String startdate=combo1+"-"+spin2+"-"+spin1; 
+                String starttime=spin3+":"+spin4;
+                String enddate=combo3+"-"+spin6+"-"+spin5;
+                String endtime=spin7+":"+spin8;
+                String testlink=tf2.getText();
+                int statusnumber=0;
+		
+                try{  
+                
+                    java.sql.Date start_date1=null;
+                    java.sql.Date end_date1=null;
+                                      
+                    System.out.println(start_date1+" "+startdate+" "+starttime);
+                    System.out.println(start_date1+" "+enddate+" "+endtime);
+                    Class.forName(Driver);
+                    Connection con=DriverManager.getConnection(connect,"bootathon","admin");
+//                  Statement st=con.createStatement();
+                    con.setAutoCommit(true);
+                    String query="insert into test_details values (?,?,?,?,?,?) ";
+                    //String query="insert into test_details values('"+startdate+"','"+starttime+"','"+enddate+"','"+endtime+"','"+testlink+"','"+statusnumber+"')";
+                    PreparedStatement st=con.prepareStatement(query);
+                    st.setDate(1, start_date1);
+                    st.setTimestamp(2, Timestamp.valueOf(startdate+" "+starttime+":00"));
+                    st.setDate(3, end_date1);
+                    st.setTimestamp(4, Timestamp.valueOf(enddate+" "+endtime+":00"));
+                    st.setString(5,testlink);
+                    st.setInt(6, statusnumber);
+                                     
+                    st.executeUpdate();
+                    st.close();
+                    con.close();
+                    System.out.println("Success");
+		}
+		catch(Exception E){
+                    System.out.println("admin.Admin_frame.actionPerformed()");
+                    E.printStackTrace();
+		}
+            }
+            
+            if(e.getSource()==b4){
+	
+                tf1.setVisible(false);
+		b6.setVisible(false);
+		p3.setVisible(false);
+		p6.setVisible(false);
+		p4.setVisible(false);
+		sp1.setVisible(false);
+		sp2.setVisible(false);
+		sp5.setVisible(false);
+		l9.setVisible(true);
+		l10.setVisible(true);
+		sp4.setVisible(true);
+		ta1.setVisible(true);
+		b14.setVisible(true);
+                Results();
+                System.out.println("admin.Admin_frame.actionPerformed()");
+            }
+            if(e.getSource()==b14){
+                
+                tf1.setVisible(false);
+		b6.setVisible(false);
+		p3.setVisible(false);
+		p6.setVisible(false);
+		p4.setVisible(false);
+		sp1.setVisible(false);
+		sp2.setVisible(false);
+		sp5.setVisible(false);
+		l9.setVisible(true);
+		l10.setVisible(true);
+		sp4.setVisible(true);
+		ta1.setVisible(true);
+		b14.setVisible(true);
+		t1.setFillsViewportHeight(true);
+		t1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		Results();
+		try{
+                    Class.forName(Driver);
+                    Connection con=DriverManager.getConnection(connect,"bootathon","admin");
+                    Statement st=con.createStatement();
+                    con.setAutoCommit(true);
+                    String query="select * from registers";
+                    ResultSet rs=st.executeQuery(query);
+                    while(rs.next()){
+		
+                    }
+                    con.close();
 		}
 		
-                if(e.getSource()==b3)
-		{
+                catch(Exception E){ 
+                    System.out.println(E);
                 
-                    tf1.setVisible(false);
-                    sp1.setVisible(false);
-                    b6.setVisible(false);
-                    p3.setVisible(false);
-                    sp5.setVisible(false);
-                    p6.setVisible(true);
-                    p4.setVisible(false);
-                    sp2.setVisible(false);
-                    l9.setVisible(false);
-                    l10.setVisible(false);
-                    sp4.setVisible(false);
-                    ta1.setVisible(false);
-                    b14.setVisible(false);
-		}
-                
-		if(e.getSource()==b13)
-		{
-                    String combo1=cb1.getItemAt(cb1.getSelectedIndex());
-                    String combo2=cb2.getItemAt(cb2.getSelectedIndex());
-                    String combo3=cb3.getItemAt(cb3.getSelectedIndex());
-                    String combo4=cb4.getItemAt(cb4.getSelectedIndex());
-                    
-                    Integer spins1=(Integer)spinner1.getValue();
-                    spin1=spins1.toString();
-                    Integer spins2=(Integer)spinner2.getValue();
-                    spin2=spins2.toString();
-                    Integer spins3=(Integer)spinner3.getValue();
-                    if(combo3=="PM"){
-                
-                    }
-                    spin3=spins3.toString();
-                    Integer spins4=(Integer)spinner4.getValue();
-                    spin4=spins4.toString();
-                    Integer spins5=(Integer)spinner5.getValue();
-                    spin5=spins5.toString();
-                    Integer spins6=(Integer)spinner6.getValue();
-                    spin6=spins6.toString();
-                    Integer spins7=(Integer)spinner7.getValue();
-                    spin7=spins7.toString();
-                    Integer spins8=(Integer)spinner8.getValue();
-                    spin8=spins8.toString();
-                    
-                    String startdate=combo1+"-"+spin2+"-"+spin1; 
-                    String starttime=spin3+":"+spin4;
-                    String enddate=combo3+"-"+spin6+"-"+spin5;
-                    String endtime=spin7+":"+spin8;
-                    String testlink=tf2.getText();
-                    int statusnumber=0;
-					
-//                                        String startdate="2020-07-30";
-//                                        String starttime="1:46";
-//                                        String enddate="2020-7-31";
-//                                        String endtime="21:46";
-//                                        String testlink="www.google.com";
-                                        
-				try
-				  {  
-                                      java.sql.Date start_date1=null;
-                                      java.sql.Date end_date1=null;
-                                      
-                                      System.out.println(start_date1+" "+startdate+" "+starttime);
-                                      System.out.println(start_date1+" "+enddate+" "+endtime);
-				     Class.forName(Driver);
-                                     Connection con=DriverManager.getConnection(connect,"bootathon","admin");
-//                                     Statement st=con.createStatement();
-				     con.setAutoCommit(true);
-                                     String query="insert into test_details values (?,?,?,?,?,?) ";
-				     //String query="insert into test_details values('"+startdate+"','"+starttime+"','"+enddate+"','"+endtime+"','"+testlink+"','"+statusnumber+"')";
-				     PreparedStatement st=con.prepareStatement(query);
-                                     st.setDate(1, start_date1);
-                                     st.setTimestamp(2, Timestamp.valueOf(startdate+" "+starttime+":00"));
-                                     st.setDate(3, end_date1);
-                                     st.setTimestamp(4, Timestamp.valueOf(enddate+" "+endtime+":00"));
-                                     st.setString(5,testlink);
-                                     st.setInt(6, statusnumber);
-                                     
-                                     st.executeUpdate();
-				     st.close();
-				     con.close();
-                                      System.out.println("Success");
-			       }
-				 catch(Exception E)
-				 {
-                                     System.out.println("admin.Admin_frame.actionPerformed()");
-					 E.printStackTrace();
-				 }
-				}
-				if(e.getSource()==b4)
-				{
-					tf1.setVisible(false);
-				    b6.setVisible(false);
-					p3.setVisible(false);
-					p6.setVisible(false);
-					p4.setVisible(false);
-					sp1.setVisible(false);
-					sp2.setVisible(false);
-					sp5.setVisible(false);
-					l9.setVisible(true);
-					l10.setVisible(true);
-					sp4.setVisible(true);
-					ta1.setVisible(true);
-					b14.setVisible(true);
-                                        System.out.println("admin.Admin_frame.actionPerformed()");
-				}
-				if(e.getSource()==b14)
-				{
-					tf1.setVisible(false);
-				    b6.setVisible(false);
-					p3.setVisible(false);
-					p6.setVisible(false);
-					p4.setVisible(false);
-					sp1.setVisible(false);
-					sp2.setVisible(false);
-					sp5.setVisible(false);
-					l9.setVisible(true);
-					l10.setVisible(true);
-					sp4.setVisible(true);
-					ta1.setVisible(true);
-					b14.setVisible(true);
-					t1.setFillsViewportHeight(true);
-					t1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-					
-				try
-				  { Class.forName(Driver);
-                                    Connection con=DriverManager.getConnection(connect,"bootathon","admin");
-				     Statement st=con.createStatement();
-				     con.setAutoCommit(true);
-				     String query="select * from registers";
-				     ResultSet rs=st.executeQuery(query);
-				     while(rs.next())
-				     {
-				    	 						 
-				     }
-				     con.close();
-				  }
-				  catch(Exception E)
-				  { System.out.println(E);
-					  
-				  }
-
-					
-				}
-				if(e.getSource()==b5)
-				{
-					tf1.setVisible(false);
-				    b6.setVisible(false);
-					p3.setVisible(false);
-					p6.setVisible(false);
-					p4.setVisible(false);
-					sp1.setVisible(false);
-					sp2.setVisible(false);
-					l9.setVisible(false);
-					l10.setVisible(false);
-					sp4.setVisible(false);
-					ta1.setVisible(false);
-					b14.setVisible(false);
-					sp5.setVisible(true);
-					String usermsg="";
-					try
-					  { 
-					     Class.forName(Driver);
-                                             Connection con=DriverManager.getConnection(connect,"bootathon","admin");
-                                             Statement st=con.createStatement();
-					     con.setAutoCommit(true);
-					     String query="select * from query_forum";
-					     ResultSet rs=st.executeQuery(query);
-					     while(rs.next())
-					     {
-					    	 username=rs.getString("user_name");
-					    	 name=rs.getString("name");
-					    	 message=rs.getString("msg_send");
-					    	 usermsg=usermsg+"\n "+(username)+" "+name+" "+"\n\t"+message+".\n";
-					    	 						 
-					     }
-					     textarea1.setText(usermsg);
-					     con.close();
-					  }
-					  catch(Exception E)
-					  { System.out.println(E);
-						  
-					  }
-
-				}
+                }
+            }
+            
+            
+            if(e.getSource()==b5){
 	
+                tf1.setVisible(false);
+		b6.setVisible(false);
+		p3.setVisible(false);
+		p6.setVisible(false);
+		p4.setVisible(false);
+		sp1.setVisible(false);
+		sp2.setVisible(false);
+		l9.setVisible(false);
+		l10.setVisible(false);
+		sp4.setVisible(false);
+		ta1.setVisible(false);
+		b14.setVisible(false);
+		sp5.setVisible(true);
+		String usermsg="";
+		try{ 
+		
+                    Class.forName(Driver);
+                    Connection con=DriverManager.getConnection(connect,"bootathon","admin");
+                    Statement st=con.createStatement();
+                    con.setAutoCommit(true);
+                    String query="select * from query_forum";
+                    ResultSet rs=st.executeQuery(query);
+                    while(rs.next()){
+                        username=rs.getString("user_name");
+			name=rs.getString("name");
+			message=rs.getString("msg_send");
+			usermsg=usermsg+"\n "+(username)+" "+name+" "+"\n\t"+message+".\n";
+                    }
+                    textarea1.setText(usermsg);
+                    
+                    con.close();
+		}
+		catch(Exception E){ 
+                    System.out.println(E);
+		}
+            }
 				
-			
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
-
-		
 	}
 
+        void Results(){
+        System.out.println("dghdfvf");
+        int column,average=0,rank=1;
+        String user_name,name;
+        int test[]=new int[100];
+        final String Driver="oracle.jdbc.driver.OracleDriver";
+        final String connect="jdbc:oracle:thin:@127.0.0.1:1521:XE";
+        try {
+            Class.forName(Driver);
+            Connection con=DriverManager.getConnection(connect,"bootathon","admin");
+            Statement st=con.createStatement();
+            
+            String query="Select * from Student_Results";
+            ResultSet rs=st.executeQuery(query);
+            ResultSetMetaData rsmd=rs.getMetaData(); 
+            column =rsmd.getColumnCount()-3;
+
+            DefaultTableModel model=new DefaultTableModel();
+            ArrayList <String> sa1=new ArrayList<String>();
+            sa1.add("User Name");
+            sa1.add("Name");
+            
+            for (int i = 1; i <= column; i++) {
+                sa1.add("Test"+i);
+            }
+            sa1.add("Average");
+            
+            String s1[]=new String[sa1.size()];
+            for (int j = 0; j < sa1.size(); j++) { 
+                s1[j] = sa1.get(j); 
+            }    
+            
+            model.setColumnIdentifiers(s1);
+            t2.setModel(model);
+            t2.setFillsViewportHeight(true);
+            t2.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+            
+            while(rs.next()){
+                user_name=rs.getString("user_name");
+                name=rs.getString("name");
+                for (int i = 1; i <= column; i++) {
+                    System.out.println(i);
+                    test[i]=rs.getInt("test"+i);
+                    
+                }
+                average=rs.getInt("average");
+              rank++;
+              ArrayList<Object> values=new ArrayList<Object>();
+              values.add(rs.getString("user_name"));
+              values.add(rs.getString("name"));
+                for (int i = 1; i <=column; i++) {
+                    values.add(rs.getInt("test"+i));
+                }
+                values.add(rs.getInt("average"));
+              model.addRow(values.toArray());
+            }
+            System.out.println(rank+""+average);
+        }
+        catch(Exception e)
+        {
+            System.out.println(e+"Error Displaying Table");
+        }    
+    }
+        
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -819,62 +870,64 @@ public class Admin_frame extends JFrame implements ActionListener,MouseListener,
 		
 	}
 	void sendMsg(){
-        int sno=1;
-        try
-		  {  Class.forName(Driver);
-                     Connection con=DriverManager.getConnection(connect,"bootathon","admin");
-		     Statement st=con.createStatement();
+            int sno=1;
+            try{  
+                Class.forName(Driver);
+                Connection con=DriverManager.getConnection(connect,"bootathon","admin");
+                Statement st=con.createStatement();
 		     
-		     String query="insert into admin_forum values('"+msg_send+"')";
-		     con.setAutoCommit(true);
-		     st.executeUpdate(query);
-		     st.close();
-		     con.close();
-	       }
-		 catch(Exception E)
-		 {
-			 E.printStackTrace();
-		 }
-    }
-	void getMsg(){
-		try {
-			String AdminMsg="";
-		     Class.forName(Driver);
-                     Connection con1=DriverManager.getConnection(connect,"bootathon","admin");
-		     Statement st1=con1.createStatement();
-		     con1.setAutoCommit(true);
-		     String query1="select * from admin_forum";
-		     ResultSet rs=st1.executeQuery(query1); 
-		     int i=1;
-		     while(rs.next()){
-                msg_get=rs.getString("msg_admin");
-                AdminMsg=AdminMsg+" "+i+". "+msg_get+".\n\n";
-                i++;
+                String query="insert into admin_forum values('"+msg_send+"')";
+                con.setAutoCommit(true);
+                st.executeUpdate(query);
+                st.close();
+                con.close();
             }
-            textarea.setText(AdminMsg);
-            con1.close();
+            catch(Exception E)
+            {
+                E.printStackTrace();
+            }
         }
-        catch(Exception e)
-        {
-            System.out.println(e+" Error Displaying Table");
-        }
-    }
-	public void run(){
-        while(true){
+
+        void getMsg(){
             try {
-                getMsg();
-                Thread.sleep(1000);
-            } catch (Exception e) {
+	
+                String AdminMsg="";
+                Class.forName(Driver);
+                Connection con1=DriverManager.getConnection(connect,"bootathon","admin");
+                Statement st1=con1.createStatement();
+                con1.setAutoCommit(true);
+                String query1="select * from admin_forum";
+                ResultSet rs=st1.executeQuery(query1); 
+                int i=1;
+                while(rs.next()){
+                    msg_get=rs.getString("msg_admin");
+                    AdminMsg=AdminMsg+" "+i+". "+msg_get+".\n\n";
+                    i++;
+                }
+                textarea.setText(AdminMsg);
+                con1.close();
+            }
+            catch(Exception e)
+            {
+                System.out.println(e+" Error Displaying Table");
             }
         }
-    }
+	public void run(){
+            while(true){
+                try {
+                   getMsg();
+                    Thread.sleep(1000);
+                } catch (Exception e) {
+                }
+            }
+        }
 	void StartThread()
-    {
-        new Thread(this).start();
-    }
+        {
+            new Thread(this).start();
+        }
 	
-    public static void main(String[] args) {
-        new Admin_frame("18eumc071","Kumaran S");
-    }
+        public static void main(String[] args) {
+            new Admin_frame("18eumc071","Kumaran S");
+        }
 
 }
