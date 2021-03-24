@@ -14,12 +14,28 @@ import javax.swing.text.html.HTMLDocument;
  * @author kumar
  */
 public class Demo3 {
-    public static void main(String[] args) {
+    
+    
+    ArrayList<String> al;
+    
+    public void prin()
+    {
+        Iterator<String> e=al.iterator();
+                while(e.hasNext())
+                {
+                    Object ob=e.next();
+                    String s=(String)ob;
+                    System.out.println("s:     "+s.toUpperCase());
+                }
+    }
+    
+    public void ppp()
+    {
         String s1=new String("java");
         String s2=new String("c");
         String s3=new String("c++");
         String s4=new String("python");
-        ArrayList<String> al=new ArrayList();
+                al=new ArrayList();
                 al.add(s1);
   		al.add(s2);
   		al.add(s3);
@@ -29,12 +45,10 @@ public class Demo3 {
   		al.add("C++");
   		al.add("VB");
                 al.add("1");
-                Iterator<String> e=al.iterator();
-                while(e.hasNext())
-                {
-                    Object ob=e.next();
-                    String s=(String)ob;
-                    System.out.println("s:"+s.toUpperCase());
-                }
+                prin();
+    }
+    public static void main(String[] args) {
+        Demo3 z=new Demo3();
+        z.ppp();
     }
 }

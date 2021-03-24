@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<!-- Mirrored from amentotech.com/htmls/psello/dashboard-post-ad.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Feb 2020 13:24:59 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Post your ad</title>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/fontawesome/fontawesome-all.css">
+	<link rel="stylesheet" href="css/linearicons.css">
+	<link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="css/transitions.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="css/dashboard-responsive.css">
+</head>
+<body>
+    <h4 class="nav-item" style="margin-left:5%;margin-top:3%;">E-Auction & Bidding<h4><br>
+    <div class="ps-main-banner">
+        <div class="ps-dark-overlay">
+            <div class="container">
+                <div class="ps-banner-content">
+                    <h4>Post New Ad</h4>
+                    <p><a href="index.html">Home</a> <span><i class="ti-angle-right"></i></span> <a href="insights.html">Dashboard</a> <span> <i class="ti-angle-right"></i></span> Post Ad</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BANNER END -->
+    <!-- MAIN START -->
+    <main class="ps-main">
+        <section class="ps-main-section">
+            <div class="container">
+                <div class="row">
+                    <!-- SIDEBAR START -->
+                    <div class="col-lg-4">
+                        <div class="ps-dashboard-sidebar">
+                            <div class="ps-dashboard-sidebar__user">
+                                <figure><img src="images/insights/user-img.jpg" alt="Image Description"></figure>
+                                <div class="ps-seller__description">
+                                    <h6>user</h6>
+                                    <div class="ps-h5">Status: 
+                                        <a data-toggle="collapse" href="#collapseUser" role="button" aria-expanded="false" aria-controls="collapseUser">
+                                            <span><em class="ps-online"></em><i class="fa fa-sort-down"></i></span><em>Online</em> 
+                                        </a>
+                                        <div class="collapse" id="collapseUser">
+                                            <a href="javascript:void(0);"><span class="ps-online"></span><em>Online</em></a>
+                                            <a href="javascript:void(0);"><span class="ps-away"></span><em>Away</em></a>
+                                            <a href="javascript:void(0);"><span class="ps-busy"></span><em>Busy</em></a>
+                                            <a href="javascript:void(0);"><span class="ps-offline"></span><em>Offline</em></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-dashboard-sidebar__edit"><a href="javascript:void(0);"><i class="ti-pencil"></i></a></div>
+                            </div>
+                            <ul>
+                                <li><a href="dashboard-insights.html"><i class="ti-dashboard"></i> <span>Insights</span> </a></li>
+                                <li><a href="dashboard-profile-setting.html"><i class="ti-user"></i> <span>Profile Settings</span> </a></li>
+                                <li><a href="dashboard-my-ads.html"><i class="ti-align-justify"></i> <span>My Ads</span> </a></li>
+                                <li><a href="dashboard-post-ad.html" class="ps-user-dhb"><i class="ti-settings"></i> <span>Post Ad</span> </a></li>
+                                
+                                
+                                <li><a href="dashboard-payments.html"><i class="ti-user"></i> <span>Purchased</span> </a></li>
+                                
+                                <li><a href="dashboard-account-setting.html"><i class="ti-bookmark"></i> <span>Account & Privacy Settings</span> </a></li>
+                                <li><a href="index.html"><i class="ti-shift-right"></i> <span>Logout</span> </a></li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                    <!-- SIDEBAR END -->
+                    <div class="col-lg-8 ps-dashboard-user">
+                        <div class="ps-posted-ads ps-profile-setting">
+                            <div class="ps-posted-ads__heading">
+                                <h5>Post New Ad</h5>
+                                
+                            </div>
+                            <div class="ps-profile-setting__content">
+                                <!-- POST NEW AD FORM START -->
+                                <form class="ps-profile-form" action="housesdb" method="get">
+                                    <div class="ps-profile--row">
+                                        
+                                        <div class="form-group">
+                                            <label>
+                                                <select class="form-control" name="category">
+                                                    <option value="" disabled selected hidden>Select Category(s)*</option>
+                                                    <option value="Houses or Appartments" >Houses or Appartments</option>
+                                                    <option value="Lands & Plots">Lands & Plots</option>
+                                                    <option value="vehicles">Vehicles</option>
+                                                    <option value="Mobiles & Accessories">Mobiles & Accessories</option>
+                                                    <option value="Furniture">Furniture</option>
+                                                    <option value="Antiques">Antiques</option>
+                                                </select>
+                                            </label>
+                                        </div>
+                                        <div class="form-group ps-fullwidth">
+                                            <input type="text" class="form-control" name="adtitle" id="formGroupExampleInput" required placeholder="Your Ad Title Here*">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="price" id="formGroupExampleInput2" required placeholder="Price*">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" name="mobileno" id="formGroupExampleInput3" required placeholder="Mobile Number*">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" name="email" id="formGroupExampleInput4" placeholder="Email">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="location" id="formGroupExampleInput5" placeholder="Location(State)*">
+                                        </div>
+                                        <div class="form-group ps-fullwidth">
+                                            <textarea class="form-control" name="description" placeholder="Description*"></textarea>
+                                        </div>
+                                    </div>
+                               
+                                
+                                <!-- PROFILE SETTINGS START -->
+                                <div class="ps-profile-setting__upload">
+                                    <h5>Upload upto 10 photos</h5>
+                                    <div class="ps-profile-setting__uploadarea">
+                                        <p>Choose multiple</p>
+                                        <p><label for="file" style="cursor: pointer;padding:4px;width:100%;" class="btn ps-btn">select files</label></p> <br>
+                                        <p><img id="output" width="200" /></p> 
+                                        <p><input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;" multiple></p> 
+                                        <script> 
+                                        var loadFile = function(event)
+                                        { 	
+                                             var image = document.getElementById('output'); 	
+                                             var files= event.target.files;
+                                             for(var i=0;i<files.length;i++)
+                                             {
+                                             image.src = URL.createObjectURL(event.target.files[i]); }
+                                        }; 
+                                    </script>
+                                    
+                                    
+                                </div>
+                                <!-- PROFILE SETTINGS END -->
+                                <div class="ps-profile-setting__save">
+                                    <input type="submit" class="btn ps-btn" value="Post now" style="padding:4px;">
+                                    
+                                </div> 
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/popper.min.js"></script>
+    <script src="js/vendor/jquery-library.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/vendor/jquery-ui.min.js"></script>
+    <script src="js/vendor/jquery.ui.touch-punch.js"></script>
+    <script src="js/vendor/masonry.pkgd.min.js"></script>
+    <script src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+<!-- Mirrored from amentotech.com/htmls/psello/dashboard-post-ad.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Feb 2020 13:25:01 GMT -->
+</html>
